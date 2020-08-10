@@ -1,0 +1,32 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Library",
+        "id": "digoxin-cyclosporine-cds-sign",
+        "version": "1.0",
+        "status": "draft",
+        "url": "http://hl7.org/fhir/ig/PDDI-CDS/Library/digoxin-cyclosporine-cds-sign",
+        "type": {
+          "coding": [
+            {
+              "code": "logic-library"
+            }
+          ]
+        },
+        "content": [
+	    {	
+		"contentType": "text/cql",
+		"data": "@CQL_BASE64_DATA"
+            },
+	    {
+		"contentType": "application/elm+xml",
+		"data": "@ELM_BASE64_DATA"
+            }
+        ]
+      }
+    }
+  ]
+}

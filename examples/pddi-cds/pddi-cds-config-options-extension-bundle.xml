@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bundle xmlns="http://hl7.org/fhir">
+  <type value="transaction" />
+  <entry>
+    <resource>
+      <StructureDefinition xmlns="http://hl7.org/fhir">
+	<url value="http://localhost:8080/pddi-cds-configuration-options"/>
+	<version value="0.1"/>
+	<name value="pddi-cds-configuration-options"/>
+	<status value="draft"/>
+	<experimental value="true"/>
+	<date value="2019-12-10"/>
+	<publisher value="HL7 Clinical Decision Support Workgroup"/>
+	<contact>
+	  <name value="Richard Boyce"/>
+	  <telecom>
+	    <system value="email"/>
+	    <value value="boycerd@upmc.edu"/>
+	    <use value="work"/>
+	  </telecom>
+	</contact>
+	<description value="A configuration resource for used by CDS Hooks and the CDS service to customize responses to potential drug-drug interaction decision support requests"/>
+	<fhirVersion value="3.0.1"/>
+	<kind value="resource"/>
+	<abstract value="false"/>
+	<contextType value="resource"/>
+	<context value="PlanDefinition"/>
+	<type value="Extension"/>
+	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+	<derivation value="constraint"/>
+	<differential>
+	  <element id="Extension.extension">
+	    <path value="Extension.extension"/>
+	    <slicing>
+	      <discriminator>
+		<type value="value"/>
+		<path value="url"/>
+	      </discriminator>
+	      <rules value="open"/>
+	    </slicing>
+	  </element>
+	  <element id="Extension.extension:code">
+	    <path value="Extension.extension"/>
+	    <sliceName value="code"/>
+	    <label value="code"/>
+	    <short value="A code that will be used when setting configuration during hook invocation"/>
+	    <definition value="A code that will be used when setting configuration during hook invocation"/>
+	    <min value="1"/>
+	    <max value="1"/>
+	  </element>
+	  <element id="Extension.extension:code.url">
+	    <path value="Extension.extension.url"/>
+	    <fixedUri value="code"/>
+	  </element>
+	  <element id="Extension.extension:code.value[x]:valueString">
+	    <path value="Extension.extension.valueString"/>
+	    <sliceName value="valueString"/>
+	    <type>
+	      <code value="string"/>
+	    </type>
+	  </element>
+	  <element id="Extension.extension:type">
+	    <path value="Extension.extension"/>
+	    <sliceName value="type"/>
+	    <label value="type"/>
+	    <short value="A data type for the parameter. At present, allowed values are “boolean” and “integer”"/>
+	    <definition value="A data type for the parameter. At present, allowed values are “boolean” and “integer”"/>
+	    <comment value="no comment"/>
+	    <min value="1"/>
+	    <max value="1"/>
+	  </element>
+	  <element id="Extension.extension:type.url">
+	    <path value="Extension.extension.url"/>
+	    <fixedUri value="type"/>
+	  </element>
+	  <element id="Extension.extension:type.value[x]:valueString">
+	    <path value="Extension.extension.valueString"/>
+	    <sliceName value="valueString"/>
+	    <type>
+	      <code value="string"/>
+	    </type>
+	  </element>
+	  <element id="Extension.extension:name">
+	    <path value="Extension.extension"/>
+	    <sliceName value="name"/>
+	    <short value="A display name for the configuration option to appear in the client’s user interface when performing configuration"/>
+	    <definition value="A display name for the configuration option to appear in the client’s user interface when performing configuration&#xD;&#xA;"/>
+	    <comment value="no comment"/>
+	    <min value="1"/>
+	    <max value="1"/>
+	  </element>
+	  <element id="Extension.extension:name.url">
+	    <path value="Extension.extension.url"/>
+	    <fixedUri value="name"/>
+	  </element>
+	  <element id="Extension.extension:name.value[x]:valueString">
+	    <path value="Extension.extension.valueString"/>
+	    <sliceName value="valueString"/>
+	    <type>
+	      <code value="string"/>
+	    </type>
+	  </element>
+	  <element id="Extension.extension:description">
+	    <path value="Extension.extension"/>
+	    <sliceName value="description"/>
+	    <short value="A description providing a 1-2 sentence description of the effect of the configuration option"/>
+	    <definition value="A description providing a 1-2 sentence description of the effect of the configuration option"/>
+	    <comment value="no comment"/>
+	    <min value="1"/>
+	    <max value="1"/>
+	  </element>
+	  <element id="Extension.extension:description.url">
+	    <path value="Extension.extension.url"/>
+	    <fixedUri value="description"/>
+	  </element>
+	  <element id="Extension.extension:description.value[x]:valueString">
+	    <path value="Extension.extension.valueString"/>
+	    <sliceName value="valueString"/>
+	    <type>
+	      <code value="string"/>
+	    </type>
+	  </element>
+	  <element id="Extension.url">
+	    <path value="Extension.url"/>
+	    <fixedUri value="http://build.fhir.org/ig/HL7/PDDI-CDS/pddi-cds-configuration-options"/>
+	  </element>
+	  <element id="Extension.value[x]">
+	    <path value="Extension.value[x]"/>
+	    <label value="URI extension"/>
+	    <short value="URI of extension"/>
+	    <definition value="URI of extension"/>
+	    <max value="0"/>
+	  </element>
+	</differential>
+      </StructureDefinition>
+    </resource>
+    <request>
+      <method value="PUT" />
+      <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/StructureDefinition/pddi-cds-configuration-options" />
+    </request>
+  </entry>
+</Bundle>
