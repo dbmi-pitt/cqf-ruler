@@ -6,13 +6,13 @@ using FHIR version '3.0.0'
 
 codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
 
-valueset "Topical Diclofenac": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-topicaldiclofenac'
-valueset "Warfarins": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-warfarin'
-valueset "NSAIDs": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-NSAIDS'
-valueset "PPIs and Misoprostols": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-PPIS'
-valueset "History of GI Bleeds": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-Hx-UGIB-snomed'
-valueset "Systemic Corticosteroids": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-SCS'
-valueset "Aldosterone Antagonists": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-AAS'
+valueset "Topical Diclofenac": 'valueset-topicaldiclofenac'
+valueset "Warfarins": 'valueset-warfarin'
+valueset "NSAIDs": 'valueset-NSAIDS'
+valueset "PPIs and Misoprostols": 'valueset-PPIS'
+valueset "History of GI Bleeds": 'valueset-Hx-UGIB-snomed'
+valueset "Systemic Corticosteroids": 'valueset-SCS'
+valueset "Aldosterone Antagonists": 'valueset-AAS'
 
 parameter ContextPrescriptions List<MedicationRequest>
 
@@ -42,10 +42,9 @@ define function GetMedicationNames(medications List<MedicationRequest>):
 
 define function GetDrugNames(codings List<FHIR.Coding>):
   Combine(
-    flatten (
-      codings coding
-          return ToCode(coding).display
-    ), ', ')
+    codings coding
+        return ToCode(coding).display
+  )
 
 define function ToCode(coding FHIR.Coding):
   System.Code {
@@ -92,27 +91,25 @@ define "Is warfarin in prefetch":
   exists ("Warfarin Rx")
     
 define "Warfarin Rx":
-  flatten (
-    (
-      [MedicationRequest: "Warfarins"] MR
-        where MR.authoredOn.value in Interval[Today() - 100 days, null]
-        return MR.medication.coding[0]
-    )
-    union (
-      [MedicationAdministration: "Warfarins"] MA
-        where MA.effective.value in Interval[Today() - 100 days, null]
-        return MA.medication.coding[0]
-    )
-    union (
-      [MedicationDispense: "Warfarins"] MD
-        where MD.whenHandedOver.value in Interval[Today() - 100 days, null]
-        return MD.medication.coding[0]
-    )
-    union (
-      [MedicationStatement: "Warfarins"] MS
-        where MS.effective.value in Interval[Today() - 100 days, null]
-        return MS.medication.coding[0]
-    )
+  (
+    [MedicationRequest: "Warfarins"] MR
+      where MR.authoredOn.value in Interval[Today() - 100 days, null]
+      return MR.medication.coding[0]
+  )
+  union (
+    [MedicationAdministration: "Warfarins"] MA
+      where MA.effective.value in Interval[Today() - 100 days, null]
+      return MA.medication.coding[0]
+  )
+  union (
+    [MedicationDispense: "Warfarins"] MD
+      where MD.whenHandedOver.value in Interval[Today() - 100 days, null]
+      return MD.medication.coding[0]
+  )
+  union (
+    [MedicationStatement: "Warfarins"] MS
+      where MS.effective.value in Interval[Today() - 100 days, null]
+      return MS.medication.coding[0]
   )
 
 define "Is context medication systemic NSAID":
@@ -185,27 +182,25 @@ define "Taking PPI or misoprostol":
   exists ("PPIs and Misoprostols Rx")
 
 define "PPIs and Misoprostols Rx":
-	flatten (
-    (
-      [MedicationRequest: "PPIs and Misoprostols"] MR
-        where MR.authoredOn.value in Interval[Today() - 100 days, null]
-        return MR.medication.coding[0]
-    )
-    union (
-      [MedicationAdministration: "PPIs and Misoprostols"] MA
-        where MA.effective.value in Interval[Today() - 100 days, null]
-        return MA.medication.coding[0]
-    )
-    union (
-      [MedicationDispense: "PPIs and Misoprostols"] MD
-        where MD.whenHandedOver.value in Interval[Today() - 100 days, null]
-        return MD.medication.coding[0]
-    )
-    union (
-      [MedicationStatement: "PPIs and Misoprostols"] MS
-        where MS.effective.value in Interval[Today() - 100 days, null]
-        return MS.medication.coding[0]
-    )
+  (
+    [MedicationRequest: "PPIs and Misoprostols"] MR
+      where MR.authoredOn.value in Interval[Today() - 100 days, null]
+      return MR.medication.coding[0]
+  )
+  union (
+    [MedicationAdministration: "PPIs and Misoprostols"] MA
+      where MA.effective.value in Interval[Today() - 100 days, null]
+      return MA.medication.coding[0]
+  )
+  union (
+    [MedicationDispense: "PPIs and Misoprostols"] MD
+      where MD.whenHandedOver.value in Interval[Today() - 100 days, null]
+      return MD.medication.coding[0]
+  )
+  union (
+    [MedicationStatement: "PPIs and Misoprostols"] MS
+      where MS.effective.value in Interval[Today() - 100 days, null]
+      return MS.medication.coding[0]
   )
 
 
@@ -285,79 +280,73 @@ define "Has Systemic Corticosteroids":
   exists ("Systemic Corticosteroids Rx")
 
 define "Systemic Corticosteroids Rx":
-	flatten (
-    (
-      [MedicationRequest: "Systemic Corticosteroids"] MR
-        where MR.authoredOn.value in Interval[Today() - 100 days, null]
-        return MR.medication.coding[0]
-    )
-    union (
-      [MedicationAdministration: "Systemic Corticosteroids"] MA
-        where MA.effective.value in Interval[Today() - 100 days, null]
-        return MA.medication.coding[0]
-    )
-    union (
-      [MedicationDispense: "Systemic Corticosteroids"] MD
-        where MD.whenHandedOver.value in Interval[Today() - 100 days, null]
-        return MD.medication.coding[0]
-    )
-    union (
-      [MedicationStatement: "Systemic Corticosteroids"] MS
-        where MS.effective.value in Interval[Today() - 100 days, null]
-        return MS.medication.coding[0]
-    )
+  (
+    [MedicationRequest: "Systemic Corticosteroids"] MR
+      where MR.authoredOn.value in Interval[Today() - 100 days, null]
+      return MR.medication.coding[0]
+  )
+  union (
+    [MedicationAdministration: "Systemic Corticosteroids"] MA
+      where MA.effective.value in Interval[Today() - 100 days, null]
+      return MA.medication.coding[0]
+  )
+  union (
+    [MedicationDispense: "Systemic Corticosteroids"] MD
+      where MD.whenHandedOver.value in Interval[Today() - 100 days, null]
+      return MD.medication.coding[0]
+  )
+  union (
+    [MedicationStatement: "Systemic Corticosteroids"] MS
+      where MS.effective.value in Interval[Today() - 100 days, null]
+      return MS.medication.coding[0]
   )
 
 define "Has Aldosterone Antagonists":
   exists ("Aldosterone Antagonists Rx")
 
 define "Aldosterone Antagonists Rx":
-	flatten (
-    (
-      [MedicationRequest: "Aldosterone Antagonists"] MR
-        where MR.authoredOn.value in Interval[Today() - 100 days, null]
-        return MR.medication.coding[0]
-    )
-    union (
-      [MedicationAdministration: "Aldosterone Antagonists"] MA
-        where MA.effective.value in Interval[Today() - 100 days, null]
-        return MA.medication.coding[0]
-    )
-    union (
-      [MedicationDispense: "Aldosterone Antagonists"] MD
-        where MD.whenHandedOver.value in Interval[Today() - 100 days, null]
-        return MD.medication.coding[0]
-    )
-    union (
-      [MedicationStatement: "Aldosterone Antagonists"] MS
-        where MS.effective.value in Interval[Today() - 100 days, null]
-        return MS.medication.coding[0]
-    )
+  (
+    [MedicationRequest: "Aldosterone Antagonists"] MR
+      where MR.authoredOn.value in Interval[Today() - 100 days, null]
+      return MR.medication.coding[0]
+  )
+  union (
+    [MedicationAdministration: "Aldosterone Antagonists"] MA
+      where MA.effective.value in Interval[Today() - 100 days, null]
+      return MA.medication.coding[0]
+  )
+  union (
+    [MedicationDispense: "Aldosterone Antagonists"] MD
+      where MD.whenHandedOver.value in Interval[Today() - 100 days, null]
+      return MD.medication.coding[0]
+  )
+  union (
+    [MedicationStatement: "Aldosterone Antagonists"] MS
+      where MS.effective.value in Interval[Today() - 100 days, null]
+      return MS.medication.coding[0]
   )
 
 define "Has NSAID":
   exists ("NSAID Rx")
     
 define "NSAID Rx":
-	flatten (
-    (
-      [MedicationRequest: "NSAIDs"] MR
-        where MR.authoredOn.value in Interval[Today() - 100 days, null]
-        return MR.medication.coding[0]
-    )
-    union (
-      [MedicationAdministration: "NSAIDs"] MA
-        where MA.effective.value in Interval[Today() - 100 days, null]
-        return MA.medication.coding[0]
-    )
-    union (
-      [MedicationDispense: "NSAIDs"] MD
-        where MD.whenHandedOver.value in Interval[Today() - 100 days, null]
-        return MD.medication.coding[0]
-    )
-    union (
-      [MedicationStatement: "NSAIDs"] MS
-        where MS.effective.value in Interval[Today() - 100 days, null]
-        return MS.medication.coding[0]
-    )
+  (
+    [MedicationRequest: "NSAIDs"] MR
+      where MR.authoredOn.value in Interval[Today() - 100 days, null]
+      return MR.medication.coding[0]
+  )
+  union (
+    [MedicationAdministration: "NSAIDs"] MA
+      where MA.effective.value in Interval[Today() - 100 days, null]
+      return MA.medication.coding[0]
+  )
+  union (
+    [MedicationDispense: "NSAIDs"] MD
+      where MD.whenHandedOver.value in Interval[Today() - 100 days, null]
+      return MD.medication.coding[0]
+  )
+  union (
+    [MedicationStatement: "NSAIDs"] MS
+      where MS.effective.value in Interval[Today() - 100 days, null]
+      return MS.medication.coding[0]
   )

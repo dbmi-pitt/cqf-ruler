@@ -17,10 +17,15 @@ import org.opencds.cqf.common.evaluation.LibraryLoader;
 import org.opencds.cqf.common.providers.LibraryResolutionProvider;
 import org.opencds.cqf.common.providers.LibrarySourceProvider;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created by Christopher on 1/11/2017.
  */
 public class LibraryHelper {
+    
+    private static final Logger logger = LoggerFactory.getLogger(LibraryHelper.class);
 
     public static LibraryLoader createLibraryLoader(
             LibraryResolutionProvider<org.hl7.fhir.dstu3.model.Library> provider) {
@@ -95,8 +100,13 @@ public class LibraryHelper {
         // Library library = null;
 
         org.hl7.fhir.dstu3.model.Library fhirLibrary = libraryResourceProvider.resolveLibraryById(libraryId);
+
+        logger.info("resolve fhirLibrary ID: " + fhirLibrary.getId() + "\n\tLibrary Name: " + fhirLibrary.getName() + "\n\tLibrary Version: " + fhirLibrary.getVersion());
+        logger.info(new VersionedIdentifier().withId(fhirLibrary.getId()).withVersion(fhirLibrary.getVersion()).toString());
+
         return libraryLoader
                 .load(new VersionedIdentifier().withId(fhirLibrary.getName()).withVersion(fhirLibrary.getVersion()));
+                // .load(new VersionedIdentifier().withId(fhirLibrary.getId()).withVersion(fhirLibrary.getVersion()));
 
         // for (Library l : libraryLoader.getLibraries()) {
         // VersionedIdentifier vid = l.getIdentifier();
@@ -134,6 +144,8 @@ public class LibraryHelper {
     public static Library resolvePrimaryLibrary(PlanDefinition planDefinition, org.opencds.cqf.cql.engine.execution.LibraryLoader libraryLoader,
             LibraryResolutionProvider<org.hl7.fhir.dstu3.model.Library> libraryResourceProvider) {
         String id = planDefinition.getLibraryFirstRep().getReferenceElement().getIdPart();
+
+        logger.info("id = " + id);
 
         Library library = resolveLibraryById(id, libraryLoader, libraryResourceProvider);
 

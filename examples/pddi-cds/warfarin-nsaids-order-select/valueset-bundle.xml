@@ -68,7 +68,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-topicaldiclofenac" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-topicaldiclofenac" />
       </request>
    </entry>
    <entry>
@@ -788,7 +788,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-diclofenac" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-diclofenac" />
       </request>
    </entry>
    <entry>
@@ -1120,7 +1120,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-warfarin" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-warfarin" />
       </request>
    </entry>
    <entry>
@@ -4244,7 +4244,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-aspirin" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-aspirin" />
       </request>
    </entry>
    <entry>
@@ -4380,7 +4380,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-bromfenac" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-bromfenac" />
       </request>
    </entry>
    <entry>
@@ -4540,7 +4540,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-celecoxib" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-celecoxib" />
       </request>
    </entry>
    <entry>
@@ -4608,7 +4608,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-diflunisal" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-diflunisal" />
       </request>
    </entry>
    <entry>
@@ -4740,7 +4740,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-etodolac" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-etodolac" />
       </request>
    </entry>
    <entry>
@@ -4924,7 +4924,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-fenoprofen" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-fenoprofen" />
       </request>
    </entry>
    <entry>
@@ -5096,7 +5096,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-flurbiprofen" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-flurbiprofen" />
       </request>
    </entry>
    <entry>
@@ -6664,7 +6664,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-ibuprofen" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-ibuprofen" />
       </request>
    </entry>
    <entry>
@@ -6964,7 +6964,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-indomethacin" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-indomethacin" />
       </request>
    </entry>
    <entry>
@@ -7220,7 +7220,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-ketoprofen" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-ketoprofen" />
       </request>
    </entry>
    <entry>
@@ -7524,7 +7524,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-ketorolac" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-ketorolac" />
       </request>
    </entry>
    <entry>
@@ -7624,7 +7624,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-mefenamate" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-mefenamate" />
       </request>
    </entry>
    <entry>
@@ -8044,7 +8044,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-meloxicam" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-meloxicam" />
       </request>
    </entry>
    <entry>
@@ -8140,7 +8140,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-nabumetone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-nabumetone" />
       </request>
    </entry>
    <entry>
@@ -8840,7 +8840,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-naproxen" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-naproxen" />
       </request>
    </entry>
    <entry>
@@ -8944,7 +8944,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-nepafenac" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-nepafenac" />
       </request>
    </entry>
    <entry>
@@ -9040,7 +9040,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-oxaprozin" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-oxaprozin" />
       </request>
    </entry>
    <entry>
@@ -9252,7 +9252,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-piroxicam" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-piroxicam" />
       </request>
    </entry>
    <entry>
@@ -9328,7 +9328,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-sulindac" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-sulindac" />
       </request>
    </entry>
    <entry>
@@ -9412,7 +9412,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-tolmetin" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-tolmetin" />
       </request>
    </entry>
    <entry>
@@ -9508,7 +9508,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-NSAIDS" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-NSAIDS" />
       </request>
    </entry>
    <entry>
@@ -9616,7 +9616,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-eplerenone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-eplerenone" />
       </request>
    </entry>
    <entry>
@@ -9908,7 +9908,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-spironolactone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-spironolactone" />
       </request>
    </entry>
    <entry>
@@ -9947,7 +9947,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-AAS" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-AAS" />
       </request>
    </entry>
    <entry>
@@ -10071,7 +10071,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-dexlansoprazole" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-dexlansoprazole" />
       </request>
    </entry>
    <entry>
@@ -10411,7 +10411,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-esomeprazole" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-esomeprazole" />
       </request>
    </entry>
    <entry>
@@ -10599,7 +10599,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-lansoprazole" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-lansoprazole" />
       </request>
    </entry>
    <entry>
@@ -11135,7 +11135,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-omeprazole" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-omeprazole" />
       </request>
    </entry>
    <entry>
@@ -11291,7 +11291,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-pantoprazole" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-pantoprazole" />
       </request>
    </entry>
    <entry>
@@ -11431,7 +11431,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-rabeprazole" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-rabeprazole" />
       </request>
    </entry>
    <entry>
@@ -11482,7 +11482,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-PPIS" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-PPIS" />
       </request>
    </entry>
    <entry>
@@ -11614,7 +11614,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-Hx-UGIB-snomed" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-Hx-UGIB-snomed" />
       </request>
    </entry>
    <entry>
@@ -11654,7 +11654,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-aldosterone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-aldosterone" />
       </request>
    </entry>
    <entry>
@@ -12778,7 +12778,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-betamethasone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-betamethasone" />
       </request>
    </entry>
    <entry>
@@ -12818,7 +12818,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-cloprednol" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-cloprednol" />
       </request>
    </entry>
    <entry>
@@ -12914,7 +12914,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-cortisone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-cortisone" />
       </request>
    </entry>
    <entry>
@@ -12954,7 +12954,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-cortivazol" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-cortivazol" />
       </request>
    </entry>
    <entry>
@@ -13134,7 +13134,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-deflazacort" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-deflazacort" />
       </request>
    </entry>
    <entry>
@@ -13246,7 +13246,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-desoxycorticosterone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-desoxycorticosterone" />
       </request>
    </entry>
    <entry>
@@ -14294,7 +14294,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-dexamethasone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-dexamethasone" />
       </request>
    </entry>
    <entry>
@@ -14362,7 +14362,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-fludrocortisone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-fludrocortisone" />
       </request>
    </entry>
    <entry>
@@ -14454,7 +14454,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-fluocortolone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-fluocortolone" />
       </request>
    </entry>
    <entry>
@@ -18890,7 +18890,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-hydrocortisone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-hydrocortisone" />
       </request>
    </entry>
    <entry>
@@ -18934,7 +18934,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-meprednisone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-meprednisone" />
       </request>
    </entry>
    <entry>
@@ -19430,7 +19430,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-methylprednisolone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-methylprednisolone" />
       </request>
    </entry>
    <entry>
@@ -19478,7 +19478,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-paramethasone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-paramethasone" />
       </request>
    </entry>
    <entry>
@@ -20614,7 +20614,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-prednisolone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-prednisolone" />
       </request>
    </entry>
    <entry>
@@ -20882,7 +20882,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-prednisone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-prednisone" />
       </request>
    </entry>
    <entry>
@@ -20922,7 +20922,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-prednylidene" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-prednylidene" />
       </request>
    </entry>
    <entry>
@@ -20998,7 +20998,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-rimexolone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-rimexolone" />
       </request>
    </entry>
    <entry>
@@ -21850,7 +21850,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-triamcinolone" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-triamcinolone" />
       </request>
    </entry>
    <entry>
@@ -21998,7 +21998,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-trilostane" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-trilostane" />
       </request>
    </entry>
    <entry>
@@ -22091,7 +22091,7 @@
       </resource>
       <request>
          <method value="PUT" />
-         <url value="http://localhost:8080/baseDstu3/ValueSet/valueset-SCS" />
+         <url value="http://localhost:8080/cqf-ruler-dstu3/fhir/ValueSet/valueset-SCS" />
       </request>
    </entry>
 </Bundle>

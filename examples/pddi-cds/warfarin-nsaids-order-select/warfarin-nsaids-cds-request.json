@@ -109,12 +109,12 @@
       "link": [
         {
           "relation": "self",
-          "url": "http://localhost:2020/baseDstu3/Condition?patient=f101"
+          "url": "http://localhost:8080/cqf-ruler-dstu3/fhir/Condition?patient=f101"
         }
       ],
       "entry": [
         {
-          "fullUrl": "http://localhost:2020/baseDstu3/Condition/c101",
+          "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Condition/c101",
           "resource": {
             "resourceType": "Condition",
             "id": "c101",
@@ -155,12 +155,12 @@
       "link": [
         {
           "relation": "self",
-          "url": "http://localhost:2020/baseDstu3/MedicationRequest?authoredon=ge2020-07-01&patient=f101"
+          "url": "http://localhost:8080/cqf-ruler-dstu3/fhir/MedicationRequest?authoredon=ge2020-07-01&patient=f101"
         }
       ],
       "entry": [
         {
-          "fullUrl": "http://localhost:2020/baseDstu3/MedicationRequest/r101",
+          "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/MedicationRequest/r101",
           "resource": {
             "resourceType": "MedicationRequest",
             "id": "r101",

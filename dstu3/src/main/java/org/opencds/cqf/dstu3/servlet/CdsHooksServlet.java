@@ -128,6 +128,7 @@ public class CdsHooksServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info(request.getRequestURI());
+        logger.info("test");
 
         try {
             // validate that we are dealing with JSON
@@ -143,11 +144,16 @@ public class CdsHooksServlet extends HttpServlet {
             JsonObject requestJson = parser.parse(request.getReader()).getAsJsonObject();
             logger.info(requestJson.toString());
 
-            Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(getService(service), "prefetch"));
+            Request cdsHooksRequest = new Request(service, requestJson, null);
+            // Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(getService(service), "prefetch")); // previous requirement of prefetch?
 
             Hook hook = HookFactory.createHook(cdsHooksRequest);
 
             PlanDefinition planDefinition = planDefinitionProvider.getDao().read(new IdType(hook.getRequest().getServiceName()));
+
+            logger.info("test");
+            logger.info(planDefinition.toString());
+
             LibraryLoader libraryLoader = LibraryHelper.createLibraryLoader(libraryResolutionProvider);
             Library library = LibraryHelper.resolvePrimaryLibrary(planDefinition, libraryLoader, libraryResolutionProvider);
 
