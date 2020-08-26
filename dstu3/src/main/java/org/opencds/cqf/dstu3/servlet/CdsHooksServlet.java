@@ -74,9 +74,9 @@ public class CdsHooksServlet extends HttpServlet {
     public ProviderConfiguration getProviderConfiguration() {
         if (providerConfiguration == null) {
             providerConfiguration = new ProviderConfiguration(
-                    HapiProperties.getCdsHooksFhirServerExpandValueSets(),
-                    HapiProperties.getCdsHooksFhirServerMaxCodesPerQuery(),
-                    HapiProperties.getCdsHooksFhirServerSearchStyleEnum());
+                HapiProperties.getCdsHooksFhirServerExpandValueSets(),
+                HapiProperties.getCdsHooksFhirServerMaxCodesPerQuery(),
+                HapiProperties.getCdsHooksFhirServerSearchStyleEnum());
         }
 
         return providerConfiguration;
@@ -128,7 +128,6 @@ public class CdsHooksServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info(request.getRequestURI());
-        logger.info("test");
 
         try {
             // validate that we are dealing with JSON
@@ -137,23 +136,18 @@ public class CdsHooksServlet extends HttpServlet {
             }
 
             String baseUrl = request.getRequestURL().toString().replace(request.getPathInfo(), "")
-                    .replace(request.getServletPath(), "") + "/fhir";
+                .replace(request.getServletPath(), "") + "/fhir";
             String service = request.getPathInfo().replace("/", "");
 
             JsonParser parser = new JsonParser();
             JsonObject requestJson = parser.parse(request.getReader()).getAsJsonObject();
             logger.info(requestJson.toString());
 
-            Request cdsHooksRequest = new Request(service, requestJson, null);
-            // Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(getService(service), "prefetch")); // previous requirement of prefetch?
+            Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(getService(service), "prefetch"));
 
             Hook hook = HookFactory.createHook(cdsHooksRequest);
 
             PlanDefinition planDefinition = planDefinitionProvider.getDao().read(new IdType(hook.getRequest().getServiceName()));
-
-            logger.info("test");
-            logger.info(planDefinition.toString());
-
             LibraryLoader libraryLoader = LibraryHelper.createLibraryLoader(libraryResolutionProvider);
             Library library = LibraryHelper.resolvePrimaryLibrary(planDefinition, libraryLoader, libraryResolutionProvider);
 
@@ -167,15 +161,15 @@ public class CdsHooksServlet extends HttpServlet {
             context.setDebugMap(debugMap);
 
             context.registerDataProvider("http://hl7.org/fhir", provider); // TODO make sure tooling handles remote
-            // provider case
+                                                                           // provider case
             context.registerTerminologyProvider(jpaTerminologyProvider);
             context.registerLibraryLoader(libraryLoader);
             context.setContextValue("Patient", hook.getRequest().getContext().getPatientId().replace("Patient/", ""));
             context.setExpressionCaching(true);
 
             EvaluationContext<PlanDefinition> evaluationContext = new Stu3EvaluationContext(hook, version, FhirContext.forDstu3().newRestfulGenericClient(baseUrl),
-                    jpaTerminologyProvider, context, library,
-                    planDefinition, this.getProviderConfiguration());
+                jpaTerminologyProvider, context, library,
+                planDefinition, this.getProviderConfiguration());
 
             this.setAccessControlHeaders(response);
 
@@ -195,6 +189,7 @@ public class CdsHooksServlet extends HttpServlet {
             this.printMessageAndCause(e, response);
             this.handleServerResponseException(e, response);
             this.printStackTrack(e, response);
+            logger.error(e.toString());
         } catch (DataProviderException e) {
             this.setAccessControlHeaders(response);
             response.setStatus(500); // This will be overwritten with the correct status code downstream if needed.
@@ -205,7 +200,9 @@ public class CdsHooksServlet extends HttpServlet {
             }
 
             this.printStackTrack(e, response);
-        } catch (CqlException e) {
+            logger.error(e.toString());
+        }
+        catch (CqlException e) {
             this.setAccessControlHeaders(response);
             response.setStatus(500); // This will be overwritten with the correct status code downstream if needed.
             response.getWriter().println("ERROR: Exception in CQL Execution.");
@@ -215,7 +212,9 @@ public class CdsHooksServlet extends HttpServlet {
             }
 
             this.printStackTrack(e, response);
+            logger.error(e.toString());
         } catch (Exception e) {
+            logger.error(e.toString());
             throw new ServletException("ERROR: Exception in cds-hooks processing.", e);
         }
     }
@@ -274,7 +273,7 @@ public class CdsHooksServlet extends HttpServlet {
     private JsonObject getServices() {
         return new DiscoveryResolutionStu3(
                 FhirContext.forDstu3().newRestfulGenericClient(HapiProperties.getServerAddress())).resolve()
-                .getAsJson();
+                        .getAsJson();
     }
 
     private String toJsonResponse(List<CdsCard> cards) {
