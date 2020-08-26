@@ -1,14 +1,14 @@
-JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home
 
-CQL_TO_ELM_BASE=/Users/erc53/Github/clinical_quality_language/Src/java/cql-to-elm/build/install/cql-to-elm/bin
+CQL_TO_ELM_BASE=/Users/maxsibilla/Documents/Dev/clinical_quality_language/Src/java/cql-to-elm/build/install/cql-to-elm/bin
 
 
 FHIR_SERVER_BASE_URL=http://localhost:8080/cqf-ruler-dstu3/fhir
 
-PDDI_EXAMPLE_BASE=/Users/erc53/Github/cqf-ruler/examples/pddi-cds
-TAG_UPLOAD_BASE=/Users/erc53/Github/cqf-ruler/tag-uploader/tag-uploader
+PDDI_EXAMPLE_BASE=/Users/maxsibilla/Documents/Dev/cqf-ruler/examples/pddi-cds
+TAG_UPLOAD_BASE=/Users/maxsibilla/Documents/Dev/cqf-ruler/tag-uploader/tag-uploader
 
-TERMINOLOGY_TAG_UPLOAD=/Users/erc53/Github/cqf-ruler/tag-uploader/tag-uploader/terminology
+TERMINOLOGY_TAG_UPLOAD=/Users/maxsibilla/Documents/Dev/cqf-ruler/tag-uploader/tag-uploader/terminology
 
 compile-elm-warfarin-nsaids-sign:
 	JAVA_HOME=${JAVA_HOME} ${CQL_TO_ELM_BASE}/cql-to-elm --input ${PDDI_EXAMPLE_BASE}/warfarin-nsaids-order-sign/warfarin-nsaids-cds-sign-logic.cql --output ${PDDI_EXAMPLE_BASE}/warfarin-nsaids-order-sign

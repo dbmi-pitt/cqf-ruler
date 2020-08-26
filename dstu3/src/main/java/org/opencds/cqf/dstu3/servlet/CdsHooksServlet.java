@@ -74,9 +74,9 @@ public class CdsHooksServlet extends HttpServlet {
     public ProviderConfiguration getProviderConfiguration() {
         if (providerConfiguration == null) {
             providerConfiguration = new ProviderConfiguration(
-                HapiProperties.getCdsHooksFhirServerExpandValueSets(),
-                HapiProperties.getCdsHooksFhirServerMaxCodesPerQuery(),
-                HapiProperties.getCdsHooksFhirServerSearchStyleEnum());
+                    HapiProperties.getCdsHooksFhirServerExpandValueSets(),
+                    HapiProperties.getCdsHooksFhirServerMaxCodesPerQuery(),
+                    HapiProperties.getCdsHooksFhirServerSearchStyleEnum());
         }
 
         return providerConfiguration;
@@ -137,7 +137,7 @@ public class CdsHooksServlet extends HttpServlet {
             }
 
             String baseUrl = request.getRequestURL().toString().replace(request.getPathInfo(), "")
-                .replace(request.getServletPath(), "") + "/fhir";
+                    .replace(request.getServletPath(), "") + "/fhir";
             String service = request.getPathInfo().replace("/", "");
 
             JsonParser parser = new JsonParser();
@@ -167,15 +167,15 @@ public class CdsHooksServlet extends HttpServlet {
             context.setDebugMap(debugMap);
 
             context.registerDataProvider("http://hl7.org/fhir", provider); // TODO make sure tooling handles remote
-                                                                           // provider case
+            // provider case
             context.registerTerminologyProvider(jpaTerminologyProvider);
             context.registerLibraryLoader(libraryLoader);
             context.setContextValue("Patient", hook.getRequest().getContext().getPatientId().replace("Patient/", ""));
             context.setExpressionCaching(true);
 
             EvaluationContext<PlanDefinition> evaluationContext = new Stu3EvaluationContext(hook, version, FhirContext.forDstu3().newRestfulGenericClient(baseUrl),
-                jpaTerminologyProvider, context, library,
-                planDefinition, this.getProviderConfiguration());
+                    jpaTerminologyProvider, context, library,
+                    planDefinition, this.getProviderConfiguration());
 
             this.setAccessControlHeaders(response);
 
@@ -205,8 +205,7 @@ public class CdsHooksServlet extends HttpServlet {
             }
 
             this.printStackTrack(e, response);
-        }
-        catch (CqlException e) {
+        } catch (CqlException e) {
             this.setAccessControlHeaders(response);
             response.setStatus(500); // This will be overwritten with the correct status code downstream if needed.
             response.getWriter().println("ERROR: Exception in CQL Execution.");
@@ -275,7 +274,7 @@ public class CdsHooksServlet extends HttpServlet {
     private JsonObject getServices() {
         return new DiscoveryResolutionStu3(
                 FhirContext.forDstu3().newRestfulGenericClient(HapiProperties.getServerAddress())).resolve()
-                        .getAsJson();
+                .getAsJson();
     }
 
     private String toJsonResponse(List<CdsCard> cards) {
