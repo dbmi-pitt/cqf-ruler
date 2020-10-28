@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.tuple.Pair;
@@ -26,6 +27,7 @@ import org.hl7.fhir.r4.model.Narrative;
 import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
+import org.hl7.fhir.r4.model.Type;
 import org.opencds.cqf.cds.providers.PriorityRetrieveProvider;
 import org.opencds.cqf.common.evaluation.LibraryLoader;
 import org.opencds.cqf.common.helpers.ClientHelperDos;
@@ -48,6 +50,7 @@ import org.opencds.cqf.cql.engine.runtime.Interval;
 import org.opencds.cqf.cql.engine.terminology.TerminologyProvider;
 import org.opencds.cqf.cql.evaluator.execution.provider.BundleRetrieveProvider;
 import org.opencds.cqf.tooling.library.r4.NarrativeProvider;
+import org.springframework.stereotype.Component;
 import org.opencds.cqf.r4.helpers.FhirMeasureBundler;
 import org.opencds.cqf.r4.helpers.LibraryHelper;
 
@@ -65,6 +68,7 @@ import ca.uhn.fhir.rest.param.StringParam;
 import ca.uhn.fhir.rest.param.TokenParam;
 import ca.uhn.fhir.rest.param.UriParam;
 
+@Component
 public class LibraryOperationsProvider implements LibraryResolutionProvider<org.hl7.fhir.r4.model.Library> {
 
     private NarrativeProvider narrativeProvider;
@@ -73,6 +77,7 @@ public class LibraryOperationsProvider implements LibraryResolutionProvider<org.
     DaoRegistry registry;
     TerminologyProvider defaultTerminologyProvider;
 
+    @Inject
     public LibraryOperationsProvider(LibraryResourceProvider libraryResourceProvider,
             NarrativeProvider narrativeProvider, DaoRegistry registry, TerminologyProvider defaultTerminologyProvider) {
         this.narrativeProvider = narrativeProvider;
@@ -172,7 +177,7 @@ public class LibraryOperationsProvider implements LibraryResolutionProvider<org.
 
     // NOTICE: This is trash code that needs to be removed. Don't fix this. It's for
     // a one-off
-    // @SuppressWarnings({"unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes" })
     @Operation(name = "$evaluate", idempotent = true, type = Library.class)
     public Bundle evaluate(@IdParam IdType theId, @OperationParam(name = "patientId") String patientId,
             @OperationParam(name = "periodStart") String periodStart,
@@ -343,6 +348,8 @@ public class LibraryOperationsProvider implements LibraryResolutionProvider<org.
                         } else {
                             result.addParameter().setName("value").setResource((Resource) res);
                         }
+                    } else if (res instanceof Type) {
+                        result.addParameter().setName("value").setValue((Type) res);
                     } else {
                         result.addParameter().setName("value").setValue(new StringType(res.toString()));
                     }
