@@ -107,7 +107,7 @@
 			"triggerDefinition": [
 			    {
 				"type": "named-event",
-				"eventName": "order-sign"
+				"eventName": "order-review"
 			    }
 			],
 			"condition": [

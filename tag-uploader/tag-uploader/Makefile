@@ -83,5 +83,24 @@ load-digoxin-cyclosporine-order-sign:
 	sleep 1
 	node . -v -d ${TAG_UPLOAD_BASE}/digoxin-cyclosporine-order-sign -S ${FHIR_SERVER_BASE_URL}
 
+load-citaloprams-qt-order-select:
+	cp ${PDDI_EXAMPLE_BASE}/citaloprams-qt-order-select/*json ${TAG_UPLOAD_BASE}/citaloprams-qt-order-select/
+	rm ${TAG_UPLOAD_BASE}/citaloprams-qt-order-select/citaloprams-qt-cds-request.json
+	node . -v -d ${TAG_UPLOAD_BASE}/citaloprams-qt-order-select -S ${FHIR_SERVER_BASE_URL}
+	sleep 1
+	node . -v -d ${TAG_UPLOAD_BASE}/citaloprams-qt-order-select -S ${FHIR_SERVER_BASE_URL}
+
+load-citaloprams-qt-value-sets:
+	curl -X POST --header "Content-Type:application/xml" -d @${TERMINOLOGY_TAG_UPLOAD}/citaloprams-qt-valueset-bundle.xml ${FHIR_SERVER_BASE_URL}
+
+load-acei-ksparing-order-select:
+	cp ${PDDI_EXAMPLE_BASE}/acei-ksparing-order-select/*json ${TAG_UPLOAD_BASE}/acei-ksparing-order-select/
+	rm ${TAG_UPLOAD_BASE}/acei-ksparing-order-select/acei-ksparing-cds-request.json
+	node . -v -d ${TAG_UPLOAD_BASE}/acei-ksparing-order-select -S ${FHIR_SERVER_BASE_URL}
+	sleep 1
+	node . -v -d ${TAG_UPLOAD_BASE}/acei-ksparing-order-select -S ${FHIR_SERVER_BASE_URL}
+
+load-acei-ksparing-value-sets:
+	curl -X POST --header "Content-Type:application/xml" -d @${TERMINOLOGY_TAG_UPLOAD}/acei-ksparing-valueset-bundle.xml ${FHIR_SERVER_BASE_URL}
 
 

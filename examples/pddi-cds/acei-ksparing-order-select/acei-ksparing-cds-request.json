@@ -1,0 +1,150 @@
+{
+  "hookInstance": "f24dfe5e-9480-429f-9b27-2af9c6512345",
+  "hook": "order-select",
+  "fhirServer": "http://localhost:8080/cqf-ruler-dstu3/fhir",
+  "userId": "Practitioner/COREPRACTITIONER1",
+  "patient": "f997",
+  "extension": {
+    "pddi-configuration-items": {
+      "cache-for-order-sign-filtering": false,
+      "show-evidence-support": true,
+      "alert-non-serious": true
+    }
+  },
+  "context": {
+    "patientId": "f997",
+    "selections": [
+      "Observation/potassium-draft-order"
+    ],
+    "draftOrders": {
+      "resourceType": "Bundle",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "Observation",
+            "id": "potassium-draft-order",
+            "status": "final",
+            "category": [
+              {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/observation-category",
+                    "code": "laboratory"
+                  }
+                ]
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "2823-3",
+                  "display": "Potassium [Moles/volume] in Serum or Plasma"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/f997"
+            },
+            "effectiveDateTime": "2020-11-15T00:00:00+00:00",
+            "valueQuantity": {
+              "value": 5.1
+            }
+          }
+        }
+      ]
+    }
+  },
+  "prefetch": {
+    "item1": {
+      "resourceType": "Bundle",
+      "id": "771d30c6-6fc3-4dbd-835d-5679c30add40",
+      "meta": {
+        "lastUpdated": "2020-11-15T00:00:00+00:00"
+      },
+      "type": "searchset",
+      "total": 2,
+      "entry": [
+        {
+          "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Observation/r999",
+          "resource": {
+            "resourceType": "Observation",
+            "id": "r999",
+            "status": "final",
+            "category": [
+              {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/observation-category",
+                    "code": "laboratory"
+                  }
+                ]
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "2823-3",
+                  "display": "Potassium [Moles/volume] in Serum or Plasma"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/f997"
+            },
+            "effectiveDateTime": "2020-11-15T00:00:00+00:00",
+            "valueQuantity": {
+              "value": 4
+            }
+          }
+        }
+      ]
+    },
+    "item2": {
+      "resourceType": "Bundle",
+      "id": "771d30c6-6fc3-4dbd-835d-5679c30add41",
+      "meta": {
+        "lastUpdated": "2020-11-15T00:00:00+00:00"
+      },
+      "type": "searchset",
+      "total": 2,
+      "entry": [
+        {
+          "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Observation/r998",
+          "resource": {
+            "resourceType": "Observation",
+            "id": "r998",
+            "status": "final",
+            "category": [
+              {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/observation-category",
+                    "code": "laboratory"
+                  }
+                ]
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "48643-1",
+                  "display": "Glomerular filtration rate/1.73 sq M.predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/f997"
+            },
+            "effectiveDateTime": "2020-11-15T00:00:00+00:00",
+            "valueQuantity": {
+              "value": 61
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -132,8 +132,12 @@ public class CdsHooksServlet extends HttpServlet {
             String service = request.getPathInfo().replace("/", "");
 
             JsonParser parser = new JsonParser();
-            Request cdsHooksRequest = new Request(service, parser.parse(request.getReader()).getAsJsonObject(),
-                    JsonHelper.getObjectRequired(getService(service), "prefetch"));
+            JsonObject requestJson = parser.parse(request.getReader()).getAsJsonObject();
+
+//            Request cdsHooksRequest = new Request(service, parser.parse(request.getReader()).getAsJsonObject(),
+//                    JsonHelper.getObjectRequired(getService(service), "prefetch"));
+            Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(requestJson, "prefetch"));
+
 
             logger.info(cdsHooksRequest.getRequestJson().toString());
 

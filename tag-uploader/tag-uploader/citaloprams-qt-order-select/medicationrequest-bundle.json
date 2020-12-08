@@ -1,0 +1,53 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "r999",
+        "status": "active",
+        "medicationCodeableConcept": {
+          "text": "citalopram 40 MG",
+          "coding": [
+            {
+              "display": "citalopram 40 MG",
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "329445"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/f999"
+        },
+        "context": {
+          "reference": "Encounter/e999"
+        },
+        "effectiveDateTime": "2020-11-02"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "r998",
+        "status": "active",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "108873",
+              "display": "haloperidol 0.2 MG/ML Oral Solution"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/f999"
+        },
+        "context": {
+          "reference": "Encounter/e999"
+        },
+        "effectiveDateTime": "2020-11-02"
+      }
+    }
+  ]
+}

@@ -6,13 +6,14 @@ using FHIR version '3.0.0'
 
 codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
 
-valueset "Topical Diclofenac": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-topicaldiclofenac'
-valueset "Warfarins": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-warfarin'
-valueset "NSAIDs": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-NSAIDS'
-valueset "PPIs and Misoprostols": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-PPIS'
-valueset "History of GI Bleeds": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-Hx-UGIB-snomed'
-valueset "Systemic Corticosteroids": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-SCS'
-valueset "Aldosterone Antagonists": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-AAS'
+valueset "Topical Diclofenac": 'valueset-topicaldiclofenac'
+valueset "Ketorolac": 'valueset-ketorolac'
+valueset "Warfarins": 'valueset-warfarin'
+valueset "NSAIDs": 'valueset-NSAIDS'
+valueset "PPIs and Misoprostols": 'valueset-PPIS'
+valueset "History of GI Bleeds": 'valueset-Hx-UGIB-snomed'
+valueset "Systemic Corticosteroids": 'valueset-SCS'
+valueset "Aldosterone Antagonists": 'valueset-AAS'
 
 parameter ContextPrescriptions List<MedicationRequest>
 
@@ -32,7 +33,7 @@ define function GetAssertedDate(condition Condition):
 define function GetLevelAndDate(observation Observation):
   if observation is not null
     then ToString(ToQuantity(observation.value as Quantity))
-      + ' and ' 
+      + ' and '
       + ToString(observation.effective.value)
   else 'NA'
 
@@ -42,10 +43,9 @@ define function GetMedicationNames(medications List<MedicationRequest>):
 
 define function GetDrugNames(codings List<FHIR.Coding>):
   Combine(
-    flatten (
       codings coding
           return ToCode(coding).display
-    ), ', ')
+    , ', ')
 
 define function ToCode(coding FHIR.Coding):
   System.Code {
@@ -74,11 +74,11 @@ define "Inclusion Criteria":
     "Is context medication systemic NSAID"
       and "Is warfarin in prefetch"
   )
-  
+
 
 define "Is context medication topical diclofenac":
   exists ("Topical Diclofenac Prescription")
-  
+
 define "Is not context medication topical diclofenac":
   not exists ("Topical Diclofenac Prescription")
 
@@ -90,9 +90,8 @@ define "Topical Diclofenac Prescription":
 
 define "Is warfarin in prefetch":
   exists ("Warfarin Rx")
-    
+
 define "Warfarin Rx":
-  flatten (
     (
       [MedicationRequest: "Warfarins"] MR
         where MR.authoredOn.value in Interval[Today() - 100 days, null]
@@ -113,14 +112,13 @@ define "Warfarin Rx":
         where MS.effective.value in Interval[Today() - 100 days, null]
         return MS.medication.coding[0]
     )
-  )
 
 define "Is context medication systemic NSAID":
   exists ("NSAID Prescription")
 
 define "NSAID Prescription":
   ContextPrescriptions P
-    where ToCode(P.medication.coding[0]) in "NSAIDs"
+    where ToCode(P.medication.coding[0]) in "Ketorolac"
     return P.medication.coding[0]
 
 
@@ -128,9 +126,9 @@ define "NSAID Prescription":
 
 // Card 1: Base
 define "Get Base Summary":
-  'Potential Drug-Drug Interaction between warfarin (' 
-    + GetDrugNames("Warfarin Rx") 
-    + ') and NSAID (' 
+  'Potential Drug-Drug Interaction between warfarin ('
+    + GetDrugNames("Warfarin Rx")
+    + ') and NSAID ('
     + GetDrugNames("NSAID Prescription")
     + ').'
 
@@ -144,16 +142,16 @@ define "Acetaminophen 325 MG": Code '313782' from "RXNORM" display 'Acetaminophe
 define "Acetaminophen 500 MG": Code '198440' from "RXNORM" display 'Acetaminophen 500 MG Oral Tablet'
 
 define "Get Base Label 1":
-  'Substitute NSAID (' 
+  'Substitute NSAID ('
   + GetDrugNames("NSAID Prescription")
-  + ') with APAP (' 
+  + ') with APAP ('
   + ToString("Acetaminophen 325 MG")
   + ').'
 
 define "Get Base Label 2":
-  'Substitute NSAID (' 
+  'Substitute NSAID ('
   + GetDrugNames("NSAID Prescription")
-  + ') with APAP (' 
+  + ') with APAP ('
   + ToString("Acetaminophen 500 MG")
   + ').'
 
@@ -167,7 +165,7 @@ define "Get Card 2 Indicator":
 
 define "Get Card 2 Summary":
   if "Taking PPI or misoprostol"
-    then 'Patient is taking a proton pump inhibitor (' 
+    then 'Patient is taking a proton pump inhibitor ('
       + GetDrugNames("PPIs and Misoprostols Rx")
       + ').'
   else 'Patient is not taking a proton pump inhibitor or misoprostol.'
@@ -185,7 +183,6 @@ define "Taking PPI or misoprostol":
   exists ("PPIs and Misoprostols Rx")
 
 define "PPIs and Misoprostols Rx":
-	flatten (
     (
       [MedicationRequest: "PPIs and Misoprostols"] MR
         where MR.authoredOn.value in Interval[Today() - 100 days, null]
@@ -206,7 +203,6 @@ define "PPIs and Misoprostols Rx":
         where MS.effective.value in Interval[Today() - 100 days, null]
         return MS.medication.coding[0]
     )
-  )
 
 
 
@@ -218,9 +214,9 @@ define "Get Card 3 Indicator":
 
 define "Get Card 3 Summary":
   if "Age > 65 years or Hx UGIB"
-    then 'Patient is 65 y/o or does have a history of upper gastrointestinal bleed ("' 
-      + GetConditionName("GI Bleeds Condition") 
-      + '" and ' 
+    then 'Patient is 65 y/o or does have a history of upper gastrointestinal bleed ("'
+      + GetConditionName("GI Bleeds Condition")
+      + '" and '
       + GetAssertedDate("GI Bleeds Condition")
       + ').'
   else 'Patient is not 65 y/o and does not have a history of upper gastrointestinal bleed.'
@@ -237,7 +233,7 @@ define "Get Card 3 Label":
 
 
 define "Age > 65 years or Hx UGIB":
-  exists ("GI Bleeds Condition")
+   "GI Bleeds Condition" is not null
     or AgeInYears() > 65
 
 define "GI Bleeds Condition":
@@ -256,11 +252,11 @@ define "Get Card 4 Indicator":
 
 define "Get Card 4 Summary":
   if "Taking CS, MCRA, or NSAID"
-    then 'Patient is concomitantly taking systemic corticosteroids (' 
+    then 'Patient is concomitantly taking systemic corticosteroids ('
       + GetDrugNames("Systemic Corticosteroids Rx")
-      + '), aldosterone antagonist (' 
+      + '), aldosterone antagonist ('
       + GetDrugNames("Aldosterone Antagonists Rx")
-      + '), or high dose or multiple NSAIDs (' 
+      + '), or high dose or multiple NSAIDs ('
       + GetDrugNames("NSAID Rx")
       + ').'
   else 'Patient is not concomitantly taking systemic corticosteroids, aldosterone antagonist, or high dose or multiple NSAIDs.'
@@ -280,12 +276,11 @@ define "Taking CS, MCRA, or NSAID":
   "Has Systemic Corticosteroids"
     or "Has Aldosterone Antagonists"
     or "Has NSAID"
-    
+
 define "Has Systemic Corticosteroids":
   exists ("Systemic Corticosteroids Rx")
 
 define "Systemic Corticosteroids Rx":
-	flatten (
     (
       [MedicationRequest: "Systemic Corticosteroids"] MR
         where MR.authoredOn.value in Interval[Today() - 100 days, null]
@@ -306,13 +301,11 @@ define "Systemic Corticosteroids Rx":
         where MS.effective.value in Interval[Today() - 100 days, null]
         return MS.medication.coding[0]
     )
-  )
 
 define "Has Aldosterone Antagonists":
   exists ("Aldosterone Antagonists Rx")
 
 define "Aldosterone Antagonists Rx":
-	flatten (
     (
       [MedicationRequest: "Aldosterone Antagonists"] MR
         where MR.authoredOn.value in Interval[Today() - 100 days, null]
@@ -333,13 +326,11 @@ define "Aldosterone Antagonists Rx":
         where MS.effective.value in Interval[Today() - 100 days, null]
         return MS.medication.coding[0]
     )
-  )
 
 define "Has NSAID":
   exists ("NSAID Rx")
-    
+
 define "NSAID Rx":
-	flatten (
     (
       [MedicationRequest: "NSAIDs"] MR
         where MR.authoredOn.value in Interval[Today() - 100 days, null]
@@ -360,4 +351,3 @@ define "NSAID Rx":
         where MS.effective.value in Interval[Today() - 100 days, null]
         return MS.medication.coding[0]
     )
-  )

@@ -6,13 +6,14 @@ using FHIR version '3.0.0'
 
 codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
 
-valueset "Topical Diclofenac": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-topicaldiclofenac'
-valueset "Warfarins": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-warfarin'
-valueset "NSAIDs": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-NSAIDS'
-valueset "PPIs and Misoprostols": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-PPIS'
-valueset "History of GI Bleeds": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-Hx-UGIB-snomed'
-valueset "Systemic Corticosteroids": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-SCS'
-valueset "Aldosterone Antagonists": 'http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-AAS'
+valueset "Topical Diclofenac": 'valueset-topicaldiclofenac'
+valueset "Ketorolac": 'valueset-ketorolac'
+valueset "Warfarins": 'valueset-warfarin'
+valueset "NSAIDs": 'valueset-NSAIDS'
+valueset "PPIs and Misoprostols": 'valueset-PPIS'
+valueset "History of GI Bleeds": 'valueset-Hx-UGIB-snomed'
+valueset "Systemic Corticosteroids": 'valueset-SCS'
+valueset "Aldosterone Antagonists": 'valueset-AAS'
 
 parameter ContextPrescriptions List<MedicationRequest>
 
@@ -42,10 +43,9 @@ define function GetMedicationNames(medications List<MedicationRequest>):
 
 define function GetDrugNames(codings List<FHIR.Coding>):
   Combine(
-    flatten (
       codings coding
           return ToCode(coding).display
-    ), ', ')
+    , ', ')
 
 define function ToCode(coding FHIR.Coding):
   System.Code {
@@ -92,7 +92,6 @@ define "Is warfarin in prefetch":
   exists ("Warfarin Rx")
 
 define "Warfarin Rx":
-  flatten (
     (
       [MedicationRequest: "Warfarins"] MR
         where MR.authoredOn.value in Interval[Today() - 100 days, null]
@@ -113,7 +112,6 @@ define "Warfarin Rx":
         where MS.effective.value in Interval[Today() - 100 days, null]
         return MS.medication.coding[0]
     )
-  )
 
 define "Is context medication systemic NSAID":
   exists ("NSAID Prescription")
@@ -185,7 +183,6 @@ define "Taking PPI or misoprostol":
   exists ("PPIs and Misoprostols Rx")
 
 define "PPIs and Misoprostols Rx":
-	flatten (
     (
       [MedicationRequest: "PPIs and Misoprostols"] MR
         where MR.authoredOn.value in Interval[Today() - 100 days, null]
@@ -206,7 +203,6 @@ define "PPIs and Misoprostols Rx":
         where MS.effective.value in Interval[Today() - 100 days, null]
         return MS.medication.coding[0]
     )
-  )
 
 
 
@@ -237,7 +233,7 @@ define "Get Card 3 Label":
 
 
 define "Age > 65 years or Hx UGIB":
-  exists ("GI Bleeds Condition")
+   "GI Bleeds Condition" is not null
     or AgeInYears() > 65
 
 define "GI Bleeds Condition":
@@ -285,7 +281,6 @@ define "Has Systemic Corticosteroids":
   exists ("Systemic Corticosteroids Rx")
 
 define "Systemic Corticosteroids Rx":
-	flatten (
     (
       [MedicationRequest: "Systemic Corticosteroids"] MR
         where MR.authoredOn.value in Interval[Today() - 100 days, null]
@@ -306,13 +301,11 @@ define "Systemic Corticosteroids Rx":
         where MS.effective.value in Interval[Today() - 100 days, null]
         return MS.medication.coding[0]
     )
-  )
 
 define "Has Aldosterone Antagonists":
   exists ("Aldosterone Antagonists Rx")
 
 define "Aldosterone Antagonists Rx":
-	flatten (
     (
       [MedicationRequest: "Aldosterone Antagonists"] MR
         where MR.authoredOn.value in Interval[Today() - 100 days, null]
@@ -333,13 +326,11 @@ define "Aldosterone Antagonists Rx":
         where MS.effective.value in Interval[Today() - 100 days, null]
         return MS.medication.coding[0]
     )
-  )
 
 define "Has NSAID":
   exists ("NSAID Rx")
 
 define "NSAID Rx":
-	flatten (
     (
       [MedicationRequest: "NSAIDs"] MR
         where MR.authoredOn.value in Interval[Today() - 100 days, null]
@@ -360,4 +351,3 @@ define "NSAID Rx":
         where MS.effective.value in Interval[Today() - 100 days, null]
         return MS.medication.coding[0]
     )
-  )

@@ -1,0 +1,217 @@
+{
+    "resourceType": "Bundle",
+    "type": "transaction",
+    "entry": [
+	{
+	    "resource": {
+		"resourceType": "PlanDefinition",
+		"id": "citaloprams-qt-cds-select",
+		"version": "2.0.0",
+		"name": "PlanDefinition - Citalopram-QT-Prolonging-Agents",
+		"title": "Citalopram-QT-Prolonging-Agents",
+		"type": {
+		    "coding": [
+			{
+			    "system": "http://hl7.org/fhir/plan-definition-type",
+			    "code": "eca-rule",
+			    "display": "ECA Rule"
+			}
+		    ]
+		},
+		"status": "draft",
+		"url": "http://hl7.org/fhir/ig/PDDI-CDS/PlanDefinition/citalopram-qt-prolonging-agents",
+		"topic": [
+		    {
+			"text": "Citaloprams QT Agents"
+		    }
+		],
+		"library": [
+		    {
+			"reference": "Library/citaloprams-qt-cds-select"
+		    }
+		],
+		"extension": [
+          {
+            "url": "http://localhost:2020/baseDstu3/StructureDefinition/pddi-cds-configuration-options",
+            "extension": [
+              {
+                "url": "code",
+                "valueString": "cache-for-order-sign-filtering"
+              },
+              {
+                "url": "type",
+                "valueString": "boolean"
+              },
+              {
+                "url": "name",
+                "valueString": "Cache Info for Order Sign Filtering"
+              },
+              {
+                "url": "description",
+                "valueString": "Cache information about this CDS call so that additional filtering of card responses can be done when the service is called using an order-sign CDS Hook request. Currently, this only supports filtering out cards that were triggered by the same knowledge artifact when the physician reference display, encounter id, and patient id match between the order-select and order-sign requests. Filtering will happen if both this configuration option is set to 'true' and  order-sign requests set filter-out-repeated-alerts to 'true'."
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:2020/baseDstu3/StructureDefinition/pddi-cds-configuration-options",
+            "extension": [
+              {
+                "url": "code",
+                "valueString": "alert-non-serious"
+              },
+              {
+                "url": "type",
+                "valueString": "boolean"
+              },
+              {
+                "url": "name",
+                "valueString": "Alert for non-serious potential drug-drug interactions"
+              },
+              {
+                "url": "description",
+                "valueString": "Serious potential drug-drug interactions could result in death; requires hospitalization or extension of hospital stay; results in persistent or significant disability or incapacity; is life-threatening (see https://www.w3.org/2019/05/pddi/index.html). If set to True, this configuration option tells the CDS service to alerts for potential drug-drug interactions that do not meet this criterion."
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:2020/baseDstu3/StructureDefinition/pddi-cds-configuration-options",
+            "extension": [
+              {
+                "url": "code",
+                "valueString": "show-evidence-support"
+              },
+              {
+                "url": "type",
+                "valueString": "boolean"
+              },
+              {
+                "url": "name",
+                "valueString": "Show evidence support"
+              },
+              {
+                "url": "description",
+                "valueString": "If this options is set to True, CDS response cards will provide more complete information about the evidence that supports the potential drug-drug interaction alert."
+              }
+            ]
+          }
+        ],
+		"relatedArtifact": [
+		    {
+			"type": "documentation",
+			"display": "Citaloprams-QT clinical decision support algorithm",
+			"url": "https://ddi-cds.org/ddi-algorithms/"
+		    }
+		],
+		"action": [
+          {
+            "triggerDefinition": [
+              {
+                "type": "named-event",
+                "eventName": "order-select"
+              }
+            ],
+            "condition": [
+              {
+                "kind": "applicability",
+                "language": "text/cql",
+                "expression": "InPopulation"
+              }
+            ],
+            
+                "action": [
+                    
+                    
+                    {
+                        "title": "Minimize risk and monitor ECG",
+                        "description": "Increased risk of prolonged QTc possible",
+                        "condition": [
+                        
+                            {
+                                "kind": "applicability",
+                                "language": "text/cql",
+                                "expression": "Citalopram High Dosage, No QT"
+                            }
+                        
+                        ],
+                        "dynamicValue": [
+                          {
+                            "path": "activity.extension",
+                            "expression": "Indicator"
+                          }
+                        ],
+                        "action": [
+                            {
+                                "label": "Minimize Risk"
+                            }
+                        ]
+                    }
+                     , 
+                    
+
+                    
+                    
+                    {
+                        "title": "Use only if benefit outweighs risk and monitor patient ECG",
+                        "description": "Increased risk of prolonged QTc likeley",
+                        "condition": [
+                        
+                            {
+                                "kind": "applicability",
+                                "language": "text/cql",
+                                "expression": "Citalopram High Dosage, QT"
+                            }
+                        
+                        ],
+                        "dynamicValue": [
+                          {
+                            "path": "activity.extension",
+                            "expression": "Indicator"
+                          }
+                        ],
+                        "action": [
+                            {
+                                "label": "Usually Avoid Combination"
+                            }
+                        ]
+                    }
+                     , 
+                    
+
+                    
+                    
+                    {
+                        "title": "No special precaution",
+                        "description": "No special precaution",
+                        "condition": [
+                        
+                            {
+                                "kind": "applicability",
+                                "language": "text/cql",
+                                "expression": "Citalopram Not High Dosage"
+                            }
+                        
+                        ],
+                        "dynamicValue": [
+                          {
+                            "path": "activity.extension",
+                            "expression": "Indicator"
+                          }
+                        ],
+                        "action": [
+                            {
+                                "label": "No Special Precautions"
+                            }
+                        ]
+                    }
+                    
+                    
+
+                    
+                ]
+            
+            }
+            ]
+		}
+	}
+	]
+}

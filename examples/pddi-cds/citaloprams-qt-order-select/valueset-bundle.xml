@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bundle xmlns="http://hl7.org/fhir">
+    <type value="transaction"/>
+    <entry>
+        <resource>
+            <ValueSet xmlns="http://hl7.org/fhir">
+                <id value="https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1213.3"/>
+                <url value="https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1213.3"/>
+                <name value="https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1213.3"/>
+                <version value="US 1.1"/>
+                <title value="Citaloprams Medications Value Set"/>
+                <status value="draft"/>
+                <date value="2018-06-20"/>
+                <publisher value="PDDI CDS"/>
+                <contact>
+                    <name value="Richard Boyce boycerd@upmc.edu"/>
+                </contact>
+                <description
+                        value="Includes RxNorm codes for any form of Citalopram medications."/>
+                <jurisdiction>
+                    <coding>
+                        <system value="urn:iso:std:iso:3166"/>
+                        <code value="US"/>
+                        <display value="United States of America"/>
+                    </coding>
+                </jurisdiction>
+                <purpose value="Provide terminology for PDDI CDS (citaloprams + QT rule) FHIR resources"/>
+                <copyright value="Attribution CC BY"/>
+                <compose>
+                    <include>
+                        <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+                        <version value="04-Jun-2018"/>
+                        <concept>
+                            <code value="200371"/>
+                            <display value="citalopram 20 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="283672"/>
+                            <display value="citalopram 10 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="309313"/>
+                            <display value="citalopram 2 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="309314"/>
+                            <display value="citalopram 40 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="329444"/>
+                            <display value="citalopram 20 MG"/>
+                        </concept>
+                        <concept>
+                            <code value="329445"/>
+                            <display value="citalopram 40 MG"/>
+                        </concept>
+                        <concept>
+                            <code value="330309"/>
+                            <display value="citalopram 2 MG/ML"/>
+                        </concept>
+                        <concept>
+                            <code value="331567"/>
+                            <display value="citalopram 10 MG"/>
+                        </concept>
+                        <concept>
+                            <code value="389202"/>
+                            <display value="citalopram 40 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="645289"/>
+                            <display value="citalopram 10 MG Disintegrating Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="645290"/>
+                            <display value="citalopram 20 MG Disintegrating Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="645291"/>
+                            <display value="citalopram 40 MG Disintegrating Oral Tablet"/>
+                        </concept>
+                    </include>
+                </compose>
+            </ValueSet>
+        </resource>
+        <request>
+            <method value="PUT"/>
+            <url value="http://localhost:8080/baseDstu3/ValueSet/https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1213.3"/>
+        </request>
+    </entry>
+
+    <entry>
+        <resource>
+            <ValueSet xmlns="http://hl7.org/fhir">
+                <id value="https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1213.4"/>
+                <url value="https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1213.4"/>
+                <name value="https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1213.4"/>
+                <version value="US 1.1"/>
+                <title value="QT Prolonging Agents Medications Value Set"/>
+                <status value="draft"/>
+                <date value="2018-06-20"/>
+                <publisher value="PDDI CDS"/>
+                <contact>
+                    <name value="Richard Boyce boycerd@upmc.edu"/>
+                </contact>
+                <description
+                        value="Includes RxNorm codes for any form of QT Prolonging Agents medications."/>
+                <jurisdiction>
+                    <coding>
+                        <system value="urn:iso:std:iso:3166"/>
+                        <code value="US"/>
+                        <display value="United States of America"/>
+                    </coding>
+                </jurisdiction>
+                <purpose value="Provide terminology for PDDI CDS (citaloprams + QT rule) FHIR resources"/>
+                <copyright value="Attribution CC BY"/>
+                <compose>
+                    <include>
+                        <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+                        <version value="04-Jun-2018"/>
+                        <concept>
+                            <code value="104894"/>
+                            <display value="ondansetron 4 MG Disintegrating Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="108375"/>
+                            <display value="haloperidol 0.3 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="108872"/>
+                            <display value="haloperidol 0.4 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="108873"/>
+                            <display value="haloperidol 0.2 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="1100184"/>
+                            <display value="donepezil hydrochloride 23 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="1314133"/>
+                            <display value="2 ML ondansetron 2 MG/ML Prefilled Syringe"/>
+                        </concept>
+                        <concept>
+                            <code value="141935"/>
+                            <display value="haloperidol 2 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="1599803"/>
+                            <display
+                                    value="24 HR donepezil hydrochloride 10 MG / memantine hydrochloride 28 MG Extended Release Oral Capsule"/>
+                        </concept>
+                        <concept>
+                            <code value="1599805"/>
+                            <display
+                                    value="24 HR donepezil hydrochloride 10 MG / memantine hydrochloride 14 MG Extended Release Oral Capsule"/>
+                        </concept>
+                        <concept>
+                            <code value="1665210"/>
+                            <display value="100 ML ciprofloxacin 2 MG/ML Injection"/>
+                        </concept>
+                        <concept>
+                            <code value="1665212"/>
+                            <display value="200 ML ciprofloxacin 2 MG/ML Injection"/>
+                        </concept>
+                        <concept>
+                            <code value="1665227"/>
+                            <display value="20 ML ciprofloxacin 10 MG/ML Injection"/>
+                        </concept>
+                        <concept>
+                            <code value="1665229"/>
+                            <display value="40 ML ciprofloxacin 10 MG/ML Injection"/>
+                        </concept>
+                        <concept>
+                            <code value="1665497"/>
+                            <display value="50 ML levofloxacin 5 MG/ML Injection"/>
+                        </concept>
+                        <concept>
+                            <code value="1665507"/>
+                            <display value="100 ML levofloxacin 5 MG/ML Injection"/>
+                        </concept>
+                        <concept>
+                            <code value="1665515"/>
+                            <display value="150 ML levofloxacin 5 MG/ML Injection"/>
+                        </concept>
+                        <concept>
+                            <code value="1665517"/>
+                            <display value="20 ML levofloxacin 25 MG/ML Injection"/>
+                        </concept>
+                        <concept>
+                            <code value="1665519"/>
+                            <display value="30 ML levofloxacin 25 MG/ML Injection"/>
+                        </concept>
+                        <concept>
+                            <code value="197511"/>
+                            <display value="ciprofloxacin 250 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="197512"/>
+                            <display value="ciprofloxacin 750 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="197754"/>
+                            <display value="haloperidol 20 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="198052"/>
+                            <display value="ondansetron 4 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="198186"/>
+                            <display value="quinine 325 MG Oral Capsule"/>
+                        </concept>
+                        <concept>
+                            <code value="198832"/>
+                            <display value="quinine 200 MG Oral Capsule"/>
+                        </concept>
+                        <concept>
+                            <code value="199023"/>
+                            <display value="chlorpromazine 100 MG Rectal Suppository"/>
+                        </concept>
+                        <concept>
+                            <code value="199282"/>
+                            <display value="quinine 300 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="199319"/>
+                            <display value="haloperidol 1.5 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="199370"/>
+                            <display value="ciprofloxacin 100 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="199884"/>
+                            <display value="levofloxacin 250 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="199885"/>
+                            <display value="levofloxacin 500 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="199953"/>
+                            <display value="haloperidol 10 MG/ML Injectable Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="204416"/>
+                            <display value="haloperidol 5 MG/ML Injectable Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="242461"/>
+                            <display value="cilostazol 100 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="242462"/>
+                            <display value="cilostazol 50 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="242834"/>
+                            <display value="quinine 200 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="249960"/>
+                            <display value="haloperidol 0.5 MG Oral Capsule"/>
+                        </concept>
+                        <concept>
+                            <code value="250587"/>
+                            <display value="ondansetron 16 MG Rectal Suppository"/>
+                        </concept>
+                        <concept>
+                            <code value="251135"/>
+                            <display value="quinine 300 MG/ML Injectable Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="283504"/>
+                            <display value="ondansetron 2 MG/ML Injectable Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="309305"/>
+                            <display value="ciprofloxacin 2 MG/ML / hydrocortisone 10 MG/ML Otic Suspension"/>
+                        </concept>
+                        <concept>
+                            <code value="309306"/>
+                            <display value="ciprofloxacin 0.003 MG/MG Ophthalmic Ointment"/>
+                        </concept>
+                        <concept>
+                            <code value="309307"/>
+                            <display value="ciprofloxacin 3 MG/ML Ophthalmic Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="309308"/>
+                            <display value="ciprofloxacin 50 MG/ML Oral Suspension"/>
+                        </concept>
+                        <concept>
+                            <code value="309309"/>
+                            <display value="ciprofloxacin 500 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="309310"/>
+                            <display value="ciprofloxacin 100 MG/ML Oral Suspension"/>
+                        </concept>
+                        <concept>
+                            <code value="310670"/>
+                            <display value="haloperidol 0.5 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="310671"/>
+                            <display value="haloperidol 1 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="310672"/>
+                            <display value="haloperidol 5 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="310673"/>
+                            <display value="haloperidol 1 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="311296"/>
+                            <display value="levofloxacin 750 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="312083"/>
+                            <display value="50 ML ondansetron 0.64 MG/ML Injection"/>
+                        </concept>
+                        <concept>
+                            <code value="312084"/>
+                            <display value="ondansetron 24 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="312085"/>
+                            <display value="ondansetron 0.8 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="312086"/>
+                            <display value="ondansetron 8 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="312087"/>
+                            <display value="ondansetron 8 MG Disintegrating Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="312674"/>
+                            <display value="propofol 10 MG/ML Injectable Suspension"/>
+                        </concept>
+                        <concept>
+                            <code value="314034"/>
+                            <display value="haloperidol 2 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="314035"/>
+                            <display value="haloperidol 10 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="314080"/>
+                            <display value="levofloxacin 5 MG/ML Ophthalmic Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="349332"/>
+                            <display value="escitalopram 10 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="351249"/>
+                            <display value="escitalopram 5 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="351250"/>
+                            <display value="escitalopram 20 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="351285"/>
+                            <display value="escitalopram 1 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="359383"/>
+                            <display value="24 HR ciprofloxacin 500 MG Extended Release Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="403908"/>
+                            <display value="ciprofloxacin 3 MG/ML / dexamethasone 1 MG/ML Otic Suspension"/>
+                        </concept>
+                        <concept>
+                            <code value="403921"/>
+                            <display value="24 HR ciprofloxacin 1000 MG Extended Release Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="477391"/>
+                            <display value="levofloxacin 25 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="545118"/>
+                            <display value="levofloxacin 15 MG/ML Ophthalmic Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="616749"/>
+                            <display value="12 HR ranolazine 500 MG Extended Release Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="692695"/>
+                            <display value="ondansetron 16 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="728231"/>
+                            <display value="12 HR ranolazine 1000 MG Extended Release Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="848956"/>
+                            <display value="ciprofloxacin 2 MG/ML Otic Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="859867"/>
+                            <display value="haloperidol decanoate 50 MG/ML Injectable Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="859871"/>
+                            <display value="haloperidol decanoate 100 MG/ML Injectable Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="864706"/>
+                            <display value="methadone hydrochloride 10 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="864714"/>
+                            <display value="methadone hydrochloride 10 MG/ML Injectable Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="864718"/>
+                            <display value="methadone hydrochloride 5 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="864761"/>
+                            <display value="methadone hydrochloride 1 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="864769"/>
+                            <display value="methadone hydrochloride 2 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="864978"/>
+                            <display value="methadone hydrochloride 40 MG Tablet for Oral Suspension"/>
+                        </concept>
+                        <concept>
+                            <code value="864984"/>
+                            <display value="methadone hydrochloride 20 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="886662"/>
+                            <display value="flecainide acetate 50 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="886666"/>
+                            <display value="flecainide acetate 100 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="886671"/>
+                            <display value="flecainide acetate 150 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="886676"/>
+                            <display value="flecainide acetate 10 MG/ML Injectable Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="991039"/>
+                            <display value="chlorpromazine hydrochloride 10 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="991044"/>
+                            <display value="chlorpromazine hydrochloride 100 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="991147"/>
+                            <display value="methadone hydrochloride 10 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="991184"/>
+                            <display value="chlorpromazine hydrochloride 2 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="991188"/>
+                            <display value="chlorpromazine hydrochloride 200 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="991194"/>
+                            <display value="chlorpromazine hydrochloride 25 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="991238"/>
+                            <display value="chlorpromazine hydrochloride 10 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="991241"/>
+                            <display value="chlorpromazine hydrochloride 20 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="991336"/>
+                            <display value="chlorpromazine hydrochloride 50 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="991344"/>
+                            <display value="chlorpromazine hydrochloride 20 MG/ML Oral Suspension"/>
+                        </concept>
+                        <concept>
+                            <code value="991366"/>
+                            <display value="chlorpromazine hydrochloride 5 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="992689"/>
+                            <display value="chlorpromazine 25 MG Rectal Suppository"/>
+                        </concept>
+                        <concept>
+                            <code value="992699"/>
+                            <display value="chlorpromazine 300 MG Rectal Suppository"/>
+                        </concept>
+                        <concept>
+                            <code value="992701"/>
+                            <display value="chlorpromazine 50 MG Rectal Suppository"/>
+                        </concept>
+                        <concept>
+                            <code value="997010"/>
+                            <display value="quinine sulfate 324 MG Oral Capsule"/>
+                        </concept>
+                        <concept>
+                            <code value="997157"/>
+                            <display value="quinine sulfate 260 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="997216"/>
+                            <display value="donepezil hydrochloride 1 MG/ML Oral Solution"/>
+                        </concept>
+                        <concept>
+                            <code value="997220"/>
+                            <display value="donepezil hydrochloride 10 MG Disintegrating Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="997223"/>
+                            <display value="donepezil hydrochloride 10 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="997226"/>
+                            <display value="donepezil hydrochloride 5 MG Disintegrating Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="997229"/>
+                            <display value="donepezil hydrochloride 5 MG Oral Tablet"/>
+                        </concept>
+                        <concept>
+                            <code value="998028"/>
+                            <display value="ondansetron 8 MG Oral Film"/>
+                        </concept>
+                        <concept>
+                            <code value="998033"/>
+                            <display value="ondansetron 4 MG Oral Film"/>
+                        </concept>
+                    </include>
+                </compose>
+            </ValueSet>
+        </resource>
+        <request>
+            <method value="PUT"/>
+            <url value="http://localhost:8080/baseDstu3/ValueSet/https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1213.4"/>
+        </request>
+    </entry>
+</Bundle>

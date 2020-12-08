@@ -24,7 +24,7 @@
           "resource": {
             "resourceType": "MedicationRequest",
             "id": "ketorolac-draft-order-test",
-            "authoredOn": "2020-07-05",
+            "authoredOn": "2020-11-05",
             "status": "draft",
             "subject": {
               "reference": "Patient/f101"
@@ -56,43 +56,6 @@
               ]
             }
           }
-        },
-        {
-          "resource": {
-            "resourceType": "MedicationRequest",
-            "id": "ketoprofen-draft-order-test",
-            "authoredOn": "2020-07-05",
-            "status": "draft",
-            "subject": {
-              "reference": "Patient/f101"
-            },
-            "dosageInstruction": [
-              {
-                "doseQuantity": {
-                  "value": 1,
-                  "system": "http://unitsofmeasure.org",
-                  "code": "{pill}"
-                },
-                "timing": {
-                  "repeat": {
-                    "frequency": 1,
-                    "period": 1,
-                    "periodUnit": "d"
-                  }
-                }
-              }
-            ],
-            "medicationCodeableConcept": {
-              "text": "Ketoprofen 100 MG Oral Capsule",
-              "coding": [
-                {
-                  "display": "Ketoprofen 100 MG Oral Capsule",
-                  "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-                  "code": "199321"
-                }
-              ]
-            }
-          }
         }
       ]
     }
@@ -102,7 +65,7 @@
       "resourceType": "Bundle",
       "id": "156c5bf1-dbd7-4cf8-9f05-af13f1d201e5",
       "meta": {
-        "lastUpdated": "2020-07-01T09:38:54.162+00:00"
+        "lastUpdated": "2020-11-01T09:38:54.162+00:00"
       },
       "type": "searchset",
       "total": 1,
@@ -120,7 +83,7 @@
             "id": "c101",
             "meta": {
               "versionId": "1",
-              "lastUpdated": "2020-07-01T09:04:41.038+00:00"
+              "lastUpdated": "2020-11-01T09:04:41.038+00:00"
             },
             "clinicalStatus": "active",
             "verificationStatus": "differential",
@@ -136,7 +99,7 @@
             "subject": {
               "reference": "Patient/f101"
             },
-            "assertedDate": "2020-07-01"
+            "assertedDate": "2020-11-01"
           },
           "search": {
             "mode": "match"
@@ -148,7 +111,7 @@
       "resourceType": "Bundle",
       "id": "771d30c6-6fc3-4dbd-835d-5679c30add40",
       "meta": {
-        "lastUpdated": "2020-07-01T09:38:58.617+00:00"
+        "lastUpdated": "2020-11-01T09:38:58.617+00:00"
       },
       "type": "searchset",
       "total": 3,
@@ -166,7 +129,7 @@
             "id": "r101",
             "meta": {
               "versionId": "2",
-              "lastUpdated": "2020-07-01T09:04:41.715+00:00"
+              "lastUpdated": "2020-11-01T09:04:41.715+00:00"
             },
             "status": "active",
             "intent": "order",
@@ -193,7 +156,7 @@
             "context": {
               "reference": "Encounter/e101"
             },
-            "authoredOn": "2020-07-01",
+            "authoredOn": "2020-11-01",
             "dosageInstruction": [
               {
                 "timing": {

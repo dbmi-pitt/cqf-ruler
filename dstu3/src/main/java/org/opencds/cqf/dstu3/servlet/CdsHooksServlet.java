@@ -3,9 +3,7 @@ package org.opencds.cqf.dstu3.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +22,8 @@ import org.apache.http.entity.ContentType;
 import org.cqframework.cql.elm.execution.Library;
 import org.hl7.fhir.dstu3.model.IdType;
 import org.hl7.fhir.dstu3.model.PlanDefinition;
+import org.hl7.fhir.dstu3.model.Reference;
+import org.hl7.fhir.dstu3.model.RelatedArtifact;
 import org.opencds.cqf.cds.discovery.DiscoveryResolutionStu3;
 import org.opencds.cqf.cds.evaluation.EvaluationContext;
 import org.opencds.cqf.cds.evaluation.Stu3EvaluationContext;
@@ -45,6 +45,7 @@ import org.opencds.cqf.cql.engine.execution.Context;
 import org.opencds.cqf.cql.engine.execution.LibraryLoader;
 import org.opencds.cqf.cql.engine.fhir.exception.DataProviderException;
 import org.opencds.cqf.cql.engine.fhir.model.Dstu3FhirModelResolver;
+import org.opencds.cqf.dstu3.config.CdsConfiguration;
 import org.opencds.cqf.dstu3.helpers.LibraryHelper;
 import org.opencds.cqf.dstu3.providers.JpaTerminologyProvider;
 import org.opencds.cqf.dstu3.providers.PlanDefinitionApplyProvider;
@@ -71,6 +72,11 @@ public class CdsHooksServlet extends HttpServlet {
     private org.opencds.cqf.dstu3.providers.JpaTerminologyProvider jpaTerminologyProvider;
 
     private ProviderConfiguration providerConfiguration;
+
+    private CdsConfiguration config;
+
+    private Reference user;
+
 
     @SuppressWarnings("unchecked")
     @Override
@@ -133,7 +139,42 @@ public class CdsHooksServlet extends HttpServlet {
             JsonObject requestJson = parser.parse(request.getReader()).getAsJsonObject();
             logger.info(requestJson.toString());
 
-            Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(getService(service), "prefetch"));
+//            Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(getService(service), "prefetch"));
+            Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(requestJson, "prefetch"));
+            user = new Reference(JsonHelper.getStringRequired(requestJson, "userId"));
+
+            JsonObject extJsonObj = JsonHelper.getObjectRequired(requestJson, "extension");
+            if (extJsonObj != null) {
+                JsonObject configJsonObj = (JsonObject) extJsonObj.get("pddi-configuration-items");
+                if (configJsonObj != null) {
+                    Boolean showEvSupport = null;
+                    if (configJsonObj.get("show-evidence-support") != null)
+                        showEvSupport = configJsonObj.get("show-evidence-support").getAsBoolean();
+
+                    Boolean alertNonSerious = null;
+                    if (configJsonObj.get("alert-non-serious") != null)
+                        alertNonSerious = configJsonObj.get("alert-non-serious").getAsBoolean();
+
+                    Boolean cacheForOrderSignFiltering = null;
+                    if (configJsonObj.get("cache-for-order-sign-filtering") != null)
+                        cacheForOrderSignFiltering = configJsonObj.get("cache-for-order-sign-filtering").getAsBoolean();
+
+                    Boolean filterOutRepeatedAlerts = null;
+                    if (configJsonObj.get("filter-out-repeated-alerts") != null)
+                        filterOutRepeatedAlerts = configJsonObj.get("filter-out-repeated-alerts").getAsBoolean();
+
+                    if (showEvSupport != null && alertNonSerious != null && (cacheForOrderSignFiltering != null || filterOutRepeatedAlerts != null)) {
+                        System.out.println("DEBUG: CdsRequest::CdsRequest - pddi-configuration-items found in the extension object and validated. showEvSupport = " +
+                                showEvSupport + ", alertNonSerious = " + alertNonSerious + ", cacheForOrderSignFiltering = " + cacheForOrderSignFiltering +
+                                ", filterOutRepeatedAlerts = " + filterOutRepeatedAlerts);
+                        this.config = new CdsConfiguration(configJsonObj, alertNonSerious, showEvSupport, cacheForOrderSignFiltering, filterOutRepeatedAlerts);
+
+                    } else {
+                        throw new RuntimeException("ERROR: CdsRequest::CdsRequest - pddi-configuration-items found in the extension object of the request but the required properties failed validation. Be sure that show-evidence-support and alert-non-serious both present and both boolean and that either cacheForOrderSignFiltering or filterOutRepeatedAlerts are also present and boolean;");
+                    }
+                }
+            }
+
 
             Hook hook = HookFactory.createHook(cdsHooksRequest);
 
@@ -176,11 +217,191 @@ public class CdsHooksServlet extends HttpServlet {
 
             Stu3HookEvaluator evaluator = new Stu3HookEvaluator();
 
-            String jsonResponse = toJsonResponse(evaluator.evaluate(evaluationContext));
+            List<CdsCard> cdsCards = evaluator.evaluate(evaluationContext);
+            if (this.config == null) {
+                // return cards if there is no configuration that would alter the results
+                String jsonResponse = toJsonResponse(cdsCards);
+                logger.info(jsonResponse);
+                response.getWriter().println(jsonResponse);
+            } else {
+                // filter the returning cards depending on the the configuration
 
-            logger.info(jsonResponse);
+                // If the configuration specifies to not show cards unless
+                // they are 'serious', identify the non-serious cards and
+                // index them for removal
+                Integer ctr = 0;
+                if (this.config.getAlertNonSerious() != null && this.config.getAlertNonSerious() == false) {
+                    List<Integer> cardsToRemove = new ArrayList<Integer>();
+                    ListIterator<CdsCard> litr = cdsCards.listIterator();
 
-            response.getWriter().println(jsonResponse);
+                    while (litr.hasNext()) {
+                        CdsCard card = litr.next();
+                        if (card.hasIndicator() &&
+                                (card.getIndicator() == CdsCard.IndicatorCode.WARN ||
+                                        card.getIndicator() == CdsCard.IndicatorCode.INFO)) {
+                            System.out.println("DEBUG: CdsRequest::process - pddi-configuration-items found in the extension object. Test for non-serious cards found one. Index: " + ctr + " card.indicator: " + card.getIndicator());
+                            cardsToRemove.add(ctr);
+                        }
+                        ctr = ctr += 1;
+                    }
+
+                    // removes non serious cards if config mandates
+                    // it. These will be indexed in the cardsToRemove
+                    // List. The adjustment counter is needed b/c java
+                    // List::remove shifts the elements left upon each
+                    // removal. Nothing will happen to the card list if
+                    // there are no items in the index of cards to remove
+                    ListIterator<Integer> removeLitr = cardsToRemove.listIterator();
+                    Integer adjustment = 0;
+                    while (removeLitr.hasNext()) {
+                        System.out.println("DEBUG: CdsRequest::process - pddi-configuration- Removing non-serious card.");
+                        cdsCards.remove(removeLitr.next() - adjustment);
+                        adjustment = adjustment + 1;
+                    }
+                }
+
+
+                if (this.config.getShowEvidenceSupport() != null && this.config.getShowEvidenceSupport() == false) {
+                    // removes the evidence strings present in the detail
+                    // attribute of the CdsCard if the config mandates it.
+                    ListIterator<CdsCard> litr = cdsCards.listIterator();
+                    while (litr.hasNext()) {
+                        System.out.println("DEBUG: CdsRequest::process - pddi-configuration- Replacing card detail with an empty string");
+                        litr.next().setDetail("");
+                    }
+                }
+
+
+                if (this.config.getCacheForOrderSignFiltering() != null && this.config.getCacheForOrderSignFiltering() == true) {
+                    // store the related artifact information from the
+                    // plan definition along with the CDS Hook request
+                    // user and patient for reference in future CDS Hooks
+                    // requests
+                    String orderingPhys = this.user.getReference();
+                    String patient = hook.getRequest().getContext().getPatientId();
+                    String encounter = hook.getRequest().getContext().getEncounterId(); // TODO: note in the IG that encounter ids are  REQUIRED in PDDI cds hooks requests
+                    // TODO: we might want to use the Medication resource
+                    // pointed to by 'selections' attribute of the order
+                    // select to add more specific data for filtering here
+
+                    // find the documentation related artifact and obtain
+                    // the URL which serves as an identifier to the
+                    // knowledge artifact of interest
+
+                    String planDefinitionUrl = planDefinition.getUrl();
+                    String knowledgeArtifactUrl = hook.getRequest().getFhirServerUrl() + planDefinitionUrl.substring(planDefinitionUrl.indexOf("/Plan"));
+
+                    System.out.println("DEBUG: knowledgeArtifactUrl: " + knowledgeArtifactUrl);
+
+
+                    // medicationObject will contain the base 64 encoded version of the entry grabbed from order-select
+                    // medicationId will be the system + code grabbed from the medicationCodeableConcept and will be used to query the DB in order-sign
+                    String medicationObject = null;
+                    String medicationId = null;
+
+                    JsonArray contextSelections =  hook.getRequest().getContext().getContextJson().get("selections").getAsJsonArray();
+                    Map<String, String> selections = new HashMap<>();
+                    for (JsonElement jsonSelection : contextSelections) {
+                        String[] selection = jsonSelection.getAsString().split("/");
+                        // Selections map will be ID to resource type
+                        selections.put(selection[1], selection[0]);
+                    }
+                    JsonObject draftOrders = JsonHelper.getObjectRequired( hook.getRequest().getContext().getContextJson(), "draftOrders");
+                    JsonArray orderEntries = draftOrders.get("entry").getAsJsonArray();
+
+                    CdsHooksPersistOrderSelect dbCon = new CdsHooksPersistOrderSelect();
+                    Boolean persistFlag = false;
+
+                    // For each entry in "draftOrders" we check if the resource type and the id equals the selection then save that entry
+                    for (JsonElement entry : orderEntries) {
+                        JsonObject members = JsonHelper.getObjectRequired((JsonObject) entry, "resource");
+                        if (members.has("id") && members.has("resourceType")) {
+                            String checkId = JsonHelper.getStringRequired(members, "id");
+                            String checkResourceType = JsonHelper.getStringRequired(members, "resourceType");
+                            if (selections.containsKey(checkId) && selections.get(checkId).equals(checkResourceType)) {
+                                medicationObject = members.toString();
+
+                                JsonObject codeableConcept = JsonHelper.getObjectRequired(members, "medicationCodeableConcept");
+                                JsonObject coding = codeableConcept.get("coding").getAsJsonArray().get(0).getAsJsonObject();
+                                medicationId = JsonHelper.getStringRequired(coding, "system") + JsonHelper.getStringRequired(coding, "code");
+                                System.out.println("DEBUG: orderingPhys: " + orderingPhys + ", patient: " + patient + ", encounter:" + encounter + ", medicationId: " + medicationId + ", medicationObject: " + medicationObject);
+                                persistFlag = dbCon.persistOrderSelectRequestData(orderingPhys, patient, encounter, medicationId, medicationObject, knowledgeArtifactUrl, cdsCards);
+
+                            }
+                        }
+                    }
+
+                    if (persistFlag == true)
+                        System.out.println("DEBUG: data persisted to database for use during order sign card filtering.");
+                    else
+                        System.out.println("DEBUG: data was NOT persisted to database due to an error. Please see the logs.");
+
+                }
+
+
+                if (this.config.getFilterOutRepeatedAlerts() != null && this.config.getFilterOutRepeatedAlerts() == true) {
+                    // check the data persisted from order select to see
+                    // if the request involves the same plan definition
+                    // knowledge artifact, user, patient, and
+                    // encounter. If so, return empty cards.
+                    String orderingPhys = this.user.getReference();
+                    String patient = hook.getRequest().getContext().getPatientId();
+                    String encounter = hook.getRequest().getContext().getEncounterId(); // TODO: note in the IG that encounter ids are  REQUIRED in PDDI cds hooks requests
+
+                    // find the documentation related artifact and obtain
+                    // the URL which serves as an identifier to the
+                    // knowledge artifact of interest
+
+                    String planDefinitionUrl = planDefinition.getUrl();
+                    String knowledgeArtifactUrl = hook.getRequest().getFhirServerUrl() + planDefinitionUrl.substring(planDefinitionUrl.indexOf("/Plan")).replace("sign", "select");
+
+                    System.out.println("DEBUG: knowledgeArtifactUrl: " + knowledgeArtifactUrl);
+
+                    int cdsCardLength = cdsCards.size();
+                    CdsHooksPersistOrderSelect dbCon = new CdsHooksPersistOrderSelect();
+
+                    String medicationId = null;
+                    JsonObject draftOrders = JsonHelper.getObjectRequired( hook.getRequest().getContext().getContextJson(), "orders");
+//                    JsonObject draftOrders = JsonHelper.getObjectRequired( hook.getRequest().getContext().getContextJson(), "draftOrders");
+                    JsonArray orderEntries = draftOrders.get("entry").getAsJsonArray();
+                    for (JsonElement entry : orderEntries) {
+                        JsonObject members = JsonHelper.getObjectRequired((JsonObject) entry, "resource");
+                        if (members.has("medicationCodeableConcept")) {
+                            JsonObject codeableConcept = JsonHelper.getObjectRequired(members, "medicationCodeableConcept");
+                            JsonObject coding = codeableConcept.get("coding").getAsJsonArray().get(0).getAsJsonObject();
+                            medicationId = JsonHelper.getStringRequired(coding, "system") + JsonHelper.getStringRequired(coding, "code");
+                            System.out.println("DEBUG: orderingPhys: " + orderingPhys + ", patient: " + patient + ", encounter:" + encounter + ", medication: " + medicationId);
+
+                            //We check if this card was already shown, if so then we remove it from cdsCards
+                            int priamryKey = dbCon.testForOrderSelectRequestData(orderingPhys, patient, encounter, medicationId, knowledgeArtifactUrl);
+                            cdsCards = dbCon.updateCdsCards(priamryKey, cdsCards);
+                        }
+                    }
+
+
+                    if (cdsCards.size() < cdsCardLength) {
+                        System.out.println("DEBUG: test for prior record of knowledge artifact in database succeeded - filtering all cards triggered from this CDS request.");
+                        CdsCard filteredCard = new CdsCard();
+                        filteredCard.setIndicator(CdsCard.IndicatorCode.INFO);
+                        filteredCard.setSummary("An alert was filtered because this request is configured to filter alerts if they were presented previously in response to a prior CDS Hook request.");
+                        filteredCard.setDetail("Since filter-out-repeated-alerts was set to true in this CDS Hook request, the service is filtering out cards that were triggered by the same knowledge artifact when the physician reference display, encounter id, and patient id match between the order-select and order-sign requests.");
+                        filteredCard.setSource(new CdsCard.Source());
+                        // TODO: add more details on how the filtering happens
+
+                        cdsCards.add(filteredCard);
+                    }
+                }
+
+                String jsonResponse = toJsonResponse(cdsCards);
+                logger.info(jsonResponse);
+                response.getWriter().println(jsonResponse);
+            }
+
+
+//
+//            logger.info(jsonResponse);
+//
+//            response.getWriter().println(jsonResponse);
         } catch (BaseServerResponseException e) {
             this.setAccessControlHeaders(response);
             response.setStatus(500); // This will be overwritten with the correct status code downstream if needed.
