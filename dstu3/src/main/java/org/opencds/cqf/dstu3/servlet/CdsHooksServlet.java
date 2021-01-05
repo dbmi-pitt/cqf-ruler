@@ -143,7 +143,7 @@ public class CdsHooksServlet extends HttpServlet {
             Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(requestJson, "prefetch"));
             user = new Reference(JsonHelper.getStringRequired(requestJson, "userId"));
 
-            JsonObject extJsonObj = JsonHelper.getObjectRequired(requestJson, "extension");
+            JsonObject extJsonObj = JsonHelper.getObjectOptional(requestJson, "extension");
             if (extJsonObj != null) {
                 JsonObject configJsonObj = (JsonObject) extJsonObj.get("pddi-configuration-items");
                 if (configJsonObj != null) {
@@ -381,11 +381,8 @@ public class CdsHooksServlet extends HttpServlet {
 
                     if (cdsCards.size() < cdsCardLength) {
                         System.out.println("DEBUG: test for prior record of knowledge artifact in database succeeded - filtering all cards triggered from this CDS request.");
-                        CdsCard filteredCard = new CdsCard();
-                        filteredCard.setIndicator(CdsCard.IndicatorCode.INFO);
-                        filteredCard.setSummary("An alert was filtered because this request is configured to filter alerts if they were presented previously in response to a prior CDS Hook request.");
+                        CdsCard filteredCard = new CdsCard("An alert was filtered because this request is configured to filter alerts if they were presented previously in response to a prior CDS Hook request.", "info", new CdsCard.Source());
                         filteredCard.setDetail("Since filter-out-repeated-alerts was set to true in this CDS Hook request, the service is filtering out cards that were triggered by the same knowledge artifact when the physician reference display, encounter id, and patient id match between the order-select and order-sign requests.");
-                        filteredCard.setSource(new CdsCard.Source());
                         // TODO: add more details on how the filtering happens
 
                         cdsCards.add(filteredCard);

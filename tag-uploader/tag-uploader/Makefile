@@ -104,3 +104,14 @@ load-acei-ksparing-value-sets:
 	curl -X POST --header "Content-Type:application/xml" -d @${TERMINOLOGY_TAG_UPLOAD}/acei-ksparing-valueset-bundle.xml ${FHIR_SERVER_BASE_URL}
 
 
+load-ddinteract-app-select:
+	cp ${PDDI_EXAMPLE_BASE}/ddinteract-app-select/*json ${TAG_UPLOAD_BASE}/ddinteract-app-select/
+	node . -v -d ${TAG_UPLOAD_BASE}/ddinteract-app-select -S ${FHIR_SERVER_BASE_URL}
+	sleep 1
+	node . -v -d ${TAG_UPLOAD_BASE}/ddinteract-app-select -S ${FHIR_SERVER_BASE_URL}
+
+load-ddinteract-app-view:
+	cp ${PDDI_EXAMPLE_BASE}/ddinteract-app-view/*json ${TAG_UPLOAD_BASE}/ddinteract-app-view/
+	node . -v -d ${TAG_UPLOAD_BASE}/ddinteract-app-view -S ${FHIR_SERVER_BASE_URL}
+	sleep 1
+	node . -v -d ${TAG_UPLOAD_BASE}/ddinteract-app-view -S ${FHIR_SERVER_BASE_URL}
