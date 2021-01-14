@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.*;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,19 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 
 import org.apache.http.entity.ContentType;
 import org.cqframework.cql.elm.execution.Library;
-import org.hl7.fhir.dstu3.model.IdType;
-import org.hl7.fhir.dstu3.model.PlanDefinition;
-import org.hl7.fhir.dstu3.model.Reference;
-import org.hl7.fhir.dstu3.model.RelatedArtifact;
+import org.hl7.fhir.dstu3.model.*;
 import org.opencds.cqf.cds.discovery.DiscoveryResolutionStu3;
 import org.opencds.cqf.cds.evaluation.EvaluationContext;
 import org.opencds.cqf.cds.evaluation.Stu3EvaluationContext;
@@ -83,11 +76,11 @@ public class CdsHooksServlet extends HttpServlet {
     public void init() {
         // System level providers
         ApplicationContext appCtx = (ApplicationContext) getServletContext()
-        .getAttribute("org.springframework.web.context.WebApplicationContext.ROOT");
+                .getAttribute("org.springframework.web.context.WebApplicationContext.ROOT");
 
         this.providerConfiguration = appCtx.getBean(ProviderConfiguration.class);
         this.planDefinitionProvider = appCtx.getBean(PlanDefinitionApplyProvider.class);
-        this.libraryResolutionProvider = (LibraryResolutionProvider<org.hl7.fhir.dstu3.model.Library>)appCtx.getBean(LibraryResolutionProvider.class);
+        this.libraryResolutionProvider = (LibraryResolutionProvider<org.hl7.fhir.dstu3.model.Library>) appCtx.getBean(LibraryResolutionProvider.class);
         this.fhirRetrieveProvider = appCtx.getBean(JpaFhirRetrieveProvider.class);
         this.jpaTerminologyProvider = appCtx.getBean(JpaTerminologyProvider.class);
     }
@@ -131,7 +124,7 @@ public class CdsHooksServlet extends HttpServlet {
                 throw new ServletException(String.format("Invalid content type %s. Please use application/json.", request.getContentType()));
             }
 
-            
+
             String baseUrl = HapiProperties.getServerAddress();
             String service = request.getPathInfo().replace("/", "");
 
@@ -139,8 +132,7 @@ public class CdsHooksServlet extends HttpServlet {
             JsonObject requestJson = parser.parse(request.getReader()).getAsJsonObject();
             logger.info(requestJson.toString());
 
-//            Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(getService(service), "prefetch"));
-            Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(requestJson, "prefetch"));
+            Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(getService(service), "prefetch"));
             user = new Reference(JsonHelper.getStringRequired(requestJson, "userId"));
 
             JsonObject extJsonObj = JsonHelper.getObjectOptional(requestJson, "extension");
@@ -208,8 +200,8 @@ public class CdsHooksServlet extends HttpServlet {
             context.setExpressionCaching(true);
 
             EvaluationContext<PlanDefinition> evaluationContext = new Stu3EvaluationContext(hook, version, FhirContext.forDstu3().newRestfulGenericClient(baseUrl),
-                jpaTerminologyProvider, context, library,
-                planDefinition, this.getProviderConfiguration());
+                    jpaTerminologyProvider, context, library,
+                    planDefinition, this.getProviderConfiguration());
 
             this.setAccessControlHeaders(response);
 
@@ -299,14 +291,14 @@ public class CdsHooksServlet extends HttpServlet {
                     String medicationObject = null;
                     String medicationId = null;
 
-                    JsonArray contextSelections =  hook.getRequest().getContext().getContextJson().get("selections").getAsJsonArray();
+                    JsonArray contextSelections = hook.getRequest().getContext().getContextJson().get("selections").getAsJsonArray();
                     Map<String, String> selections = new HashMap<>();
                     for (JsonElement jsonSelection : contextSelections) {
                         String[] selection = jsonSelection.getAsString().split("/");
                         // Selections map will be ID to resource type
                         selections.put(selection[1], selection[0]);
                     }
-                    JsonObject draftOrders = JsonHelper.getObjectRequired( hook.getRequest().getContext().getContextJson(), "draftOrders");
+                    JsonObject draftOrders = JsonHelper.getObjectRequired(hook.getRequest().getContext().getContextJson(), "draftOrders");
                     JsonArray orderEntries = draftOrders.get("entry").getAsJsonArray();
 
                     CdsHooksPersistOrderSelect dbCon = new CdsHooksPersistOrderSelect();
@@ -361,7 +353,7 @@ public class CdsHooksServlet extends HttpServlet {
                     CdsHooksPersistOrderSelect dbCon = new CdsHooksPersistOrderSelect();
 
                     String medicationId = null;
-                    JsonObject draftOrders = JsonHelper.getObjectRequired( hook.getRequest().getContext().getContextJson(), "orders");
+                    JsonObject draftOrders = JsonHelper.getObjectRequired(hook.getRequest().getContext().getContextJson(), "orders");
 //                    JsonObject draftOrders = JsonHelper.getObjectRequired( hook.getRequest().getContext().getContextJson(), "draftOrders");
                     JsonArray orderEntries = draftOrders.get("entry").getAsJsonArray();
                     for (JsonElement entry : orderEntries) {
@@ -418,8 +410,7 @@ public class CdsHooksServlet extends HttpServlet {
 
             this.printStackTrack(e, response);
             logger.error(e.toString());
-        }
-        catch (CqlException e) {
+        } catch (CqlException e) {
             this.setAccessControlHeaders(response);
             response.setStatus(500); // This will be overwritten with the correct status code downstream if needed.
             response.getWriter().println("ERROR: Exception in CQL Execution.");
@@ -491,8 +482,55 @@ public class CdsHooksServlet extends HttpServlet {
         DiscoveryResolutionStu3 discoveryResolutionStu3 = new DiscoveryResolutionStu3(
                 FhirContext.forDstu3().newRestfulGenericClient(HapiProperties.getServerAddress()));
         discoveryResolutionStu3.setMaxUriLength(this.getProviderConfiguration().getMaxUriLength());
-        return discoveryResolutionStu3.resolve()
-                        .getAsJson();
+        JsonArray services = discoveryResolutionStu3.resolve().getAsJson().getAsJsonArray("services");
+        for (int i = 0; i < services.size(); i++) {
+            JsonObject service = services.get(0).getAsJsonObject();
+            PlanDefinition planDefinition = planDefinitionProvider.getDao().read(new IdType(service.get("id").getAsString()));
+
+            if (planDefinition.hasExtension()) {
+                List<Extension> extensionsL = planDefinition.getExtension();
+                System.out.println("DEBUG: CdsServicesServlet::doGet - extensionsL.size() = " + extensionsL.size());
+
+                Gson gsonExt = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY).setPrettyPrinting().create();
+                String t = gsonExt.toJson(extensionsL);
+                JsonParser parser = new JsonParser();
+                JsonArray extensionsJsonL = parser.parse(t).getAsJsonArray();
+                System.out.println("DEBUG: CdsServicesServlet::doGet - extensionsJsonL.size() = " + extensionsJsonL.size());
+
+                JsonArray prettyExtJsonL = new JsonArray();
+                for (JsonElement element : extensionsJsonL) {
+                    JsonArray innerExtsJsonL = (JsonArray) ((JsonObject) element).get("extension");
+                    JsonObject jsonObject = new JsonObject();
+                    for (JsonElement configOpt : innerExtsJsonL) {
+                        JsonObject innerUrlObj = (JsonObject) ((JsonObject) configOpt).get("url");
+                        String innerUrlStr = innerUrlObj.get("myStringValue").getAsString();
+
+                        JsonObject innerValObj = (JsonObject) ((JsonObject) configOpt).get("value");
+                        String innerValStr = innerValObj.get("myStringValue").getAsString();
+
+                        jsonObject.addProperty(innerUrlStr, innerValStr);
+                    }
+                    prettyExtJsonL.add(jsonObject);
+                }
+                JsonObject configObject = new JsonObject();
+                configObject.add("pddi-configuration-items", prettyExtJsonL);
+
+                service.add("extension", configObject);
+
+//            if (!discovery.getItems().isEmpty()) {
+//                JsonObject prefetchContent = new JsonObject();
+//                for (DiscoveryItem item : discovery.getItems()) {
+//                    prefetchContent.addProperty(item.getItemNo(), item.getUrl());
+//                }
+//                service.add("prefetch", prefetchContent);
+//            }
+            }
+        }
+
+        JsonObject serviceObject = new JsonObject();
+        serviceObject.add("services", services);
+        return serviceObject;
+
     }
 
     private String toJsonResponse(List<CdsCard> cards) {

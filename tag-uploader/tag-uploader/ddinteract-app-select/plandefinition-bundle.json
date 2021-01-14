@@ -36,10 +36,12 @@
             "type": "documentation",
             "display": "Shared Decision Making App",
             "url": "http://ddinteract.ddns.net/ddinteract/launch",
-            "extension": [{
-              "url": "type",
-              "valueString": "smart"
-            }]
+            "extension": [
+              {
+                "url": "type",
+                "valueString": "smart"
+              }
+            ]
           }
         ],
         "action": [

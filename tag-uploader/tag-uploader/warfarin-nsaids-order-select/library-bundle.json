@@ -17,6 +17,26 @@
             }
           ]
         },
+        "dataRequirement": [
+          {
+            "type": "Patient"
+          },
+          {
+            "type": "MedicationRequest"
+          },
+          {
+            "type": "MedicationAdministration"
+          },
+          {
+            "type": "MedicationDispense"
+          },
+          {
+            "type": "MedicationStatement"
+          },
+          {
+            "type": "Condition"
+          }
+        ],
         "content": [
           {
             "contentType": "text/cql",

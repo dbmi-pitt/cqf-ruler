@@ -17,6 +17,17 @@
             }
           ]
         },
+        "dataRequirement": [
+          {
+            "type": "Patient"
+          },
+          {
+            "type": "MedicationRequest"
+          },
+          {
+            "type": "MedicationStatement"
+          }
+        ],
         "content": [
           {
             "contentType": "text/cql",
