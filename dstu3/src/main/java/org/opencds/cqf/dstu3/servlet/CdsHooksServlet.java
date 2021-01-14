@@ -20,6 +20,7 @@ import org.hl7.fhir.dstu3.model.*;
 import org.opencds.cqf.cds.discovery.DiscoveryResolutionStu3;
 import org.opencds.cqf.cds.evaluation.EvaluationContext;
 import org.opencds.cqf.cds.evaluation.Stu3EvaluationContext;
+import org.opencds.cqf.cds.exceptions.MissingRequiredFieldException;
 import org.opencds.cqf.cds.hooks.Hook;
 import org.opencds.cqf.cds.hooks.HookFactory;
 import org.opencds.cqf.cds.hooks.Stu3HookEvaluator;
@@ -133,7 +134,15 @@ public class CdsHooksServlet extends HttpServlet {
             logger.info(requestJson.toString());
 
             Request cdsHooksRequest = new Request(service, requestJson, JsonHelper.getObjectRequired(getService(service), "prefetch"));
-            user = new Reference(JsonHelper.getStringRequired(requestJson, "userId"));
+            try {
+                user = new Reference(JsonHelper.getStringRequired(requestJson, "userId"));
+            } catch (MissingRequiredFieldException missingRequiredFieldException) {
+                try {
+                    user = new Reference(cdsHooksRequest.getContext().getContextJson().get("userId").getAsString());
+                } catch (Exception exception) {
+                    throw missingRequiredFieldException;
+                }
+            }
 
             JsonObject extJsonObj = JsonHelper.getObjectOptional(requestJson, "extension");
             if (extJsonObj != null) {
