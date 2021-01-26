@@ -19,9 +19,6 @@
         },
         "dataRequirement": [
           {
-            "type": "Patient"
-          },
-          {
             "type": "MedicationRequest"
           },
           {

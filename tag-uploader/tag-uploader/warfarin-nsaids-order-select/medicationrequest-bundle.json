@@ -91,6 +91,55 @@
     {
       "resource": {
         "resourceType": "MedicationRequest",
+        "id": "r111",
+        "status": "active",
+        "intent": "order",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/medication-request-category",
+              "code": "outpatient"
+            }
+          ]
+        },
+        "medicationCodeableConcept": {
+          "text": "Ketorolac Tromethamine 10 MG Oral Tablet",
+          "coding": [
+            {
+              "display": "Ketorolac Tromethamine 10 MG Oral Tablet",
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "834022"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/f101"
+        },
+        "context": {
+          "reference": "Encounter/e101"
+        },
+        "authoredOn": "2019-08-02",
+        "dosageInstruction": [
+          {
+            "doseQuantity": {
+              "value": 1,
+              "system": "http://unitsofmeasure.org",
+              "code": "{pill}"
+            },
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
         "id": "r102",
         "status": "active",
         "intent": "order",
