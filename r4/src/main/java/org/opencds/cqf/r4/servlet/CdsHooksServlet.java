@@ -11,16 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 
 import org.apache.http.entity.ContentType;
 import org.cqframework.cql.elm.execution.Library;
-import org.hl7.fhir.dstu3.model.Reference;
+import org.hl7.fhir.r4.model.Extension;
+import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.PlanDefinition;
 import org.opencds.cqf.cds.discovery.DiscoveryResolutionR4;
@@ -498,8 +494,47 @@ public class CdsHooksServlet extends HttpServlet {
         DiscoveryResolutionR4 discoveryResolutionR4 = new DiscoveryResolutionR4(
                 FhirContext.forR4().newRestfulGenericClient(HapiProperties.getServerAddress()));
         discoveryResolutionR4.setMaxUriLength(this.getProviderConfiguration().getMaxUriLength());
-        return discoveryResolutionR4.resolve()
-                        .getAsJson();
+        JsonArray services = discoveryResolutionR4.resolve().getAsJson().getAsJsonArray("services");
+
+        for (int i = 0; i < services.size(); i++) {
+            JsonObject service = services.get(0).getAsJsonObject();
+            PlanDefinition planDefinition = planDefinitionProvider.getDao().read(new org.hl7.fhir.dstu3.model.IdType(service.get("id").getAsString()));
+
+            if (planDefinition.hasExtension()) {
+                List<Extension> extensionsL = planDefinition.getExtension();
+                System.out.println("DEBUG: CdsServicesServlet::doGet - extensionsL.size() = " + extensionsL.size());
+
+                Gson gsonExt = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY).setPrettyPrinting().create();
+                String t = gsonExt.toJson(extensionsL);
+                JsonParser parser = new JsonParser();
+                JsonArray extensionsJsonL = parser.parse(t).getAsJsonArray();
+                System.out.println("DEBUG: CdsServicesServlet::doGet - extensionsJsonL.size() = " + extensionsJsonL.size());
+
+                JsonArray prettyExtJsonL = new JsonArray();
+                for (JsonElement element : extensionsJsonL) {
+                    JsonArray innerExtsJsonL = (JsonArray) ((JsonObject) element).get("extension");
+                    JsonObject jsonObject = new JsonObject();
+                    for (JsonElement configOpt : innerExtsJsonL) {
+                        JsonObject innerUrlObj = (JsonObject) ((JsonObject) configOpt).get("url");
+                        String innerUrlStr = innerUrlObj.get("myStringValue").getAsString();
+
+                        JsonObject innerValObj = (JsonObject) ((JsonObject) configOpt).get("value");
+                        String innerValStr = innerValObj.get("myStringValue").getAsString();
+
+                        jsonObject.addProperty(innerUrlStr, innerValStr);
+                    }
+                    prettyExtJsonL.add(jsonObject);
+                }
+                JsonObject configObject = new JsonObject();
+                configObject.add("pddi-configuration-items", prettyExtJsonL);
+
+                service.add("extension", configObject);
+            }
+        }
+
+        JsonObject serviceObject = new JsonObject();
+        serviceObject.add("services", services);
+        return serviceObject;
     }
 
     private String toJsonResponse(List<CdsCard> cards) {
