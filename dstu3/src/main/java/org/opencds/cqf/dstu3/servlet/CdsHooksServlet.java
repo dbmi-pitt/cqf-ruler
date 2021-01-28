@@ -395,11 +395,6 @@ public class CdsHooksServlet extends HttpServlet {
                 response.getWriter().println(jsonResponse);
             }
 
-
-//
-//            logger.info(jsonResponse);
-//
-//            response.getWriter().println(jsonResponse);
         } catch (BaseServerResponseException e) {
             this.setAccessControlHeaders(response);
             response.setStatus(500); // This will be overwritten with the correct status code downstream if needed.

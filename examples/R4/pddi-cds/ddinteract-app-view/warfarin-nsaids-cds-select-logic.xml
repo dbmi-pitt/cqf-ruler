@@ -1,0 +1,1346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <annotation startLine="97" startChar="7" endLine="97" endChar="38" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationRequest." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="97" startChar="7" endLine="97" endChar="38" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="102" startChar="7" endLine="102" endChar="45" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationAdministration." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="102" startChar="7" endLine="102" endChar="45" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="107" startChar="7" endLine="107" endChar="39" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationDispense." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="107" startChar="7" endLine="107" endChar="39" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="112" startChar="7" endLine="112" endChar="40" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationStatement." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="112" startChar="7" endLine="112" endChar="40" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="190" startChar="7" endLine="190" endChar="50" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationRequest." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="190" startChar="7" endLine="190" endChar="50" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="195" startChar="7" endLine="195" endChar="57" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationAdministration." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="195" startChar="7" endLine="195" endChar="57" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="200" startChar="7" endLine="200" endChar="51" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationDispense." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="200" startChar="7" endLine="200" endChar="51" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="205" startChar="7" endLine="205" endChar="52" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationStatement." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="205" startChar="7" endLine="205" endChar="52" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="245" startChar="5" endLine="245" endChar="39" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="290" startChar="7" endLine="290" endChar="53" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationRequest." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="290" startChar="7" endLine="290" endChar="53" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="295" startChar="7" endLine="295" endChar="60" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationAdministration." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="295" startChar="7" endLine="295" endChar="60" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="300" startChar="7" endLine="300" endChar="54" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationDispense." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="300" startChar="7" endLine="300" endChar="54" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="305" startChar="7" endLine="305" endChar="55" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationStatement." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="305" startChar="7" endLine="305" endChar="55" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="317" startChar="7" endLine="317" endChar="52" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationRequest." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="317" startChar="7" endLine="317" endChar="52" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="322" startChar="7" endLine="322" endChar="59" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationAdministration." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="322" startChar="7" endLine="322" endChar="59" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="327" startChar="7" endLine="327" endChar="53" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationDispense." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="327" startChar="7" endLine="327" endChar="53" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="332" startChar="7" endLine="332" endChar="54" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationStatement." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="332" startChar="7" endLine="332" endChar="54" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="344" startChar="7" endLine="344" endChar="35" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationRequest." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="344" startChar="7" endLine="344" endChar="35" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="349" startChar="7" endLine="349" endChar="42" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationAdministration." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="349" startChar="7" endLine="349" endChar="42" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="354" startChar="7" endLine="354" endChar="36" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationDispense." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="354" startChar="7" endLine="354" endChar="36" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="359" startChar="7" endLine="359" endChar="37" message="Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationStatement." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="359" startChar="7" endLine="359" endChar="37" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <identifier id="Warfarin_NSAIDs_CDS" version="1.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="3.0.0"/>
+   </usings>
+   <parameters>
+      <def name="ContextPrescriptions" accessLevel="Public">
+         <parameterTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="fhir:MedicationRequest" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def name="RXNORM" id="http://www.nlm.nih.gov/research/umls/rxnorm" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def name="Topical Diclofenac" id="http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-topicaldiclofenac" accessLevel="Public"/>
+      <def name="Warfarins" id="http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-warfarin" accessLevel="Public"/>
+      <def name="NSAIDs" id="http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-NSAIDS" accessLevel="Public"/>
+      <def name="PPIs and Misoprostols" id="http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-PPIS" accessLevel="Public"/>
+      <def name="History of GI Bleeds" id="http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-Hx-UGIB-snomed" accessLevel="Public"/>
+      <def name="Systemic Corticosteroids" id="http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-SCS" accessLevel="Public"/>
+      <def name="Aldosterone Antagonists" id="http://hl7.org/fhir/ig/PDDI-CDS/ValueSet/valueset-AAS" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand dataType="fhir:Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="GetConditionName" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="Not">
+                  <operand xsi:type="IsNull">
+                     <operand name="condition" xsi:type="OperandRef"/>
+                  </operand>
+               </operand>
+            </condition>
+            <then path="value" xsi:type="Property">
+               <source path="display" xsi:type="Property">
+                  <source xsi:type="Indexer">
+                     <operand path="coding" xsi:type="Property">
+                        <source path="code" xsi:type="Property">
+                           <source name="condition" xsi:type="OperandRef"/>
+                        </source>
+                     </operand>
+                     <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                  </source>
+               </source>
+            </then>
+            <else valueType="t:String" value="NA" xsi:type="Literal"/>
+         </expression>
+         <operand name="condition">
+            <operandTypeSpecifier name="fhir:Condition" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def name="GetAssertedDate" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="Not">
+                  <operand xsi:type="IsNull">
+                     <operand name="condition" xsi:type="OperandRef"/>
+                  </operand>
+               </operand>
+            </condition>
+            <then xsi:type="ToString">
+               <operand path="value" xsi:type="Property">
+                  <source path="assertedDate" xsi:type="Property">
+                     <source name="condition" xsi:type="OperandRef"/>
+                  </source>
+               </operand>
+            </then>
+            <else valueType="t:String" value="NA" xsi:type="Literal"/>
+         </expression>
+         <operand name="condition">
+            <operandTypeSpecifier name="fhir:Condition" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def name="ToQuantity" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression classType="t:Quantity" xsi:type="Instance">
+            <element name="value">
+               <value path="value" xsi:type="Property">
+                  <source path="value" xsi:type="Property">
+                     <source name="quantity" xsi:type="OperandRef"/>
+                  </source>
+               </value>
+            </element>
+            <element name="unit">
+               <value path="value" xsi:type="Property">
+                  <source path="unit" xsi:type="Property">
+                     <source name="quantity" xsi:type="OperandRef"/>
+                  </source>
+               </value>
+            </element>
+         </expression>
+         <operand name="quantity">
+            <operandTypeSpecifier name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def name="GetLevelAndDate" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand xsi:type="Not">
+                  <operand xsi:type="IsNull">
+                     <operand name="observation" xsi:type="OperandRef"/>
+                  </operand>
+               </operand>
+            </condition>
+            <then xsi:type="Concatenate">
+               <operand xsi:type="Concatenate">
+                  <operand xsi:type="ToString">
+                     <operand name="ToQuantity" xsi:type="FunctionRef">
+                        <operand strict="false" xsi:type="As">
+                           <operand path="value" xsi:type="Property">
+                              <source name="observation" xsi:type="OperandRef"/>
+                           </operand>
+                           <asTypeSpecifier name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand valueType="t:String" value=" and " xsi:type="Literal"/>
+               </operand>
+               <operand xsi:type="ToString">
+                  <operand path="value" xsi:type="Property">
+                     <source path="effective" xsi:type="Property">
+                        <source name="observation" xsi:type="OperandRef"/>
+                     </source>
+                  </operand>
+               </operand>
+            </then>
+            <else valueType="t:String" value="NA" xsi:type="Literal"/>
+         </expression>
+         <operand name="observation">
+            <operandTypeSpecifier name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def name="ToCode" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression classType="t:Code" xsi:type="Instance">
+            <element name="code">
+               <value path="value" xsi:type="Property">
+                  <source path="code" xsi:type="Property">
+                     <source name="coding" xsi:type="OperandRef"/>
+                  </source>
+               </value>
+            </element>
+            <element name="system">
+               <value path="value" xsi:type="Property">
+                  <source path="system" xsi:type="Property">
+                     <source name="coding" xsi:type="OperandRef"/>
+                  </source>
+               </value>
+            </element>
+            <element name="version">
+               <value path="value" xsi:type="Property">
+                  <source path="version" xsi:type="Property">
+                     <source name="coding" xsi:type="OperandRef"/>
+                  </source>
+               </value>
+            </element>
+            <element name="display">
+               <value path="value" xsi:type="Property">
+                  <source path="display" xsi:type="Property">
+                     <source name="coding" xsi:type="OperandRef"/>
+                  </source>
+               </value>
+            </element>
+         </expression>
+         <operand name="coding">
+            <operandTypeSpecifier name="fhir:Coding" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def name="GetMedicationNames" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression xsi:type="Query">
+            <source alias="M">
+               <expression name="medications" xsi:type="OperandRef"/>
+            </source>
+            <return>
+               <expression path="display" xsi:type="Property">
+                  <source name="ToCode" xsi:type="FunctionRef">
+                     <operand xsi:type="Indexer">
+                        <operand path="coding" xsi:type="Property">
+                           <source path="medication" scope="M" xsi:type="Property"/>
+                        </operand>
+                        <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                     </operand>
+                  </source>
+               </expression>
+            </return>
+         </expression>
+         <operand name="medications">
+            <operandTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="fhir:MedicationRequest" xsi:type="NamedTypeSpecifier"/>
+            </operandTypeSpecifier>
+         </operand>
+      </def>
+      <def name="GetDrugNames" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression xsi:type="Combine">
+            <source xsi:type="Flatten">
+               <operand xsi:type="Query">
+                  <source alias="X">
+                     <expression xsi:type="Query">
+                        <source alias="coding">
+                           <expression name="codings" xsi:type="OperandRef"/>
+                        </source>
+                        <return>
+                           <expression path="display" xsi:type="Property">
+                              <source name="ToCode" xsi:type="FunctionRef">
+                                 <operand name="coding" xsi:type="AliasRef"/>
+                              </source>
+                           </expression>
+                        </return>
+                     </expression>
+                  </source>
+                  <return distinct="false">
+                     <expression xsi:type="ToList">
+                        <operand name="X" xsi:type="AliasRef"/>
+                     </expression>
+                  </return>
+               </operand>
+            </source>
+            <separator valueType="t:String" value=", " xsi:type="Literal"/>
+         </expression>
+         <operand name="codings">
+            <operandTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="fhir:Coding" xsi:type="NamedTypeSpecifier"/>
+            </operandTypeSpecifier>
+         </operand>
+      </def>
+      <def name="ToString" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression path="value" xsi:type="Property">
+            <source path="display" xsi:type="Property">
+               <source name="value" xsi:type="OperandRef"/>
+            </source>
+         </expression>
+         <operand name="value">
+            <operandTypeSpecifier name="fhir:Coding" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def name="ToString" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression path="display" xsi:type="Property">
+            <source name="value" xsi:type="OperandRef"/>
+         </expression>
+         <operand name="value">
+            <operandTypeSpecifier name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def name="Topical Diclofenac Prescription" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="P">
+               <expression name="ContextPrescriptions" xsi:type="ParameterRef"/>
+            </source>
+            <where xsi:type="InValueSet">
+               <code name="ToCode" xsi:type="FunctionRef">
+                  <operand xsi:type="Indexer">
+                     <operand path="coding" xsi:type="Property">
+                        <source path="medication" scope="P" xsi:type="Property"/>
+                     </operand>
+                     <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                  </operand>
+               </code>
+               <valueset name="Topical Diclofenac"/>
+            </where>
+            <return>
+               <expression xsi:type="Indexer">
+                  <operand path="coding" xsi:type="Property">
+                     <source path="medication" scope="P" xsi:type="Property"/>
+                  </operand>
+                  <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def name="Is context medication topical diclofenac" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="Topical Diclofenac Prescription" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="Warfarin Rx" context="Patient" accessLevel="Public">
+         <expression xsi:type="Flatten">
+            <operand xsi:type="Query">
+               <source alias="X">
+                  <expression xsi:type="Union">
+                     <operand xsi:type="Union">
+                        <operand xsi:type="Union">
+                           <operand xsi:type="Query">
+                              <source alias="MR">
+                                 <expression dataType="fhir:MedicationRequest" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                    <codes name="Warfarins" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="In">
+                                 <operand path="value" xsi:type="Property">
+                                    <source path="authoredOn" scope="MR" xsi:type="Property"/>
+                                 </operand>
+                                 <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                    <low xsi:type="Subtract">
+                                       <operand xsi:type="Today"/>
+                                       <operand value="100" unit="days" xsi:type="Quantity"/>
+                                    </low>
+                                    <high asType="t:DateTime" xsi:type="As">
+                                       <operand xsi:type="Null"/>
+                                    </high>
+                                 </operand>
+                              </where>
+                              <return>
+                                 <expression xsi:type="Indexer">
+                                    <operand path="coding" xsi:type="Property">
+                                       <source path="medication" scope="MR" xsi:type="Property"/>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                           <operand xsi:type="Query">
+                              <source alias="MA">
+                                 <expression dataType="fhir:MedicationAdministration" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                    <codes name="Warfarins" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="In">
+                                 <operand path="value" xsi:type="Property">
+                                    <source path="effective" scope="MA" xsi:type="Property"/>
+                                 </operand>
+                                 <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                    <low xsi:type="Subtract">
+                                       <operand xsi:type="Today"/>
+                                       <operand value="100" unit="days" xsi:type="Quantity"/>
+                                    </low>
+                                    <high asType="t:DateTime" xsi:type="As">
+                                       <operand xsi:type="Null"/>
+                                    </high>
+                                 </operand>
+                              </where>
+                              <return>
+                                 <expression xsi:type="Indexer">
+                                    <operand path="coding" xsi:type="Property">
+                                       <source path="medication" scope="MA" xsi:type="Property"/>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </operand>
+                        <operand xsi:type="Query">
+                           <source alias="MD">
+                              <expression dataType="fhir:MedicationDispense" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                 <codes name="Warfarins" xsi:type="ValueSetRef"/>
+                              </expression>
+                           </source>
+                           <where xsi:type="In">
+                              <operand path="value" xsi:type="Property">
+                                 <source path="whenHandedOver" scope="MD" xsi:type="Property"/>
+                              </operand>
+                              <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                 <low xsi:type="Subtract">
+                                    <operand xsi:type="Today"/>
+                                    <operand value="100" unit="days" xsi:type="Quantity"/>
+                                 </low>
+                                 <high asType="t:DateTime" xsi:type="As">
+                                    <operand xsi:type="Null"/>
+                                 </high>
+                              </operand>
+                           </where>
+                           <return>
+                              <expression xsi:type="Indexer">
+                                 <operand path="coding" xsi:type="Property">
+                                    <source path="medication" scope="MD" xsi:type="Property"/>
+                                 </operand>
+                                 <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                              </expression>
+                           </return>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="Query">
+                        <source alias="MS">
+                           <expression dataType="fhir:MedicationStatement" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                              <codes name="Warfarins" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <where xsi:type="In">
+                           <operand path="value" xsi:type="Property">
+                              <source path="effective" scope="MS" xsi:type="Property"/>
+                           </operand>
+                           <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                              <low xsi:type="Subtract">
+                                 <operand xsi:type="Today"/>
+                                 <operand value="100" unit="days" xsi:type="Quantity"/>
+                              </low>
+                              <high asType="t:DateTime" xsi:type="As">
+                                 <operand xsi:type="Null"/>
+                              </high>
+                           </operand>
+                        </where>
+                        <return>
+                           <expression xsi:type="Indexer">
+                              <operand path="coding" xsi:type="Property">
+                                 <source path="medication" scope="MS" xsi:type="Property"/>
+                              </operand>
+                              <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           </expression>
+                        </return>
+                     </operand>
+                  </expression>
+               </source>
+               <return distinct="false">
+                  <expression xsi:type="ToList">
+                     <operand name="X" xsi:type="AliasRef"/>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def name="Is warfarin in prefetch" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="Warfarin Rx" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="NSAID Prescription" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="P">
+               <expression name="ContextPrescriptions" xsi:type="ParameterRef"/>
+            </source>
+            <where xsi:type="InValueSet">
+               <code name="ToCode" xsi:type="FunctionRef">
+                  <operand xsi:type="Indexer">
+                     <operand path="coding" xsi:type="Property">
+                        <source path="medication" scope="P" xsi:type="Property"/>
+                     </operand>
+                     <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                  </operand>
+               </code>
+               <valueset name="NSAIDs"/>
+            </where>
+            <return>
+               <expression xsi:type="Indexer">
+                  <operand path="coding" xsi:type="Property">
+                     <source path="medication" scope="P" xsi:type="Property"/>
+                  </operand>
+                  <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def name="Is context medication systemic NSAID" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="NSAID Prescription" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="Inclusion Criteria" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Is context medication topical diclofenac" xsi:type="ExpressionRef"/>
+            </condition>
+            <then name="Is warfarin in prefetch" xsi:type="ExpressionRef"/>
+            <else xsi:type="And">
+               <operand name="Is context medication systemic NSAID" xsi:type="ExpressionRef"/>
+               <operand name="Is warfarin in prefetch" xsi:type="ExpressionRef"/>
+            </else>
+         </expression>
+      </def>
+      <def name="Is not context medication topical diclofenac" context="Patient" accessLevel="Public">
+         <expression xsi:type="Not">
+            <operand xsi:type="Exists">
+               <operand name="Topical Diclofenac Prescription" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Get Base Summary" context="Patient" accessLevel="Public">
+         <expression xsi:type="Concatenate">
+            <operand xsi:type="Concatenate">
+               <operand xsi:type="Concatenate">
+                  <operand xsi:type="Concatenate">
+                     <operand valueType="t:String" value="Potential Drug-Drug Interaction between warfarin (" xsi:type="Literal"/>
+                     <operand name="GetDrugNames" xsi:type="FunctionRef">
+                        <operand name="Warfarin Rx" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+                  <operand valueType="t:String" value=") and NSAID (" xsi:type="Literal"/>
+               </operand>
+               <operand name="GetDrugNames" xsi:type="FunctionRef">
+                  <operand name="NSAID Prescription" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand valueType="t:String" value=")." xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Get Base Indicator" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Is context medication topical diclofenac" xsi:type="ExpressionRef"/>
+            </condition>
+            <then valueType="t:String" value="info" xsi:type="Literal"/>
+            <else valueType="t:String" value="warning" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Acetaminophen 325 MG" context="Patient" accessLevel="Public">
+         <expression code="313782" display="Acetaminophen 325 MG Oral Tablet" xsi:type="Code">
+            <system name="RXNORM"/>
+         </expression>
+      </def>
+      <def name="Acetaminophen 500 MG" context="Patient" accessLevel="Public">
+         <expression code="198440" display="Acetaminophen 500 MG Oral Tablet" xsi:type="Code">
+            <system name="RXNORM"/>
+         </expression>
+      </def>
+      <def name="Get Base Label 1" context="Patient" accessLevel="Public">
+         <expression xsi:type="Concatenate">
+            <operand xsi:type="Concatenate">
+               <operand xsi:type="Concatenate">
+                  <operand xsi:type="Concatenate">
+                     <operand valueType="t:String" value="Substitute NSAID (" xsi:type="Literal"/>
+                     <operand name="GetDrugNames" xsi:type="FunctionRef">
+                        <operand name="NSAID Prescription" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+                  <operand valueType="t:String" value=") with APAP (" xsi:type="Literal"/>
+               </operand>
+               <operand name="ToString" xsi:type="FunctionRef">
+                  <operand name="Acetaminophen 325 MG" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand valueType="t:String" value=")." xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Get Base Label 2" context="Patient" accessLevel="Public">
+         <expression xsi:type="Concatenate">
+            <operand xsi:type="Concatenate">
+               <operand xsi:type="Concatenate">
+                  <operand xsi:type="Concatenate">
+                     <operand valueType="t:String" value="Substitute NSAID (" xsi:type="Literal"/>
+                     <operand name="GetDrugNames" xsi:type="FunctionRef">
+                        <operand name="NSAID Prescription" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+                  <operand valueType="t:String" value=") with APAP (" xsi:type="Literal"/>
+               </operand>
+               <operand name="ToString" xsi:type="FunctionRef">
+                  <operand name="Acetaminophen 500 MG" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand valueType="t:String" value=")." xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="PPIs and Misoprostols Rx" context="Patient" accessLevel="Public">
+         <expression xsi:type="Flatten">
+            <operand xsi:type="Query">
+               <source alias="X">
+                  <expression xsi:type="Union">
+                     <operand xsi:type="Union">
+                        <operand xsi:type="Union">
+                           <operand xsi:type="Query">
+                              <source alias="MR">
+                                 <expression dataType="fhir:MedicationRequest" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                    <codes name="PPIs and Misoprostols" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="In">
+                                 <operand path="value" xsi:type="Property">
+                                    <source path="authoredOn" scope="MR" xsi:type="Property"/>
+                                 </operand>
+                                 <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                    <low xsi:type="Subtract">
+                                       <operand xsi:type="Today"/>
+                                       <operand value="100" unit="days" xsi:type="Quantity"/>
+                                    </low>
+                                    <high asType="t:DateTime" xsi:type="As">
+                                       <operand xsi:type="Null"/>
+                                    </high>
+                                 </operand>
+                              </where>
+                              <return>
+                                 <expression xsi:type="Indexer">
+                                    <operand path="coding" xsi:type="Property">
+                                       <source path="medication" scope="MR" xsi:type="Property"/>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                           <operand xsi:type="Query">
+                              <source alias="MA">
+                                 <expression dataType="fhir:MedicationAdministration" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                    <codes name="PPIs and Misoprostols" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="In">
+                                 <operand path="value" xsi:type="Property">
+                                    <source path="effective" scope="MA" xsi:type="Property"/>
+                                 </operand>
+                                 <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                    <low xsi:type="Subtract">
+                                       <operand xsi:type="Today"/>
+                                       <operand value="100" unit="days" xsi:type="Quantity"/>
+                                    </low>
+                                    <high asType="t:DateTime" xsi:type="As">
+                                       <operand xsi:type="Null"/>
+                                    </high>
+                                 </operand>
+                              </where>
+                              <return>
+                                 <expression xsi:type="Indexer">
+                                    <operand path="coding" xsi:type="Property">
+                                       <source path="medication" scope="MA" xsi:type="Property"/>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </operand>
+                        <operand xsi:type="Query">
+                           <source alias="MD">
+                              <expression dataType="fhir:MedicationDispense" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                 <codes name="PPIs and Misoprostols" xsi:type="ValueSetRef"/>
+                              </expression>
+                           </source>
+                           <where xsi:type="In">
+                              <operand path="value" xsi:type="Property">
+                                 <source path="whenHandedOver" scope="MD" xsi:type="Property"/>
+                              </operand>
+                              <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                 <low xsi:type="Subtract">
+                                    <operand xsi:type="Today"/>
+                                    <operand value="100" unit="days" xsi:type="Quantity"/>
+                                 </low>
+                                 <high asType="t:DateTime" xsi:type="As">
+                                    <operand xsi:type="Null"/>
+                                 </high>
+                              </operand>
+                           </where>
+                           <return>
+                              <expression xsi:type="Indexer">
+                                 <operand path="coding" xsi:type="Property">
+                                    <source path="medication" scope="MD" xsi:type="Property"/>
+                                 </operand>
+                                 <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                              </expression>
+                           </return>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="Query">
+                        <source alias="MS">
+                           <expression dataType="fhir:MedicationStatement" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                              <codes name="PPIs and Misoprostols" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <where xsi:type="In">
+                           <operand path="value" xsi:type="Property">
+                              <source path="effective" scope="MS" xsi:type="Property"/>
+                           </operand>
+                           <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                              <low xsi:type="Subtract">
+                                 <operand xsi:type="Today"/>
+                                 <operand value="100" unit="days" xsi:type="Quantity"/>
+                              </low>
+                              <high asType="t:DateTime" xsi:type="As">
+                                 <operand xsi:type="Null"/>
+                              </high>
+                           </operand>
+                        </where>
+                        <return>
+                           <expression xsi:type="Indexer">
+                              <operand path="coding" xsi:type="Property">
+                                 <source path="medication" scope="MS" xsi:type="Property"/>
+                              </operand>
+                              <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           </expression>
+                        </return>
+                     </operand>
+                  </expression>
+               </source>
+               <return distinct="false">
+                  <expression xsi:type="ToList">
+                     <operand name="X" xsi:type="AliasRef"/>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def name="Taking PPI or misoprostol" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="PPIs and Misoprostols Rx" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="Get Card 2 Indicator" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Taking PPI or misoprostol" xsi:type="ExpressionRef"/>
+            </condition>
+            <then valueType="t:String" value="info" xsi:type="Literal"/>
+            <else valueType="t:String" value="critical" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Get Card 2 Summary" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Taking PPI or misoprostol" xsi:type="ExpressionRef"/>
+            </condition>
+            <then xsi:type="Concatenate">
+               <operand xsi:type="Concatenate">
+                  <operand valueType="t:String" value="Patient is taking a proton pump inhibitor (" xsi:type="Literal"/>
+                  <operand name="GetDrugNames" xsi:type="FunctionRef">
+                     <operand name="PPIs and Misoprostols Rx" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:String" value=")." xsi:type="Literal"/>
+            </then>
+            <else valueType="t:String" value="Patient is not taking a proton pump inhibitor or misoprostol." xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Get Card 2 Detail" context="Patient" accessLevel="Public">
+         <expression valueType="t:String" value="Proton pump inhibitors and misoprostol may reduce the risk of UGIB in patients receiving NSAIDs and warfarin." xsi:type="Literal"/>
+      </def>
+      <def name="Get Card 2 Label" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Taking PPI or misoprostol" xsi:type="ExpressionRef"/>
+            </condition>
+            <then valueType="t:String" value="Assess risk and take action if necessary." xsi:type="Literal"/>
+            <else valueType="t:String" value="Use only if benefit outweighs risk." xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="GI Bleeds Condition" context="Patient" accessLevel="Public">
+         <expression xsi:type="Last">
+            <source xsi:type="Query">
+               <source alias="C">
+                  <expression dataType="fhir:Condition" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="History of GI Bleeds" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <sort>
+                  <by direction="asc" xsi:type="ByExpression">
+                     <expression path="value" xsi:type="Property">
+                        <source name="assertedDate" xsi:type="IdentifierRef"/>
+                     </expression>
+                  </by>
+               </sort>
+            </source>
+         </expression>
+      </def>
+      <def name="Age > 65 years or Hx UGIB" context="Patient" accessLevel="Public">
+         <expression xsi:type="Or">
+            <operand xsi:type="Exists">
+               <operand xsi:type="ToList">
+                  <operand name="GI Bleeds Condition" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand xsi:type="Greater">
+               <operand precision="Year" xsi:type="CalculateAge">
+                  <operand path="birthDate.value" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:Integer" value="65" xsi:type="Literal"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Get Card 3 Indicator" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Age > 65 years or Hx UGIB" xsi:type="ExpressionRef"/>
+            </condition>
+            <then valueType="t:String" value="warning" xsi:type="Literal"/>
+            <else valueType="t:String" value="info" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Get Card 3 Summary" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Age > 65 years or Hx UGIB" xsi:type="ExpressionRef"/>
+            </condition>
+            <then xsi:type="Concatenate">
+               <operand xsi:type="Concatenate">
+                  <operand xsi:type="Concatenate">
+                     <operand xsi:type="Concatenate">
+                        <operand valueType="t:String" value="Patient is 65 y/o or does have a history of upper gastrointestinal bleed (&quot;" xsi:type="Literal"/>
+                        <operand name="GetConditionName" xsi:type="FunctionRef">
+                           <operand name="GI Bleeds Condition" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                     <operand valueType="t:String" value="&quot; and " xsi:type="Literal"/>
+                  </operand>
+                  <operand name="GetAssertedDate" xsi:type="FunctionRef">
+                     <operand name="GI Bleeds Condition" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:String" value=")." xsi:type="Literal"/>
+            </then>
+            <else valueType="t:String" value="Patient is not 65 y/o and does not have a history of upper gastrointestinal bleed." xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Get Card 3 Detail" context="Patient" accessLevel="Public">
+         <expression valueType="t:String" value="Patients with a history of UGIB or peptic ulcer may have an increased risk of UGIB from this interaction. The extent to which older age is an independent risk factor for UGIB due to these interactions is not firmly established, but UGIB in general is known to increase with age." xsi:type="Literal"/>
+      </def>
+      <def name="Get Card 3 Label" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Taking PPI or misoprostol" xsi:type="ExpressionRef"/>
+            </condition>
+            <then valueType="t:String" value="Assess risk and take action if necessary." xsi:type="Literal"/>
+            <else xsi:type="If">
+               <condition asType="t:Boolean" xsi:type="As">
+                  <operand name="Age > 65 years or Hx UGIB" xsi:type="ExpressionRef"/>
+               </condition>
+               <then valueType="t:String" value="Use only if benefit outweighs risk." xsi:type="Literal"/>
+               <else valueType="t:String" value="Assess risk and take action if necessary." xsi:type="Literal"/>
+            </else>
+         </expression>
+      </def>
+      <def name="Systemic Corticosteroids Rx" context="Patient" accessLevel="Public">
+         <expression xsi:type="Flatten">
+            <operand xsi:type="Query">
+               <source alias="X">
+                  <expression xsi:type="Union">
+                     <operand xsi:type="Union">
+                        <operand xsi:type="Union">
+                           <operand xsi:type="Query">
+                              <source alias="MR">
+                                 <expression dataType="fhir:MedicationRequest" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                    <codes name="Systemic Corticosteroids" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="In">
+                                 <operand path="value" xsi:type="Property">
+                                    <source path="authoredOn" scope="MR" xsi:type="Property"/>
+                                 </operand>
+                                 <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                    <low xsi:type="Subtract">
+                                       <operand xsi:type="Today"/>
+                                       <operand value="100" unit="days" xsi:type="Quantity"/>
+                                    </low>
+                                    <high asType="t:DateTime" xsi:type="As">
+                                       <operand xsi:type="Null"/>
+                                    </high>
+                                 </operand>
+                              </where>
+                              <return>
+                                 <expression xsi:type="Indexer">
+                                    <operand path="coding" xsi:type="Property">
+                                       <source path="medication" scope="MR" xsi:type="Property"/>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                           <operand xsi:type="Query">
+                              <source alias="MA">
+                                 <expression dataType="fhir:MedicationAdministration" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                    <codes name="Systemic Corticosteroids" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="In">
+                                 <operand path="value" xsi:type="Property">
+                                    <source path="effective" scope="MA" xsi:type="Property"/>
+                                 </operand>
+                                 <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                    <low xsi:type="Subtract">
+                                       <operand xsi:type="Today"/>
+                                       <operand value="100" unit="days" xsi:type="Quantity"/>
+                                    </low>
+                                    <high asType="t:DateTime" xsi:type="As">
+                                       <operand xsi:type="Null"/>
+                                    </high>
+                                 </operand>
+                              </where>
+                              <return>
+                                 <expression xsi:type="Indexer">
+                                    <operand path="coding" xsi:type="Property">
+                                       <source path="medication" scope="MA" xsi:type="Property"/>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </operand>
+                        <operand xsi:type="Query">
+                           <source alias="MD">
+                              <expression dataType="fhir:MedicationDispense" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                 <codes name="Systemic Corticosteroids" xsi:type="ValueSetRef"/>
+                              </expression>
+                           </source>
+                           <where xsi:type="In">
+                              <operand path="value" xsi:type="Property">
+                                 <source path="whenHandedOver" scope="MD" xsi:type="Property"/>
+                              </operand>
+                              <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                 <low xsi:type="Subtract">
+                                    <operand xsi:type="Today"/>
+                                    <operand value="100" unit="days" xsi:type="Quantity"/>
+                                 </low>
+                                 <high asType="t:DateTime" xsi:type="As">
+                                    <operand xsi:type="Null"/>
+                                 </high>
+                              </operand>
+                           </where>
+                           <return>
+                              <expression xsi:type="Indexer">
+                                 <operand path="coding" xsi:type="Property">
+                                    <source path="medication" scope="MD" xsi:type="Property"/>
+                                 </operand>
+                                 <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                              </expression>
+                           </return>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="Query">
+                        <source alias="MS">
+                           <expression dataType="fhir:MedicationStatement" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                              <codes name="Systemic Corticosteroids" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <where xsi:type="In">
+                           <operand path="value" xsi:type="Property">
+                              <source path="effective" scope="MS" xsi:type="Property"/>
+                           </operand>
+                           <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                              <low xsi:type="Subtract">
+                                 <operand xsi:type="Today"/>
+                                 <operand value="100" unit="days" xsi:type="Quantity"/>
+                              </low>
+                              <high asType="t:DateTime" xsi:type="As">
+                                 <operand xsi:type="Null"/>
+                              </high>
+                           </operand>
+                        </where>
+                        <return>
+                           <expression xsi:type="Indexer">
+                              <operand path="coding" xsi:type="Property">
+                                 <source path="medication" scope="MS" xsi:type="Property"/>
+                              </operand>
+                              <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           </expression>
+                        </return>
+                     </operand>
+                  </expression>
+               </source>
+               <return distinct="false">
+                  <expression xsi:type="ToList">
+                     <operand name="X" xsi:type="AliasRef"/>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def name="Has Systemic Corticosteroids" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="Systemic Corticosteroids Rx" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="Aldosterone Antagonists Rx" context="Patient" accessLevel="Public">
+         <expression xsi:type="Flatten">
+            <operand xsi:type="Query">
+               <source alias="X">
+                  <expression xsi:type="Union">
+                     <operand xsi:type="Union">
+                        <operand xsi:type="Union">
+                           <operand xsi:type="Query">
+                              <source alias="MR">
+                                 <expression dataType="fhir:MedicationRequest" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                    <codes name="Aldosterone Antagonists" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="In">
+                                 <operand path="value" xsi:type="Property">
+                                    <source path="authoredOn" scope="MR" xsi:type="Property"/>
+                                 </operand>
+                                 <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                    <low xsi:type="Subtract">
+                                       <operand xsi:type="Today"/>
+                                       <operand value="100" unit="days" xsi:type="Quantity"/>
+                                    </low>
+                                    <high asType="t:DateTime" xsi:type="As">
+                                       <operand xsi:type="Null"/>
+                                    </high>
+                                 </operand>
+                              </where>
+                              <return>
+                                 <expression xsi:type="Indexer">
+                                    <operand path="coding" xsi:type="Property">
+                                       <source path="medication" scope="MR" xsi:type="Property"/>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                           <operand xsi:type="Query">
+                              <source alias="MA">
+                                 <expression dataType="fhir:MedicationAdministration" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                    <codes name="Aldosterone Antagonists" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="In">
+                                 <operand path="value" xsi:type="Property">
+                                    <source path="effective" scope="MA" xsi:type="Property"/>
+                                 </operand>
+                                 <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                    <low xsi:type="Subtract">
+                                       <operand xsi:type="Today"/>
+                                       <operand value="100" unit="days" xsi:type="Quantity"/>
+                                    </low>
+                                    <high asType="t:DateTime" xsi:type="As">
+                                       <operand xsi:type="Null"/>
+                                    </high>
+                                 </operand>
+                              </where>
+                              <return>
+                                 <expression xsi:type="Indexer">
+                                    <operand path="coding" xsi:type="Property">
+                                       <source path="medication" scope="MA" xsi:type="Property"/>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </operand>
+                        <operand xsi:type="Query">
+                           <source alias="MD">
+                              <expression dataType="fhir:MedicationDispense" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                 <codes name="Aldosterone Antagonists" xsi:type="ValueSetRef"/>
+                              </expression>
+                           </source>
+                           <where xsi:type="In">
+                              <operand path="value" xsi:type="Property">
+                                 <source path="whenHandedOver" scope="MD" xsi:type="Property"/>
+                              </operand>
+                              <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                 <low xsi:type="Subtract">
+                                    <operand xsi:type="Today"/>
+                                    <operand value="100" unit="days" xsi:type="Quantity"/>
+                                 </low>
+                                 <high asType="t:DateTime" xsi:type="As">
+                                    <operand xsi:type="Null"/>
+                                 </high>
+                              </operand>
+                           </where>
+                           <return>
+                              <expression xsi:type="Indexer">
+                                 <operand path="coding" xsi:type="Property">
+                                    <source path="medication" scope="MD" xsi:type="Property"/>
+                                 </operand>
+                                 <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                              </expression>
+                           </return>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="Query">
+                        <source alias="MS">
+                           <expression dataType="fhir:MedicationStatement" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                              <codes name="Aldosterone Antagonists" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <where xsi:type="In">
+                           <operand path="value" xsi:type="Property">
+                              <source path="effective" scope="MS" xsi:type="Property"/>
+                           </operand>
+                           <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                              <low xsi:type="Subtract">
+                                 <operand xsi:type="Today"/>
+                                 <operand value="100" unit="days" xsi:type="Quantity"/>
+                              </low>
+                              <high asType="t:DateTime" xsi:type="As">
+                                 <operand xsi:type="Null"/>
+                              </high>
+                           </operand>
+                        </where>
+                        <return>
+                           <expression xsi:type="Indexer">
+                              <operand path="coding" xsi:type="Property">
+                                 <source path="medication" scope="MS" xsi:type="Property"/>
+                              </operand>
+                              <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           </expression>
+                        </return>
+                     </operand>
+                  </expression>
+               </source>
+               <return distinct="false">
+                  <expression xsi:type="ToList">
+                     <operand name="X" xsi:type="AliasRef"/>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def name="Has Aldosterone Antagonists" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="Aldosterone Antagonists Rx" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="NSAID Rx" context="Patient" accessLevel="Public">
+         <expression xsi:type="Flatten">
+            <operand xsi:type="Query">
+               <source alias="X">
+                  <expression xsi:type="Union">
+                     <operand xsi:type="Union">
+                        <operand xsi:type="Union">
+                           <operand xsi:type="Query">
+                              <source alias="MR">
+                                 <expression dataType="fhir:MedicationRequest" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                    <codes name="NSAIDs" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="In">
+                                 <operand path="value" xsi:type="Property">
+                                    <source path="authoredOn" scope="MR" xsi:type="Property"/>
+                                 </operand>
+                                 <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                    <low xsi:type="Subtract">
+                                       <operand xsi:type="Today"/>
+                                       <operand value="100" unit="days" xsi:type="Quantity"/>
+                                    </low>
+                                    <high asType="t:DateTime" xsi:type="As">
+                                       <operand xsi:type="Null"/>
+                                    </high>
+                                 </operand>
+                              </where>
+                              <return>
+                                 <expression xsi:type="Indexer">
+                                    <operand path="coding" xsi:type="Property">
+                                       <source path="medication" scope="MR" xsi:type="Property"/>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                           <operand xsi:type="Query">
+                              <source alias="MA">
+                                 <expression dataType="fhir:MedicationAdministration" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                    <codes name="NSAIDs" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="In">
+                                 <operand path="value" xsi:type="Property">
+                                    <source path="effective" scope="MA" xsi:type="Property"/>
+                                 </operand>
+                                 <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                    <low xsi:type="Subtract">
+                                       <operand xsi:type="Today"/>
+                                       <operand value="100" unit="days" xsi:type="Quantity"/>
+                                    </low>
+                                    <high asType="t:DateTime" xsi:type="As">
+                                       <operand xsi:type="Null"/>
+                                    </high>
+                                 </operand>
+                              </where>
+                              <return>
+                                 <expression xsi:type="Indexer">
+                                    <operand path="coding" xsi:type="Property">
+                                       <source path="medication" scope="MA" xsi:type="Property"/>
+                                    </operand>
+                                    <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </operand>
+                        <operand xsi:type="Query">
+                           <source alias="MD">
+                              <expression dataType="fhir:MedicationDispense" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                                 <codes name="NSAIDs" xsi:type="ValueSetRef"/>
+                              </expression>
+                           </source>
+                           <where xsi:type="In">
+                              <operand path="value" xsi:type="Property">
+                                 <source path="whenHandedOver" scope="MD" xsi:type="Property"/>
+                              </operand>
+                              <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                                 <low xsi:type="Subtract">
+                                    <operand xsi:type="Today"/>
+                                    <operand value="100" unit="days" xsi:type="Quantity"/>
+                                 </low>
+                                 <high asType="t:DateTime" xsi:type="As">
+                                    <operand xsi:type="Null"/>
+                                 </high>
+                              </operand>
+                           </where>
+                           <return>
+                              <expression xsi:type="Indexer">
+                                 <operand path="coding" xsi:type="Property">
+                                    <source path="medication" scope="MD" xsi:type="Property"/>
+                                 </operand>
+                                 <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                              </expression>
+                           </return>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="Query">
+                        <source alias="MS">
+                           <expression dataType="fhir:MedicationStatement" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+                              <codes name="NSAIDs" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <where xsi:type="In">
+                           <operand path="value" xsi:type="Property">
+                              <source path="effective" scope="MS" xsi:type="Property"/>
+                           </operand>
+                           <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                              <low xsi:type="Subtract">
+                                 <operand xsi:type="Today"/>
+                                 <operand value="100" unit="days" xsi:type="Quantity"/>
+                              </low>
+                              <high asType="t:DateTime" xsi:type="As">
+                                 <operand xsi:type="Null"/>
+                              </high>
+                           </operand>
+                        </where>
+                        <return>
+                           <expression xsi:type="Indexer">
+                              <operand path="coding" xsi:type="Property">
+                                 <source path="medication" scope="MS" xsi:type="Property"/>
+                              </operand>
+                              <operand valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           </expression>
+                        </return>
+                     </operand>
+                  </expression>
+               </source>
+               <return distinct="false">
+                  <expression xsi:type="ToList">
+                     <operand name="X" xsi:type="AliasRef"/>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def name="Has NSAID" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="NSAID Rx" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="Taking CS, MCRA, or NSAID" context="Patient" accessLevel="Public">
+         <expression xsi:type="Or">
+            <operand xsi:type="Or">
+               <operand name="Has Systemic Corticosteroids" xsi:type="ExpressionRef"/>
+               <operand name="Has Aldosterone Antagonists" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand name="Has NSAID" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="Get Card 4 Indicator" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Taking CS, MCRA, or NSAID" xsi:type="ExpressionRef"/>
+            </condition>
+            <then valueType="t:String" value="warning" xsi:type="Literal"/>
+            <else valueType="t:String" value="info" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Get Card 4 Summary" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Taking CS, MCRA, or NSAID" xsi:type="ExpressionRef"/>
+            </condition>
+            <then xsi:type="Concatenate">
+               <operand xsi:type="Concatenate">
+                  <operand xsi:type="Concatenate">
+                     <operand xsi:type="Concatenate">
+                        <operand xsi:type="Concatenate">
+                           <operand xsi:type="Concatenate">
+                              <operand valueType="t:String" value="Patient is concomitantly taking systemic corticosteroids (" xsi:type="Literal"/>
+                              <operand name="GetDrugNames" xsi:type="FunctionRef">
+                                 <operand name="Systemic Corticosteroids Rx" xsi:type="ExpressionRef"/>
+                              </operand>
+                           </operand>
+                           <operand valueType="t:String" value="), aldosterone antagonist (" xsi:type="Literal"/>
+                        </operand>
+                        <operand name="GetDrugNames" xsi:type="FunctionRef">
+                           <operand name="Aldosterone Antagonists Rx" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                     <operand valueType="t:String" value="), or high dose or multiple NSAIDs (" xsi:type="Literal"/>
+                  </operand>
+                  <operand name="GetDrugNames" xsi:type="FunctionRef">
+                     <operand name="NSAID Rx" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:String" value=")." xsi:type="Literal"/>
+            </then>
+            <else valueType="t:String" value="Patient is not concomitantly taking systemic corticosteroids, aldosterone antagonist, or high dose or multiple NSAIDs." xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Get Card 4 Detail" context="Patient" accessLevel="Public">
+         <expression valueType="t:String" value="Both corticosteroids and aldosterone antagonists have been shown to subsetantially increase the risk of UGIB in patients on NSAIDs, with relative risks of 12.8 and 11 respectively compared to a risk of 4.3 with NSAIDs alone (Masclee et al. Gastroenterology 2014; 147:784-92.)" xsi:type="Literal"/>
+      </def>
+      <def name="Get Card 4 Label" context="Patient" accessLevel="Public">
+         <expression xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand name="Taking PPI or misoprostol" xsi:type="ExpressionRef"/>
+            </condition>
+            <then valueType="t:String" value="Assess risk and take action if necessary." xsi:type="Literal"/>
+            <else xsi:type="If">
+               <condition asType="t:Boolean" xsi:type="As">
+                  <operand name="Taking CS, MCRA, or NSAID" xsi:type="ExpressionRef"/>
+               </condition>
+               <then valueType="t:String" value="Use only if benefit outweighs risk." xsi:type="Literal"/>
+               <else valueType="t:String" value="Assess risk and take action if necessary." xsi:type="Literal"/>
+            </else>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

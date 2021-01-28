@@ -1,0 +1,84 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "o998",
+        "status": "active",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "898690",
+              "display": "benazepril hydrochloride 20 MG Oral Tablet"
+            }
+          ]
+        },
+        "dosage": [
+          {
+            "doseQuantity": {
+              "value": 1,
+              "system": "http://unitsofmeasure.org",
+              "code": "{pill}"
+            },
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            }
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f997"
+        },
+        "context": {
+          "reference": "Encounter/e999"
+        },
+        "effectiveDateTime": "2020-11-15"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "o999",
+        "status": "active",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "104233",
+              "display": "spironolactone 10 MG/ML Oral Suspension"
+            }
+          ]
+        },
+        "dosage": [
+          {
+            "doseQuantity": {
+              "value": 1,
+              "system": "http://unitsofmeasure.org",
+              "code": "{pill}"
+            },
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            }
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f997"
+        },
+        "context": {
+          "reference": "Encounter/e999"
+        },
+        "effectiveDateTime": "2020-11-15"
+      }
+    }
+  ]
+}

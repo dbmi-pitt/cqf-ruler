@@ -26,9 +26,7 @@
           }
         ],
         "library": [
-          {
-            "reference": "Library/warfarin-nsaids-cds-select"
-          }
+          "Library/warfarin-nsaids-cds-select"
         ],
         "extension": [
           {
@@ -104,17 +102,19 @@
         ],
         "action": [
           {
-            "triggerDefinition": [
+            "trigger": [
               {
                 "type": "named-event",
-                "eventName": "order-select"
+                "name": "order-select"
               }
             ],
             "condition": [
               {
                 "kind": "applicability",
-                "language": "text/cql",
-                "expression": "Inclusion Criteria"
+                "expression": {
+                  "language": "text/cql",
+                  "expression": "Inclusion Criteria"
+                }
               }
             ],
             "action": [
@@ -131,23 +131,31 @@
                 "condition": [
                   {
                     "kind": "applicability",
-                    "language": "text/cql",
-                    "expression": "Is context medication topical diclofenac"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Is context medication topical diclofenac"
+                    }
                   }
                 ],
                 "dynamicValue": [
                   {
                     "path": "action.title",
-                    "expression": "Get Base Summary"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Base Summary"
+                    }
                   },
                   {
                     "path": "activity.extension",
-                    "expression": "Get Base Indicator"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Base Indicator"
+                    }
                   }
                 ],
                 "action": [
                   {
-                    "label": "No special precautions"
+                    "prefix": "No special precautions"
                   }
                 ]
               },
@@ -164,26 +172,38 @@
                 "condition": [
                   {
                     "kind": "applicability",
-                    "language": "text/cql",
-                    "expression": "Is not context medication topical diclofenac"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Is not context medication topical diclofenac"
+                    }
                   }
                 ],
                 "dynamicValue": [
                   {
                     "path": "action.title",
-                    "expression": "Get Base Summary"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Base Summary"
+                    }
                   },
                   {
                     "path": "activity.extension",
-                    "expression": "Get Base Indicator"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Base Indicator"
+                    }
                   }
                 ],
                 "action": [
                   {
-                    "label": "Assess risk and take action if necessary.",
+                    "prefix": "Assess risk and take action if necessary.",
                     "type": {
-                      "system": "http://hl7.org/fhir/ValueSet/action-type",
-                      "code": "remove"
+                      "coding": [
+                        {
+                          "system": "http://hl7.org/fhir/ValueSet/action-type",
+                          "code": "remove"
+                        }
+                      ]
                     },
                     "description": "If the NSAID is being used as an analgesic or antipyretic, it would be prudent to use an alternative such as acetaminophen. In some people, acetaminophen can increase the anticoagulant effect of warfarin, so monitor the INR if acetaminophen is used in doses over 2 g/day for a few days. For more severe pain consider short-term opioids in place of the NSAID.",
                     "documentation": [
@@ -195,10 +215,14 @@
                     ]
                   },
                   {
-                    "label": "Substitute NSAID (product) with APAP (product).",
+                    "prefix": "Substitute NSAID (product) with APAP (product).",
                     "type": {
-                      "system": "http://hl7.org/fhir/ValueSet/action-type",
-                      "code": "create"
+                      "coding": [
+                        {
+                          "system": "http://hl7.org/fhir/ValueSet/action-type",
+                          "code": "create"
+                        }
+                      ]
                     },
                     "description": "Order for APAP <2g per day (APAP 500 mg every 4-6 hours prn).",
                     "documentation": [
@@ -208,21 +232,26 @@
                         "url": "https://ddi-cds.org/warfarin-nsaids/"
                       }
                     ],
-                    "definition": {
-                      "reference": "ActivityDefinition/ad101"
-                    },
+                    "definitionCanonical": "ActivityDefinition/ad101",
                     "dynamicValue": [
                       {
-                        "path": "action.label",
-                        "expression": "Get Base Label 1"
+                        "path": "action.prefix",
+                        "expression": {
+                          "language": "text/cql",
+                          "expression": "Get Base Label 1"
+                        }
                       }
                     ]
                   },
                   {
-                    "label": "Substitute NSAID (product) with APAP (product).",
+                    "prefix": "Substitute NSAID (product) with APAP (product).",
                     "type": {
-                      "system": "http://hl7.org/fhir/ValueSet/action-type",
-                      "code": "create"
+                      "coding": [
+                        {
+                          "system": "http://hl7.org/fhir/ValueSet/action-type",
+                          "code": "create"
+                        }
+                      ]
                     },
                     "description": "Order for APAP <2g per day (APAP 500 mg every 4-6 hours prn).",
                     "documentation": [
@@ -232,13 +261,14 @@
                         "url": "https://ddi-cds.org/warfarin-nsaids/"
                       }
                     ],
-                    "definition": {
-                      "reference": "ActivityDefinition/ad102"
-                    },
+                    "definitionCanonical": "ActivityDefinition/ad102",
                     "dynamicValue": [
                       {
-                        "path": "action.label",
-                        "expression": "Get Base Label 2"
+                        "path": "action.prefix",
+                        "expression": {
+                          "language": "text/cql",
+                          "expression": "Get Base Label 2"
+                        }
                       }
                     ]
                   }
@@ -257,31 +287,45 @@
                 "condition": [
                   {
                     "kind": "applicability",
-                    "language": "text/cql",
-                    "expression": "Is not context medication topical diclofenac"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Is not context medication topical diclofenac"
+                    }
                   }
                 ],
                 "dynamicValue": [
                   {
                     "path": "action.title",
-                    "expression": "Get Card 2 Summary"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Card 2 Summary"
+                    }
                   },
                   {
                     "path": "action.description",
-                    "expression": "Get Card 2 Detail"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Card 2 Detail"
+                    }
                   },
                   {
                     "path": "activity.extension",
-                    "expression": "Get Card 2 Indicator"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Card 2 Indicator"
+                    }
                   }
                 ],
                 "action": [
                   {
-                    "label": "Assess risk and take action if necessary.",
+                    "prefix": "Assess risk and take action if necessary.",
                     "dynamicValue": [
                       {
-                        "path": "action.label",
-                        "expression": "Get Card 2 Label"
+                        "path": "action.prefix",
+                        "expression": {
+                          "language": "text/cql",
+                          "expression": "Get Card 2 Label"
+                        }
                       }
                     ]
                   }
@@ -300,31 +344,45 @@
                 "condition": [
                   {
                     "kind": "applicability",
-                    "language": "text/cql",
-                    "expression": "Is not context medication topical diclofenac"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Is not context medication topical diclofenac"
+                    }
                   }
                 ],
                 "dynamicValue": [
                   {
                     "path": "action.title",
-                    "expression": "Get Card 3 Summary"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Card 3 Summary"
+                    }
                   },
                   {
                     "path": "action.description",
-                    "expression": "Get Card 3 Detail"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Card 3 Detail"
+                    }
                   },
                   {
                     "path": "activity.extension",
-                    "expression": "Get Card 3 Indicator"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Card 3 Indicator"
+                    }
                   }
                 ],
                 "action": [
                   {
-                    "label": "Assess risk and take action if necessary.",
+                    "prefix": "Assess risk and take action if necessary.",
                     "dynamicValue": [
                       {
-                        "path": "action.label",
-                        "expression": "Get Card 3 Label"
+                        "path": "action.prefix",
+                        "expression": {
+                          "language": "text/cql",
+                          "expression": "Get Card 3 Label"
+                        }
                       }
                     ]
                   }
@@ -343,31 +401,45 @@
                 "condition": [
                   {
                     "kind": "applicability",
-                    "language": "text/cql",
-                    "expression": "Is not context medication topical diclofenac"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Is not context medication topical diclofenac"
+                    }
                   }
                 ],
                 "dynamicValue": [
                   {
                     "path": "action.title",
-                    "expression": "Get Card 4 Summary"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Card 4 Summary"
+                    }
                   },
                   {
                     "path": "action.description",
-                    "expression": "Get Card 4 Detail"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Card 4 Detail"
+                    }
                   },
                   {
                     "path": "activity.extension",
-                    "expression": "Get Card 4 Indicator"
+                    "expression": {
+                      "language": "text/cql",
+                      "expression": "Get Card 4 Indicator"
+                    }
                   }
                 ],
                 "action": [
                   {
-                    "label": "Assess risk and take action if necessary.",
+                    "prefix": "Assess risk and take action if necessary.",
                     "dynamicValue": [
                       {
-                        "path": "action.label",
-                        "expression": "Get Card 4 Label"
+                        "path": "action.prefix",
+                        "expression": {
+                          "language": "text/cql",
+                          "expression": "Get Card 4 Label"
+                        }
                       }
                     ]
                   }

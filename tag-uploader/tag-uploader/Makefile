@@ -4,8 +4,11 @@ CQL_TO_ELM_BASE=/Users/maxsibilla/Documents/Dev/clinical_quality_language/Src/ja
 
 
 FHIR_SERVER_BASE_URL=http://localhost:8080/cqf-ruler-dstu3/fhir
+# FHIR_SERVER_BASE_URL=http://localhost:8080/cqf-ruler-r4/fhir
 
-PDDI_EXAMPLE_BASE=/Users/maxsibilla/Documents/Dev/cqf-ruler/examples/pddi-cds
+PDDI_EXAMPLE_BASE=/Users/maxsibilla/Documents/Dev/cqf-ruler/examples/DSTU3/pddi-cds
+# PDDI_EXAMPLE_BASE=/Users/maxsibilla/Documents/Dev/cqf-ruler/examples/R4/pddi-cds
+
 TAG_UPLOAD_BASE=/Users/maxsibilla/Documents/Dev/cqf-ruler/tag-uploader/tag-uploader
 
 TERMINOLOGY_TAG_UPLOAD=/Users/maxsibilla/Documents/Dev/cqf-ruler/tag-uploader/tag-uploader/terminology
