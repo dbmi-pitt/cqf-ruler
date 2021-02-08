@@ -368,8 +368,8 @@ public class CdsHooksServlet extends HttpServlet {
                     CdsHooksPersistOrderSelect dbCon = new CdsHooksPersistOrderSelect();
 
                     String medicationId = null;
-                    JsonObject draftOrders = JsonHelper.getObjectRequired(hook.getRequest().getContext().getContextJson(), "orders");
-//                    JsonObject draftOrders = JsonHelper.getObjectRequired( hook.getRequest().getContext().getContextJson(), "draftOrders");
+//                    JsonObject draftOrders = JsonHelper.getObjectRequired(hook.getRequest().getContext().getContextJson(), "orders");
+                    JsonObject draftOrders = JsonHelper.getObjectRequired( hook.getRequest().getContext().getContextJson(), "draftOrders");
                     JsonArray orderEntries = draftOrders.get("entry").getAsJsonArray();
                     for (JsonElement entry : orderEntries) {
                         JsonObject members = JsonHelper.getObjectRequired((JsonObject) entry, "resource");

@@ -12,6 +12,7 @@
     }
   },
   "context": {
+    "userId": "Practitioner/COREPRACTITIONER1",
     "patientId": "f101",
     "encounterId": "e101",
     "draftOrders": {

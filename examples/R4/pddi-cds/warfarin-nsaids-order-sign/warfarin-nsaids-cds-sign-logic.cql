@@ -1,6 +1,6 @@
 library Warfarin_NSAIDs_CDS version '1.0'
 
-using FHIR version '3.0.0'
+using FHIR version '4.0.1'
 
 // include PDDICDSCommon version '1.0' called Common
 
