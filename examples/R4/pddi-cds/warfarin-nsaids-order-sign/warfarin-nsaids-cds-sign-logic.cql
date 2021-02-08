@@ -25,9 +25,9 @@ define function GetConditionName(condition Condition):
     then condition.code.coding[0].display.value
   else 'NA'
 
-define function GetAssertedDate(condition Condition):
+define function GetRecordedDate(condition Condition):
   if condition is not null
-    then ToString(condition.assertedDate.value)
+    then ToString(condition.recordedDate.value)
   else 'NA'
 
 define function GetLevelAndDate(observation Observation):
@@ -217,7 +217,7 @@ define "Get Card 3 Summary":
     then 'Patient is 65 y/o or does have a history of upper gastrointestinal bleed ("'
       + GetConditionName("GI Bleeds Condition")
       + '" and '
-      + GetAssertedDate("GI Bleeds Condition")
+      + GetRecordedDate("GI Bleeds Condition")
       + ').'
   else 'Patient is not 65 y/o and does not have a history of upper gastrointestinal bleed.'
 
@@ -239,7 +239,7 @@ define "Age > 65 years or Hx UGIB":
 define "GI Bleeds Condition":
   Last(
     [Condition: "History of GI Bleeds"] C
-      sort by assertedDate.value
+      sort by recordedDate.value
   )
 
 

@@ -30,7 +30,7 @@
         ],
         "extension": [
           {
-            "url": "http://localhost:8080/cqf-ruler-dstu3/fhir/StructureDefinition/pddi-cds-configuration-options",
+            "url": "http://localhost:8080/cqf-ruler-r4/fhir/StructureDefinition/pddi-cds-configuration-options",
             "extension": [
               {
                 "url": "code",
@@ -51,7 +51,7 @@
             ]
           },
           {
-            "url": "http://localhost:8080/cqf-ruler-dstu3/fhir/StructureDefinition/pddi-cds-configuration-options",
+            "url": "http://localhost:8080/cqf-ruler-r4/fhir/StructureDefinition/pddi-cds-configuration-options",
             "extension": [
               {
                 "url": "code",
@@ -72,7 +72,7 @@
             ]
           },
           {
-            "url": "http://localhost:8080/cqf-ruler-dstu3/fhir/StructureDefinition/pddi-cds-configuration-options",
+            "url": "http://localhost:8080/cqf-ruler-r4/fhir/StructureDefinition/pddi-cds-configuration-options",
             "extension": [
               {
                 "url": "code",

@@ -7,9 +7,9 @@ define function GetConditionName(condition Condition):
     then condition.code.coding[0].display.value
   else 'NA'
 
-define function GetAssertedDate(condition Condition):
+define function GetRecordedDate(condition Condition):
   if condition is not null
-    then ToString(condition.assertedDate.value)
+    then ToString(condition.recordedDate.value)
   else 'NA'
 
 define function GetLevelAndDate(observation Observation):

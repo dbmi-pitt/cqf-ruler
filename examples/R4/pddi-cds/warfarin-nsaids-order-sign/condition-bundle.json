@@ -20,7 +20,7 @@
         "subject": {
           "reference": "Patient/f101"
         },
-        "assertedDate": "2013-04-04"
+        "recordedDate": "2013-04-04"
       }
     },
     {
@@ -41,7 +41,7 @@
         "subject": {
           "reference": "Patient/f001"
         },
-        "assertedDate": "2013-04-04"
+        "recordedDate": "2013-04-04"
       }
     }
   ]

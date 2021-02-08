@@ -131,7 +131,7 @@
             "subject": {
               "reference": "Patient/f001"
             },
-            "assertedDate": "2020-04-01"
+            "recordedDate": "2020-04-01"
           },
           "search": {
             "mode": "match"

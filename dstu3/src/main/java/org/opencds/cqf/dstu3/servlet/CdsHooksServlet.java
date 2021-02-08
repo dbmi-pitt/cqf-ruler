@@ -174,6 +174,8 @@ public class CdsHooksServlet extends HttpServlet {
                         throw new RuntimeException("ERROR: CdsRequest::CdsRequest - pddi-configuration-items found in the extension object of the request but the required properties failed validation. Be sure that show-evidence-support and alert-non-serious both present and both boolean and that either cacheForOrderSignFiltering or filterOutRepeatedAlerts are also present and boolean;");
                     }
                 }
+            } else {
+                this.config = null;
             }
 
 
@@ -488,7 +490,7 @@ public class CdsHooksServlet extends HttpServlet {
         discoveryResolutionStu3.setMaxUriLength(this.getProviderConfiguration().getMaxUriLength());
         JsonArray services = discoveryResolutionStu3.resolve().getAsJson().getAsJsonArray("services");
         for (int i = 0; i < services.size(); i++) {
-            JsonObject service = services.get(0).getAsJsonObject();
+            JsonObject service = services.get(i).getAsJsonObject();
             PlanDefinition planDefinition = planDefinitionProvider.getDao().read(new IdType(service.get("id").getAsString()));
 
             if (planDefinition.hasExtension()) {

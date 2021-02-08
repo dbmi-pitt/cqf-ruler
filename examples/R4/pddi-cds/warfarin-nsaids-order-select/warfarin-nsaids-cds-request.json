@@ -1,9 +1,9 @@
 {
   "hookInstance": "f24dfe5e-9480-429f-9b27-2af9c6512345",
   "hook": "order-select",
-  "fhirServer": "http://localhost:8080/cqf-ruler-dstu3/fhir",
+  "fhirServer": "http://localhost:8080/cqf-ruler-r4/fhir",
   "userId": "Practitioner/COREPRACTITIONER1",
-  "patient": "f101",
+  "patientId": "f101",
   "extension": {
     "pddi-configuration-items": {
       "cache-for-order-sign-filtering": true,
@@ -12,6 +12,7 @@
     }
   },
   "context": {
+    "userId": "Practitioner/COREPRACTITIONER1",
     "patientId": "f101",
     "encounterId": "e101",
     "selections": [
@@ -24,7 +25,7 @@
           "resource": {
             "resourceType": "MedicationRequest",
             "id": "ketorolac-draft-order-test",
-            "authoredOn": "2020-11-05",
+            "authoredOn": "2020-12-22",
             "status": "draft",
             "subject": {
               "reference": "Patient/f101"
@@ -65,42 +66,28 @@
       "resourceType": "Bundle",
       "id": "156c5bf1-dbd7-4cf8-9f05-af13f1d201e5",
       "meta": {
-        "lastUpdated": "2020-11-01T09:38:54.162+00:00"
+        "lastUpdated": "2020-12-01T09:38:54.162+00:00"
       },
       "type": "searchset",
       "total": 1,
       "link": [
         {
           "relation": "self",
-          "url": "http://localhost:8080/cqf-ruler-dstu3/fhir/Condition?patient=f101"
+          "url": "http://localhost:8080/cqf-ruler-r4/fhir/Condition?patient=f101"
         }
       ],
       "entry": [
         {
-          "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Condition/c101",
+          "fullUrl": "http://localhost:8080/cqf-ruler-r4/fhir/Condition/c101",
           "resource": {
             "resourceType": "Condition",
             "id": "c101",
             "meta": {
               "versionId": "1",
-              "lastUpdated": "2020-11-01T09:04:41.038+00:00"
+              "lastUpdated": "2020-12-01T09:04:41.038+00:00"
             },
-            "clinicalStatus": {
-              "coding": [
-                {
-                  "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-                  "code": "active"
-                }
-              ]
-            },
-            "verificationStatus": {
-              "coding": [
-                {
-                  "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-                  "code": "differential"
-                }
-              ]
-            },
+            "clinicalStatus": "active",
+            "verificationStatus": "differential",
             "code": {
               "coding": [
                 {
@@ -113,7 +100,7 @@
             "subject": {
               "reference": "Patient/f101"
             },
-            "recordedDate": "2020-11-01"
+            "recordedDate": "2020-12-01"
           },
           "search": {
             "mode": "match"
@@ -125,36 +112,36 @@
       "resourceType": "Bundle",
       "id": "771d30c6-6fc3-4dbd-835d-5679c30add40",
       "meta": {
-        "lastUpdated": "2020-11-01T09:38:58.617+00:00"
+        "lastUpdated": "2020-12-01T09:38:58.617+00:00"
       },
       "type": "searchset",
       "total": 3,
       "link": [
         {
           "relation": "self",
-          "url": "http://localhost:8080/cqf-ruler-dstu3/fhir/MedicationRequest?authoredon=ge2020-07-01&patient=f101"
+          "url": "http://localhost:8080/cqf-ruler-r4/fhir/MedicationRequest?authoredon=ge2020-07-01&patient=f101"
         }
       ],
       "entry": [
         {
-          "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/MedicationRequest/r101",
+          "fullUrl": "http://localhost:8080/cqf-ruler-r4/fhir/MedicationRequest/r101",
           "resource": {
             "resourceType": "MedicationRequest",
             "id": "r101",
             "meta": {
               "versionId": "2",
-              "lastUpdated": "2020-11-01T09:04:41.715+00:00"
+              "lastUpdated": "2020-12-01T09:04:41.715+00:00"
             },
             "status": "active",
             "intent": "order",
-            "category": [{
+            "category": {
               "coding": [
                 {
                   "system": "http://hl7.org/fhir/medication-request-category",
                   "code": "outpatient"
                 }
               ]
-            }],
+            },
             "medicationCodeableConcept": {
               "coding": [
                 {
@@ -170,7 +157,7 @@
             "context": {
               "reference": "Encounter/e101"
             },
-            "authoredOn": "2020-11-01",
+            "authoredOn": "2020-12-01",
             "dosageInstruction": [
               {
                 "timing": {

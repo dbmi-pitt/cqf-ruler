@@ -99,7 +99,7 @@
             <operandTypeSpecifier name="fhir:Condition" xsi:type="NamedTypeSpecifier"/>
          </operand>
       </def>
-      <def name="GetAssertedDate" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+      <def name="GetRecordedDate" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
          <expression xsi:type="If">
             <condition asType="t:Boolean" xsi:type="As">
                <operand xsi:type="Not">
@@ -110,7 +110,7 @@
             </condition>
             <then xsi:type="ToString">
                <operand path="value" xsi:type="Property">
-                  <source path="assertedDate" xsi:type="Property">
+                  <source path="recordedDate" xsi:type="Property">
                      <source name="condition" xsi:type="OperandRef"/>
                   </source>
                </operand>
@@ -775,7 +775,7 @@
                <sort>
                   <by direction="asc" xsi:type="ByExpression">
                      <expression path="value" xsi:type="Property">
-                        <source name="assertedDate" xsi:type="IdentifierRef"/>
+                        <source name="recordedDate" xsi:type="IdentifierRef"/>
                      </expression>
                   </by>
                </sort>
@@ -824,7 +824,7 @@
                      </operand>
                      <operand valueType="t:String" value="&quot; and " xsi:type="Literal"/>
                   </operand>
-                  <operand name="GetAssertedDate" xsi:type="FunctionRef">
+                  <operand name="GetRecordedDate" xsi:type="FunctionRef">
                      <operand name="GI Bleeds Condition" xsi:type="ExpressionRef"/>
                   </operand>
                </operand>

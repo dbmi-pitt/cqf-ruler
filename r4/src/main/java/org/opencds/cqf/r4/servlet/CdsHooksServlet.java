@@ -78,11 +78,11 @@ public class CdsHooksServlet extends HttpServlet {
     public void init() {
         // System level providers
         ApplicationContext appCtx = (ApplicationContext) getServletContext()
-        .getAttribute("org.springframework.web.context.WebApplicationContext.ROOT");
+                .getAttribute("org.springframework.web.context.WebApplicationContext.ROOT");
 
         this.providerConfiguration = appCtx.getBean(ProviderConfiguration.class);
         this.planDefinitionProvider = appCtx.getBean(PlanDefinitionApplyProvider.class);
-        this.libraryResolutionProvider = (LibraryResolutionProvider<org.hl7.fhir.r4.model.Library>)appCtx.getBean(LibraryResolutionProvider.class);
+        this.libraryResolutionProvider = (LibraryResolutionProvider<org.hl7.fhir.r4.model.Library>) appCtx.getBean(LibraryResolutionProvider.class);
         this.fhirRetrieveProvider = appCtx.getBean(JpaFhirRetrieveProvider.class);
         this.jpaTerminologyProvider = appCtx.getBean(JpaTerminologyProvider.class);
     }
@@ -128,7 +128,7 @@ public class CdsHooksServlet extends HttpServlet {
                         request.getContentType()));
             }
 
-            
+
             String baseUrl = HapiProperties.getServerAddress();
             String service = request.getPathInfo().replace("/", "");
 
@@ -146,7 +146,6 @@ public class CdsHooksServlet extends HttpServlet {
                     throw missingRequiredFieldException;
                 }
             }
-            logger.info(cdsHooksRequest.getRequestJson().toString());
 
             JsonObject extJsonObj = JsonHelper.getObjectOptional(requestJson, "extension");
             if (extJsonObj != null) {
@@ -178,6 +177,8 @@ public class CdsHooksServlet extends HttpServlet {
                         throw new RuntimeException("ERROR: CdsRequest::CdsRequest - pddi-configuration-items found in the extension object of the request but the required properties failed validation. Be sure that show-evidence-support and alert-non-serious both present and both boolean and that either cacheForOrderSignFiltering or filterOutRepeatedAlerts are also present and boolean;");
                     }
                 }
+            } else {
+                this.config = null;
             }
 
             Hook hook = HookFactory.createHook(cdsHooksRequest);
@@ -207,7 +208,7 @@ public class CdsHooksServlet extends HttpServlet {
             context.setDebugMap(debugMap);
 
             context.registerDataProvider("http://hl7.org/fhir", provider); // TODO make sure tooling handles remote
-                                                                           // provider case
+            // provider case
             context.registerTerminologyProvider(jpaTerminologyProvider);
             context.registerLibraryLoader(libraryLoader);
             context.setContextValue("Patient", hook.getRequest().getContext().getPatientId().replace("Patient/", ""));
@@ -223,7 +224,7 @@ public class CdsHooksServlet extends HttpServlet {
 
             R4HookEvaluator evaluator = new R4HookEvaluator();
 
-                        List<CdsCard> cdsCards = evaluator.evaluate(evaluationContext);
+            List<CdsCard> cdsCards = evaluator.evaluate(evaluationContext);
             if (this.config == null) {
                 // return cards if there is no configuration that would alter the results
                 String jsonResponse = toJsonResponse(cdsCards);
@@ -419,8 +420,7 @@ public class CdsHooksServlet extends HttpServlet {
 
             this.printStackTrack(e, response);
             logger.error(e.toString());
-        }
-        catch (CqlException e) {
+        } catch (CqlException e) {
             this.setAccessControlHeaders(response);
             response.setStatus(500); // This will be overwritten with the correct status code downstream if needed.
             response.getWriter().println("ERROR: Exception in CQL Execution.");
@@ -431,8 +431,7 @@ public class CdsHooksServlet extends HttpServlet {
 
             this.printStackTrack(e, response);
             logger.error(e.toString());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             logger.error(e.toString());
             throw new ServletException("ERROR: Exception in cds-hooks processing.", e);
         }
@@ -497,18 +496,16 @@ public class CdsHooksServlet extends HttpServlet {
         JsonArray services = discoveryResolutionR4.resolve().getAsJson().getAsJsonArray("services");
 
         for (int i = 0; i < services.size(); i++) {
-            JsonObject service = services.get(0).getAsJsonObject();
+            JsonObject service = services.get(i).getAsJsonObject();
             PlanDefinition planDefinition = planDefinitionProvider.getDao().read(new org.hl7.fhir.dstu3.model.IdType(service.get("id").getAsString()));
 
             if (planDefinition.hasExtension()) {
                 List<Extension> extensionsL = planDefinition.getExtension();
-                System.out.println("DEBUG: CdsServicesServlet::doGet - extensionsL.size() = " + extensionsL.size());
 
                 Gson gsonExt = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY).setPrettyPrinting().create();
                 String t = gsonExt.toJson(extensionsL);
                 JsonParser parser = new JsonParser();
                 JsonArray extensionsJsonL = parser.parse(t).getAsJsonArray();
-                System.out.println("DEBUG: CdsServicesServlet::doGet - extensionsJsonL.size() = " + extensionsJsonL.size());
 
                 JsonArray prettyExtJsonL = new JsonArray();
                 for (JsonElement element : extensionsJsonL) {

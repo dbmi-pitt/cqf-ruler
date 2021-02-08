@@ -31,14 +31,16 @@
         "id": "r101",
         "status": "active",
         "intent": "order",
-        "category": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/medication-request-category",
-              "code": "outpatient"
-            }
-          ]
-        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/medication-request-category",
+                "code": "outpatient"
+              }
+            ]
+          }
+        ],
         "medicationCodeableConcept": {
           "coding": [
             {
@@ -51,7 +53,7 @@
         "subject": {
           "reference": "Patient/f101"
         },
-        "context": {
+        "encounter": {
           "reference": "Encounter/e101"
         },
         "authoredOn": "2019-08-02",
@@ -65,10 +67,14 @@
               }
             },
             "asNeededBoolean": false,
-            "doseQuantity": {
-              "value": 1.0,
-              "unit": "patch"
-            }
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 1.0,
+                  "unit": "patch"
+                }
+              }
+            ]
           }
         ],
         "dispenseRequest": {
@@ -94,14 +100,16 @@
         "id": "r111",
         "status": "active",
         "intent": "order",
-        "category": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/medication-request-category",
-              "code": "outpatient"
-            }
-          ]
-        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/medication-request-category",
+                "code": "outpatient"
+              }
+            ]
+          }
+        ],
         "medicationCodeableConcept": {
           "text": "Ketorolac Tromethamine 10 MG Oral Tablet",
           "coding": [
@@ -115,17 +123,21 @@
         "subject": {
           "reference": "Patient/f101"
         },
-        "context": {
+        "encounter": {
           "reference": "Encounter/e101"
         },
         "authoredOn": "2019-08-02",
         "dosageInstruction": [
           {
-            "doseQuantity": {
-              "value": 1,
-              "system": "http://unitsofmeasure.org",
-              "code": "{pill}"
-            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 1,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{pill}"
+                }
+              }
+            ],
             "timing": {
               "repeat": {
                 "frequency": 1,
@@ -143,14 +155,16 @@
         "id": "r102",
         "status": "active",
         "intent": "order",
-        "category": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/medication-request-category",
-              "code": "outpatient"
-            }
-          ]
-        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/medication-request-category",
+                "code": "outpatient"
+              }
+            ]
+          }
+        ],
         "medicationCodeableConcept": {
           "coding": [
             {
@@ -163,7 +177,7 @@
         "subject": {
           "reference": "Patient/f101"
         },
-        "context": {
+        "encounter": {
           "reference": "Encounter/e101"
         },
         "authoredOn": "2019-08-02",
@@ -177,10 +191,14 @@
               }
             },
             "asNeededBoolean": false,
-            "doseQuantity": {
-              "value": 1.0,
-              "unit": "patch"
-            }
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 1.0,
+                  "unit": "patch"
+                }
+              }
+            ]
           }
         ],
         "dispenseRequest": {
@@ -206,14 +224,16 @@
         "id": "r103",
         "status": "active",
         "intent": "order",
-        "category": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/medication-request-category",
-              "code": "outpatient"
-            }
-          ]
-        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/medication-request-category",
+                "code": "outpatient"
+              }
+            ]
+          }
+        ],
         "medicationCodeableConcept": {
           "coding": [
             {
@@ -226,7 +246,7 @@
         "subject": {
           "reference": "Patient/f101"
         },
-        "context": {
+        "encounter": {
           "reference": "Encounter/e101"
         },
         "authoredOn": "2019-08-02",
@@ -240,10 +260,14 @@
               }
             },
             "asNeededBoolean": false,
-            "doseQuantity": {
-              "value": 1.0,
-              "unit": "patch"
-            }
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 1.0,
+                  "unit": "patch"
+                }
+              }
+            ]
           }
         ],
         "dispenseRequest": {
@@ -292,14 +316,16 @@
         "id": "r001",
         "status": "active",
         "intent": "order",
-        "category": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/medication-request-category",
-              "code": "outpatient"
-            }
-          ]
-        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/medication-request-category",
+                "code": "outpatient"
+              }
+            ]
+          }
+        ],
         "medicationCodeableConcept": {
           "coding": [
             {
@@ -312,7 +338,7 @@
         "subject": {
           "reference": "Patient/f001"
         },
-        "context": {
+        "encounter": {
           "reference": "Encounter/e001"
         },
         "authoredOn": "2019-08-02",
@@ -326,10 +352,14 @@
               }
             },
             "asNeededBoolean": false,
-            "doseQuantity": {
-              "value": 1.0,
-              "unit": "patch"
-            }
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 1.0,
+                  "unit": "patch"
+                }
+              }
+            ]
           }
         ],
         "dispenseRequest": {
@@ -355,14 +385,16 @@
         "id": "r002",
         "status": "active",
         "intent": "order",
-        "category": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/medication-request-category",
-              "code": "outpatient"
-            }
-          ]
-        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/medication-request-category",
+                "code": "outpatient"
+              }
+            ]
+          }
+        ],
         "medicationCodeableConcept": {
           "coding": [
             {
@@ -375,7 +407,7 @@
         "subject": {
           "reference": "Patient/f001"
         },
-        "context": {
+        "encounter": {
           "reference": "Encounter/e001"
         },
         "authoredOn": "2019-08-02",
@@ -389,10 +421,14 @@
               }
             },
             "asNeededBoolean": false,
-            "doseQuantity": {
-              "value": 1.0,
-              "unit": "patch"
-            }
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 1.0,
+                  "unit": "patch"
+                }
+              }
+            ]
           }
         ],
         "dispenseRequest": {
@@ -418,14 +454,16 @@
         "id": "r1003",
         "status": "active",
         "intent": "order",
-        "category": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/medication-request-category",
-              "code": "outpatient"
-            }
-          ]
-        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/medication-request-category",
+                "code": "outpatient"
+              }
+            ]
+          }
+        ],
         "medicationCodeableConcept": {
           "coding": [
             {
@@ -438,7 +476,7 @@
         "subject": {
           "reference": "Patient/f001"
         },
-        "context": {
+        "encounter": {
           "reference": "Encounter/e001"
         },
         "authoredOn": "2019-08-02",
@@ -452,10 +490,14 @@
               }
             },
             "asNeededBoolean": false,
-            "doseQuantity": {
-              "value": 1.0,
-              "unit": "patch"
-            }
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 1.0,
+                  "unit": "patch"
+                }
+              }
+            ]
           }
         ],
         "dispenseRequest": {

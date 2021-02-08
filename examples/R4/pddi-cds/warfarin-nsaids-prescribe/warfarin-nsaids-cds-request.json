@@ -87,7 +87,7 @@
             "subject": {
               "reference": "Patient/f101"
             },
-            "assertedDate": "2019-08-01"
+            "recordedDate": "2019-08-01"
           },
           "search": {
             "mode": "match"
