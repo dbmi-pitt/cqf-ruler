@@ -203,9 +203,10 @@ public class CdsHooksServlet extends HttpServlet {
 
             Context context = new Context(library);
 
-            DebugMap debugMap = new DebugMap();
-            debugMap.setIsLoggingEnabled(true);
-            context.setDebugMap(debugMap);
+            //Remove Logging for CQL_ENGINE
+//            DebugMap debugMap = new DebugMap();
+//            debugMap.setIsLoggingEnabled(true);
+//            context.setDebugMap(debugMap);
 
             context.registerDataProvider("http://hl7.org/fhir", provider); // TODO make sure tooling handles remote
             // provider case

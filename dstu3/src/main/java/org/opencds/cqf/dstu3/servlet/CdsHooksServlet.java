@@ -199,12 +199,13 @@ public class CdsHooksServlet extends HttpServlet {
 
             Context context = new Context(library);
 
-            DebugMap debugMap = new DebugMap();
-            debugMap.setIsLoggingEnabled(true);
-            context.setDebugMap(debugMap);
+            //Remove Logging for CQL_ENGINE
+//            DebugMap debugMap = new DebugMap();
+//            debugMap.setIsLoggingEnabled(true);
+//            context.setDebugMap(debugMap);
 
             context.registerDataProvider("http://hl7.org/fhir", provider); // TODO make sure tooling handles remote
-                                                                           // provider case
+            // provider case
             context.registerTerminologyProvider(jpaTerminologyProvider);
             context.registerLibraryLoader(libraryLoader);
             context.setContextValue("Patient", hook.getRequest().getContext().getPatientId().replace("Patient/", ""));
@@ -220,6 +221,7 @@ public class CdsHooksServlet extends HttpServlet {
 
             Stu3HookEvaluator evaluator = new Stu3HookEvaluator();
 
+            long startTime = System.nanoTime();
             List<CdsCard> cdsCards = evaluator.evaluate(evaluationContext);
             if (this.config == null) {
                 // return cards if there is no configuration that would alter the results
@@ -365,7 +367,7 @@ public class CdsHooksServlet extends HttpServlet {
 
                     String medicationId = null;
 //                    JsonObject draftOrders = JsonHelper.getObjectRequired(hook.getRequest().getContext().getContextJson(), "orders");
-                    JsonObject draftOrders = JsonHelper.getObjectRequired( hook.getRequest().getContext().getContextJson(), "draftOrders");
+                    JsonObject draftOrders = JsonHelper.getObjectRequired(hook.getRequest().getContext().getContextJson(), "draftOrders");
                     JsonArray orderEntries = draftOrders.get("entry").getAsJsonArray();
                     for (JsonElement entry : orderEntries) {
                         JsonObject members = JsonHelper.getObjectRequired((JsonObject) entry, "resource");
@@ -393,6 +395,10 @@ public class CdsHooksServlet extends HttpServlet {
                 }
 
                 String jsonResponse = toJsonResponse(cdsCards);
+                long endTime = System.nanoTime();
+                long duration = (endTime - startTime);
+                System.out.println("Time to run: " + duration);
+                logger.info("Time to run: " + duration);
                 logger.info(jsonResponse);
                 response.getWriter().println(jsonResponse);
             }
