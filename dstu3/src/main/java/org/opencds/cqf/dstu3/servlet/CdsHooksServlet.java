@@ -3,6 +3,9 @@ package org.opencds.cqf.dstu3.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.List;
 
@@ -39,6 +42,8 @@ import org.opencds.cqf.cql.engine.execution.Context;
 import org.opencds.cqf.cql.engine.execution.LibraryLoader;
 import org.opencds.cqf.cql.engine.fhir.exception.DataProviderException;
 import org.opencds.cqf.cql.engine.fhir.model.Dstu3FhirModelResolver;
+import org.opencds.cqf.cql.engine.runtime.DateTime;
+import org.opencds.cqf.cql.engine.runtime.Precision;
 import org.opencds.cqf.dstu3.config.CdsConfiguration;
 import org.opencds.cqf.dstu3.helpers.LibraryHelper;
 import org.opencds.cqf.dstu3.providers.JpaTerminologyProvider;
@@ -145,34 +150,45 @@ public class CdsHooksServlet extends HttpServlet {
             }
 
             JsonObject extJsonObj = JsonHelper.getObjectOptional(requestJson, "extension");
+            DateTime dateTime = null;
             if (extJsonObj != null) {
-                JsonObject configJsonObj = (JsonObject) extJsonObj.get("pddi-configuration-items");
-                if (configJsonObj != null) {
-                    Boolean showEvSupport = null;
-                    if (configJsonObj.get("show-evidence-support") != null)
-                        showEvSupport = configJsonObj.get("show-evidence-support").getAsBoolean();
+                try {
+                    JsonObject configJsonObj = (JsonObject) extJsonObj.get("pddi-configuration-items");
+                    if (configJsonObj != null) {
+                        Boolean showEvSupport = null;
+                        if (configJsonObj.get("show-evidence-support") != null)
+                            showEvSupport = configJsonObj.get("show-evidence-support").getAsBoolean();
 
-                    Boolean alertNonSerious = null;
-                    if (configJsonObj.get("alert-non-serious") != null)
-                        alertNonSerious = configJsonObj.get("alert-non-serious").getAsBoolean();
+                        Boolean alertNonSerious = null;
+                        if (configJsonObj.get("alert-non-serious") != null)
+                            alertNonSerious = configJsonObj.get("alert-non-serious").getAsBoolean();
 
-                    Boolean cacheForOrderSignFiltering = null;
-                    if (configJsonObj.get("cache-for-order-sign-filtering") != null)
-                        cacheForOrderSignFiltering = configJsonObj.get("cache-for-order-sign-filtering").getAsBoolean();
+                        Boolean cacheForOrderSignFiltering = null;
+                        if (configJsonObj.get("cache-for-order-sign-filtering") != null)
+                            cacheForOrderSignFiltering = configJsonObj.get("cache-for-order-sign-filtering").getAsBoolean();
 
-                    Boolean filterOutRepeatedAlerts = null;
-                    if (configJsonObj.get("filter-out-repeated-alerts") != null)
-                        filterOutRepeatedAlerts = configJsonObj.get("filter-out-repeated-alerts").getAsBoolean();
+                        Boolean filterOutRepeatedAlerts = null;
+                        if (configJsonObj.get("filter-out-repeated-alerts") != null)
+                            filterOutRepeatedAlerts = configJsonObj.get("filter-out-repeated-alerts").getAsBoolean();
 
-                    if (showEvSupport != null && alertNonSerious != null && (cacheForOrderSignFiltering != null || filterOutRepeatedAlerts != null)) {
-                        System.out.println("DEBUG: CdsRequest::CdsRequest - pddi-configuration-items found in the extension object and validated. showEvSupport = " +
-                                showEvSupport + ", alertNonSerious = " + alertNonSerious + ", cacheForOrderSignFiltering = " + cacheForOrderSignFiltering +
-                                ", filterOutRepeatedAlerts = " + filterOutRepeatedAlerts);
-                        this.config = new CdsConfiguration(configJsonObj, alertNonSerious, showEvSupport, cacheForOrderSignFiltering, filterOutRepeatedAlerts);
+                        if (showEvSupport != null && alertNonSerious != null && (cacheForOrderSignFiltering != null || filterOutRepeatedAlerts != null)) {
+                            System.out.println("DEBUG: CdsRequest::CdsRequest - pddi-configuration-items found in the extension object and validated. showEvSupport = " +
+                                    showEvSupport + ", alertNonSerious = " + alertNonSerious + ", cacheForOrderSignFiltering = " + cacheForOrderSignFiltering +
+                                    ", filterOutRepeatedAlerts = " + filterOutRepeatedAlerts);
+                            this.config = new CdsConfiguration(configJsonObj, alertNonSerious, showEvSupport, cacheForOrderSignFiltering, filterOutRepeatedAlerts);
 
-                    } else {
-                        throw new RuntimeException("ERROR: CdsRequest::CdsRequest - pddi-configuration-items found in the extension object of the request but the required properties failed validation. Be sure that show-evidence-support and alert-non-serious both present and both boolean and that either cacheForOrderSignFiltering or filterOutRepeatedAlerts are also present and boolean;");
+                        } else {
+                            throw new RuntimeException("ERROR: CdsRequest::CdsRequest - pddi-configuration-items found in the extension object of the request but the required properties failed validation. Be sure that show-evidence-support and alert-non-serious both present and both boolean and that either cacheForOrderSignFiltering or filterOutRepeatedAlerts are also present and boolean;");
+                        }
                     }
+                } catch (NullPointerException nullPointerException) {
+                }
+
+                try {
+                    JsonObject configJsonObj = (JsonObject) extJsonObj.get("retrospective");
+                    dateTime = new DateTime(OffsetDateTime.parse(configJsonObj.get("datetime").getAsString(), DateTimeFormatter.ISO_OFFSET_DATE_TIME), Precision.DAY);
+                } catch (DateTimeParseException dateTimeParseException) {
+                } catch (NullPointerException e) {
                 }
             } else {
                 this.config = null;
@@ -197,8 +213,13 @@ public class CdsHooksServlet extends HttpServlet {
             Dstu3FhirModelResolver resolver = new Dstu3FhirModelResolver();
             CompositeDataProvider provider = new CompositeDataProvider(resolver, fhirRetrieveProvider);
 
-            Context context = new Context(library);
-
+            Context context;
+            if(dateTime != null) {
+                context = new Context(library, dateTime);
+            } else {
+                context = new Context(library);
+            }
+            
             //Remove Logging for CQL_ENGINE
 //            DebugMap debugMap = new DebugMap();
 //            debugMap.setIsLoggingEnabled(true);
